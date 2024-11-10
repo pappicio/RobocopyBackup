@@ -26,9 +26,9 @@ Public NotInheritable Class Lang
     Public Shared Sub SetLang()
 
 
-#Disable Warning BC42016 ' Conversione implicita
-        Dim readlines() As String = My.Resources.it.Split(Environment.NewLine)
-#Enable Warning BC42016 ' Conversione implicita
+
+        Dim readlines() As String = My.Resources.it.Split(Chr(10))
+
         _translations = readlines.[Select](Function(line) line.Trim()).Where(Function(line) Not String.IsNullOrEmpty(line)).[Select](Function(line) line.Split(New Char() {"="c}, 2)).ToDictionary(Function(line) line(0), Function(line) line(1))
     End Sub
 
