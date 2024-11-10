@@ -15,3 +15,5 @@ RobocopyBackupGUI/bin/Debug/config.xml
 /RobocopyBackupGUI/obj
 /RobocopyBackupService/obj
 /RobocopyBackupGUI/bin
+/RobocopyBackupGUI/bin
+/RobocopyBackupService/obj

@@ -7,7 +7,7 @@ Imports System.Xml.Serialization
 
 Namespace RobocopyBackup
     Public Module Config
-        Public Property LangRoot As String
+        '''  Public Property LangRoot As String
         Public Property Language As String = "it"
         Public Property LogRetention As UShort = 30
         Public Property debug As Boolean = False
@@ -21,7 +21,7 @@ Namespace RobocopyBackup
             ''' Dim progData As String = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData)
             Dim progData As String = (exeDir)
             _configFile = Path.Combine(progData, "config.xml")
-            LangRoot = Path.Combine(exeDir, "lang")
+            '''  LangRoot = Path.Combine(exeDir, "lang")
             LogRoot = Path.Combine(progData, "logs")
             Directory.CreateDirectory(LogRoot)
         End Sub
