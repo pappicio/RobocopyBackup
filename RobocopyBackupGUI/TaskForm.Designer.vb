@@ -126,11 +126,11 @@ Partial Class TaskForm
         'sourceTextBox
         '
         Me.sourceTextBox.BackColor = System.Drawing.SystemColors.Window
-        Me.sourceTextBox.Location = New System.Drawing.Point(150, 97)
+        Me.sourceTextBox.Location = New System.Drawing.Point(211, 97)
         Me.sourceTextBox.Margin = New System.Windows.Forms.Padding(6)
         Me.sourceTextBox.Name = "sourceTextBox"
         Me.sourceTextBox.ReadOnly = True
-        Me.sourceTextBox.Size = New System.Drawing.Size(761, 30)
+        Me.sourceTextBox.Size = New System.Drawing.Size(700, 30)
         Me.sourceTextBox.TabIndex = 1
         '
         'sourceButton
@@ -146,11 +146,11 @@ Partial Class TaskForm
         'destinationTextBox
         '
         Me.destinationTextBox.BackColor = System.Drawing.SystemColors.Window
-        Me.destinationTextBox.Location = New System.Drawing.Point(150, 238)
+        Me.destinationTextBox.Location = New System.Drawing.Point(211, 238)
         Me.destinationTextBox.Margin = New System.Windows.Forms.Padding(6)
         Me.destinationTextBox.Name = "destinationTextBox"
         Me.destinationTextBox.ReadOnly = True
-        Me.destinationTextBox.Size = New System.Drawing.Size(761, 30)
+        Me.destinationTextBox.Size = New System.Drawing.Size(700, 30)
         Me.destinationTextBox.TabIndex = 5
         '
         'destinationButton
@@ -246,26 +246,26 @@ Partial Class TaskForm
         'destpasstext
         '
         Me.destpasstext.Enabled = False
-        Me.destpasstext.Location = New System.Drawing.Point(586, 298)
+        Me.destpasstext.Location = New System.Drawing.Point(620, 298)
         Me.destpasstext.Margin = New System.Windows.Forms.Padding(6)
         Me.destpasstext.Name = "destpasstext"
-        Me.destpasstext.Size = New System.Drawing.Size(325, 30)
+        Me.destpasstext.Size = New System.Drawing.Size(291, 30)
         Me.destpasstext.TabIndex = 16
         Me.destpasstext.UseSystemPasswordChar = True
         '
         'originusertext
         '
         Me.originusertext.Enabled = False
-        Me.originusertext.Location = New System.Drawing.Point(150, 153)
+        Me.originusertext.Location = New System.Drawing.Point(211, 153)
         Me.originusertext.Margin = New System.Windows.Forms.Padding(6)
         Me.originusertext.Name = "originusertext"
-        Me.originusertext.Size = New System.Drawing.Size(325, 30)
+        Me.originusertext.Size = New System.Drawing.Size(288, 30)
         Me.originusertext.TabIndex = 14
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(484, 298)
+        Me.Label3.Location = New System.Drawing.Point(504, 298)
         Me.Label3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(104, 25)
@@ -285,26 +285,26 @@ Partial Class TaskForm
         'originpasstext
         '
         Me.originpasstext.Enabled = False
-        Me.originpasstext.Location = New System.Drawing.Point(586, 153)
+        Me.originpasstext.Location = New System.Drawing.Point(620, 153)
         Me.originpasstext.Margin = New System.Windows.Forms.Padding(6)
         Me.originpasstext.Name = "originpasstext"
-        Me.originpasstext.Size = New System.Drawing.Size(325, 30)
+        Me.originpasstext.Size = New System.Drawing.Size(291, 30)
         Me.originpasstext.TabIndex = 12
         Me.originpasstext.UseSystemPasswordChar = True
         '
         'destusertext
         '
         Me.destusertext.Enabled = False
-        Me.destusertext.Location = New System.Drawing.Point(150, 295)
+        Me.destusertext.Location = New System.Drawing.Point(211, 295)
         Me.destusertext.Margin = New System.Windows.Forms.Padding(6)
         Me.destusertext.Name = "destusertext"
-        Me.destusertext.Size = New System.Drawing.Size(325, 30)
+        Me.destusertext.Size = New System.Drawing.Size(288, 30)
         Me.destusertext.TabIndex = 10
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(484, 156)
+        Me.Label1.Location = New System.Drawing.Point(504, 156)
         Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(104, 25)

@@ -1,10 +1,19 @@
-2024-11-10 14:13:15.242 - [Config] config file not exist, 0 task present!!!
-2024-11-10 14:13:15.242 - [Service] Service started
-2024-11-10 14:13:15.242 - [Cleanup] Log cleanup started
-2024-11-10 14:13:15.254 - [Timer] Next tick in 44,747 s
-2024-11-10 14:13:41.170 - [Service] Service stopped
-2024-11-10 14:14:09.950 - [Config] config file not exist, 0 task present!!!
-2024-11-10 14:14:09.951 - [Service] Service started
-2024-11-10 14:14:09.952 - [Cleanup] Log cleanup started
-2024-11-10 14:14:09.965 - [Timer] Next tick in 50,037 s
-2024-11-10 14:14:14.909 - [Service] Service stopped
+2024-11-10 14:27:05.850 - [Service] Service started
+2024-11-10 14:27:05.850 - [Cleanup] Log cleanup started
+2024-11-10 14:27:05.861 - [Timer] Next tick in 54,139 s
+2024-11-10 14:27:10.689 - [Service] Service stopped
+2024-11-10 14:34:40.293 - [Service] Service started
+2024-11-10 14:34:40.294 - [Cleanup] Log cleanup started
+2024-11-10 14:34:40.308 - [Timer] Next tick in 19,693 s
+2024-11-10 14:34:56.133 - [Service] Service stopped
+2024-11-10 14:39:10.850 - [Service] Service started
+2024-11-10 14:39:10.850 - [Cleanup] Log cleanup started
+2024-11-10 14:39:10.861 - [Timer] Next tick in 49,139 s
+2024-11-10 14:39:20.256 - [Service] Received IPC request for config reload
+2024-11-10 14:39:20.256 - [Config] Loading config
+2024-11-10 14:39:20.256 - [Config] Got log retention period 30 days
+2024-11-10 14:39:20.256 - [Cleanup] Next log cleanup scheduled at 2024-11-11 00:00:00.000
+2024-11-10 14:39:20.264 - [Task] Next task GUID sdssdas run scheduled at 2024-11-10 14:45:00.000
+2024-11-10 14:39:20.264 - [Cleanup] Log cleanup started
+2024-11-10 14:40:00.019 - [Timer] Tick
+2024-11-10 14:40:00.028 - [Timer] Next tick in 59,981 s

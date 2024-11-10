@@ -105,7 +105,7 @@ Public NotInheritable Class serviceLogger
 
     Public Shared Sub LogServiceStarted()
         If Writer IsNot Nothing Then
-            serviceLogger.LogConfignotLoad()
+
             Log("[Service] Service started")
         End If
     End Sub

@@ -13,9 +13,9 @@
       <Destination>\\192.168.1.171\hhd\azz</Destination>
       <NTFS />
       <Guid>sdssdas</Guid>
-      <Hour>0</Hour>
+      <Hour>14</Hour>
       <Method>Incremental</Method>
-      <Minute>0</Minute>
+      <Minute>45</Minute>
       <Period>Daily</Period>
       <Retention>15</Retention>
       <Source>D:\github_repo\printer_data</Source>
