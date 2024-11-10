@@ -1,6 +1,5 @@
 D:\RobocopyBackup\RobocopyBackupService\bin\Release\RobocopyBackupService.exe
 D:\RobocopyBackup\RobocopyBackupService\bin\Release\RobocopyBackupService.pdb
-D:\RobocopyBackup\RobocopyBackupService\obj\Release\RobocopyBackupService.vbproj.AssemblyReference.cache
 D:\RobocopyBackup\RobocopyBackupService\obj\Release\RobocopyBackup.Resources.resources
 D:\RobocopyBackup\RobocopyBackupService\obj\Release\RobocopyBackupService.vbproj.GenerateResource.cache
 D:\RobocopyBackup\RobocopyBackupService\obj\Release\RobocopyBackupService.vbproj.CoreCompileInputs.cache

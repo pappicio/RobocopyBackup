@@ -9,3 +9,9 @@ RobocopyBackupGUI/bin/Release/logs/service_2024-11-10.log
 *.pdb
 *.cache
 RobocopyBackupGUI/bin/Debug/config.xml
+/RobocopyBackupGUI/obj
+/RobocopyBackupGUI/obj
+/RobocopyBackupGUI/obj/Release
+/RobocopyBackupGUI/obj
+/RobocopyBackupService/obj
+/RobocopyBackupGUI/bin

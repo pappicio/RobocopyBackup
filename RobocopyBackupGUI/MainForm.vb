@@ -312,16 +312,10 @@ Partial Public Class MainForm
 
             attendion()
 
-            Application.DoEvents()
-            Dim ora As Date = Now.AddSeconds(5)
-            Do While ora > Now
-                Threading.Thread.Sleep(1)
-                Application.DoEvents()
-            Loop
 
 
-            Dim l As Long = 0
-            Dim ll As Long = 0
+
+
         Else
 
 rifallo:
