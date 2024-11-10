@@ -5,3 +5,4 @@ D:\RobocopyBackup\RobocopyBackupService\bin\Debug\RobocopyBackupService.exe
 D:\RobocopyBackup\RobocopyBackupService\bin\Debug\RobocopyBackupService.pdb
 D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackupService.exe
 D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackupService.pdb
+D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackupService.vbproj.AssemblyReference.cache

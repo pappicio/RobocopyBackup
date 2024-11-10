@@ -8,3 +8,4 @@ RobocopyBackupGUI/bin/Release/logs/service_2024-11-10.log
 *.exe
 *.pdb
 *.cache
+RobocopyBackupGUI/bin/Debug/config.xml

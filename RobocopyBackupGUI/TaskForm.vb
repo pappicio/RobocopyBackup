@@ -151,6 +151,9 @@ Partial Public Class TaskForm
 
 
     Private Sub DestinationButton_Click(sender As Object, e As EventArgs) Handles destinationButton.Click
+        If taskx.Destination <> "" Then
+            Me.destinationFolderBrowserDialog.SelectedPath = taskx.Destination
+        End If
         If Me.destinationFolderBrowserDialog.ShowDialog() = DialogResult.OK Then
             Dim control As Control = Me.destinationTextBox
             Dim openFolderDialog As OpenFolderDialog = Me.destinationFolderBrowserDialog
@@ -246,9 +249,12 @@ Partial Public Class TaskForm
 
     Private Sub SourceButton_Click(sender As Object, e As EventArgs) Handles sourceButton.Click
 
-        'If Me.sourceTextBox.Text.Trim <> "" And IO.Directory.Exists(Me.sourceTextBox.Text.Trim) Then
-        ' Me.sourceFolderBrowserDialog.SelectedPath = Me.sourceTextBox.Text.Trim
-        'End If
+        If taskx.Source <> "" Then
+            Me.sourceFolderBrowserDialog.SelectedPath = taskx.Source
+        Else
+            ''' Me.sourceFolderBrowserDialog.SelectedPath = ""
+        End If
+
         If Me.sourceFolderBrowserDialog.ShowDialog() = DialogResult.OK Then
             Dim control As Control = Me.sourceTextBox
             Dim openFolderDialog As OpenFolderDialog = Me.sourceFolderBrowserDialog
