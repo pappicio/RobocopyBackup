@@ -1,0 +1,16 @@
+D:\RobocopyBackup\RobocopyBackupGUI\bin\Release\RobocopyBackupGUI.exe.config
+D:\RobocopyBackup\RobocopyBackupGUI\bin\Release\RobocopyBackupGUI.exe
+D:\RobocopyBackup\RobocopyBackupGUI\bin\Release\RobocopyBackupGUI.pdb
+D:\RobocopyBackup\RobocopyBackupGUI\bin\Release\RobocopyBackupService.exe
+D:\RobocopyBackup\RobocopyBackupGUI\bin\Release\RobocopyBackupService.pdb
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackupGUI.vbproj.AssemblyReference.cache
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackup.AboutForm.resources
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackup.MainForm.resources
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackup.Resources.resources
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackup.SettingsForm.resources
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackup.TaskForm.resources
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackupGUI.vbproj.GenerateResource.cache
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackupGUI.vbproj.CoreCompileInputs.cache
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackupGUI.vbproj.CopyComplete
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackupGUI.exe
+D:\RobocopyBackup\RobocopyBackupGUI\obj\Release\RobocopyBackupGUI.pdb

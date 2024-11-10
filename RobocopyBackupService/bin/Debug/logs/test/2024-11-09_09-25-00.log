@@ -1,0 +1,44 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Copia di file efficace per Windows                              
+-------------------------------------------------------------------------------
+
+  Avviato: sabato 9 novembre 2024 09:25:02
+      Origine : \\10.194.60.21\Uffici Periferici\test\
+ Destinazione : \\10.194.60.21\Uffici Periferici\test\
+
+         File: *.*
+	    
+      Opzioni: *.* /S /E /COPYALL /NP /R:0 /W:0 
+
+-------------------------------------------------------------------------------
+
+	                   1	\\10.194.60.21\Uffici Periferici\test\
+	                  97	\\10.194.60.21\Uffici Periferici\test\Cancello\
+	                  36	\\10.194.60.21\Uffici Periferici\test\Cancello\Atti di P.G\
+	                   6	\\10.194.60.21\Uffici Periferici\test\Cancello\Atti di P.G. da trasmettere tramite Portale NDR\
+	                   5	\\10.194.60.21\Uffici Periferici\test\Cancello\Atti di P.G. da trasmettere tramite Portale NDR\varchetta\
+	                   0	\\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\
+	                   0	\\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\
+	                   0	\\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\Disco rimovibile\
+	                   0	\\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\Disco rimovibile\Arresti\
+	                   0	\\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\Disco rimovibile\Arresti\occ\
+	                   0	\\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\Disco rimovibile\Arresti\occ\de masi\
+
+-------------------------------------------------------------------------------
+
+              Totale   Copiato  IgnorateNon corrispondentiNon riuscitaSupplementari
+Directory:        11         0        11         0         0         0
+     File:       145         0       145         0         0         0
+     Byte:   31.45 m         0   31.45 m         0         0         0
+   Durata:   0:00:00   0:00:00                       0:00:00   0:00:00
+   Terminato: sabato 9 novembre 2024 09:25:02
+
+2024-11-09 09:25:02.961 - ***************************************
+2024-11-09 09:25:03.571 - [Task] Deleted empty Folder \\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\Disco rimovibile\Arresti\occ\de masi
+2024-11-09 09:25:03.576 - [Task] Deleted empty Folder \\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\Disco rimovibile\Arresti\occ
+2024-11-09 09:25:03.576 - [Task] Deleted empty Folder \\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\Disco rimovibile\Arresti
+2024-11-09 09:25:03.621 - [Task] Deleted empty Folder \\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO\Disco rimovibile
+2024-11-09 09:25:03.626 - [Task] Deleted empty Folder \\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2\VALENTINO
+2024-11-09 09:25:03.631 - [Task] Deleted empty Folder \\10.194.60.21\Uffici Periferici\test\Cancello\valentino nuova 2
+2024-11-09 09:25:09.134 - ***************************************

@@ -1,0 +1,139 @@
+2024-11-09 09:23:50.041 - [Config] Loading config
+2024-11-09 09:23:50.041 - [Config] Got log retention period 30 days
+2024-11-09 09:23:50.046 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:23:50.046 - [Task] Next task GUID aaaaa run scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:23:50.046 - [Cleanup] Log cleanup started
+2024-11-09 09:23:50.081 - [Timer] Next tick in 9,919 s
+2024-11-09 09:24:00.014 - [Timer] Tick
+2024-11-09 09:24:00.014 - [Timer] Next tick in 59,986 s
+2024-11-09 09:24:37.632 - [Config] Loading config
+2024-11-09 09:24:37.638 - [Config] Got log retention period 30 days
+2024-11-09 09:24:37.639 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:24:37.640 - [Task] Next task GUID test run scheduled at 2024-11-09 09:25:00.000
+2024-11-09 09:24:37.641 - [Cleanup] Log cleanup started
+2024-11-09 09:24:37.680 - [Timer] Next tick in 22,32 s
+2024-11-09 09:25:00.026 - [Timer] Tick
+2024-11-09 09:25:00.029 - [Task] Task GUID test started
+2024-11-09 09:25:00.029 - [Task] Next task GUID test run scheduled at 2024-11-10 09:25:00.000
+2024-11-09 09:25:00.029 - [Timer] Next tick in 59,974 s
+2024-11-09 09:26:00.011 - [Timer] Tick
+2024-11-09 09:26:00.011 - [Timer] Next tick in 59,989 s
+2024-11-09 09:27:00.009 - [Timer] Tick
+2024-11-09 09:27:00.009 - [Timer] Next tick in 59,991 s
+2024-11-09 09:28:00.018 - [Timer] Tick
+2024-11-09 09:28:00.018 - [Timer] Next tick in 59,982 s
+2024-11-09 09:29:00.016 - [Timer] Tick
+2024-11-09 09:29:00.016 - [Timer] Next tick in 59,984 s
+2024-11-09 09:30:12.811 - [Config] Loading config
+2024-11-09 09:30:12.814 - [Config] Got log retention period 30 days
+2024-11-09 09:30:12.814 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:30:12.815 - [Task] Next task GUID test run scheduled at 2024-11-09 09:31:00.000
+2024-11-09 09:30:12.815 - [Cleanup] Log cleanup started
+2024-11-09 09:30:12.856 - [Timer] Next tick in 47,144 s
+2024-11-09 09:31:00.022 - [Timer] Tick
+2024-11-09 09:31:00.022 - [Task] Task GUID test started
+2024-11-09 09:31:00.022 - [Task] Next task GUID test run scheduled at 2024-11-10 09:31:00.000
+2024-11-09 09:31:00.025 - [Timer] Next tick in 59,978 s
+2024-11-09 09:32:01.830 - [Timer] Tick
+2024-11-09 09:32:01.831 - [Timer] Next tick in 58,169 s
+2024-11-09 09:33:00.266 - [Timer] Tick
+2024-11-09 09:33:00.266 - [Timer] Next tick in 59,734 s
+2024-11-09 09:33:18.347 - [Config] Loading config
+2024-11-09 09:33:18.350 - [Config] Got log retention period 30 days
+2024-11-09 09:33:18.350 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:33:18.351 - [Task] Next task GUID test run scheduled at 2024-11-10 09:31:00.000
+2024-11-09 09:33:18.351 - [Cleanup] Log cleanup started
+2024-11-09 09:33:18.365 - [Timer] Next tick in 41,635 s
+2024-11-09 09:33:49.863 - [Config] Loading config
+2024-11-09 09:33:49.868 - [Config] Got log retention period 30 days
+2024-11-09 09:33:49.868 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:33:49.869 - [Task] Next task GUID test run scheduled at 2024-11-09 09:34:00.000
+2024-11-09 09:33:49.869 - [Cleanup] Log cleanup started
+2024-11-09 09:33:49.925 - [Timer] Next tick in 10,075 s
+2024-11-09 09:34:00.019 - [Timer] Tick
+2024-11-09 09:34:00.019 - [Task] Task GUID test started
+2024-11-09 09:34:00.019 - [Task] Next task GUID test run scheduled at 2024-11-10 09:34:00.000
+2024-11-09 09:34:00.025 - [Timer] Next tick in 59,981 s
+2024-11-09 09:35:21.852 - [Config] Loading config
+2024-11-09 09:35:21.856 - [Config] Got log retention period 30 days
+2024-11-09 09:35:21.856 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:35:21.857 - [Task] Next task GUID test run scheduled at 2024-11-09 09:36:00.000
+2024-11-09 09:35:21.857 - [Cleanup] Log cleanup started
+2024-11-09 09:35:21.943 - [Timer] Next tick in 38,058 s
+2024-11-09 09:36:00.008 - [Timer] Tick
+2024-11-09 09:36:00.013 - [Task] Task GUID test started
+2024-11-09 09:36:00.013 - [Task] Next task GUID test run scheduled at 2024-11-10 09:36:00.000
+2024-11-09 09:36:00.013 - [Timer] Next tick in 59,992 s
+2024-11-09 09:37:41.592 - [Config] Loading config
+2024-11-09 09:37:41.595 - [Config] Got log retention period 30 days
+2024-11-09 09:37:41.595 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:37:41.597 - [Task] Next task GUID test run scheduled at 2024-11-09 09:38:00.000
+2024-11-09 09:37:41.597 - [Cleanup] Log cleanup started
+2024-11-09 09:37:41.655 - [Timer] Next tick in 18,345 s
+2024-11-09 09:38:00.012 - [Timer] Tick
+2024-11-09 09:38:00.012 - [Task] Task GUID test started
+2024-11-09 09:38:00.012 - [Task] Next task GUID test run scheduled at 2024-11-10 09:38:00.000
+2024-11-09 09:38:00.017 - [Timer] Next tick in 59,988 s
+2024-11-09 09:39:00.020 - [Timer] Tick
+2024-11-09 09:39:00.020 - [Timer] Next tick in 59,98 s
+2024-11-09 09:40:00.011 - [Timer] Tick
+2024-11-09 09:40:00.011 - [Timer] Next tick in 59,989 s
+2024-11-09 09:41:00.018 - [Timer] Tick
+2024-11-09 09:41:00.018 - [Timer] Next tick in 59,982 s
+2024-11-09 09:42:00.016 - [Timer] Tick
+2024-11-09 09:42:00.016 - [Timer] Next tick in 59,984 s
+2024-11-09 09:43:00.015 - [Timer] Tick
+2024-11-09 09:43:00.015 - [Timer] Next tick in 59,985 s
+2024-11-09 09:44:02.080 - [Timer] Tick
+2024-11-09 09:44:02.080 - [Timer] Next tick in 57,92 s
+2024-11-09 09:45:00.255 - [Timer] Tick
+2024-11-09 09:45:00.255 - [Timer] Next tick in 59,745 s
+2024-11-09 09:49:14.513 - [Config] Loading config
+2024-11-09 09:49:14.518 - [Config] Got log retention period 30 days
+2024-11-09 09:49:14.518 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:49:14.519 - [Task] Next task GUID test run scheduled at 2024-11-09 09:51:00.000
+2024-11-09 09:49:14.519 - [Cleanup] Log cleanup started
+2024-11-09 09:49:14.553 - [Timer] Next tick in 45,447 s
+2024-11-09 09:55:01.830 - [Config] Loading config
+2024-11-09 09:55:01.833 - [Config] Got log retention period 30 days
+2024-11-09 09:55:01.833 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:55:01.834 - [Task] Next task GUID test run scheduled at 2024-11-10 09:55:00.000
+2024-11-09 09:55:01.834 - [Cleanup] Log cleanup started
+2024-11-09 09:55:01.859 - [Timer] Next tick in 58,141 s
+2024-11-09 09:55:52.975 - [Config] Loading config
+2024-11-09 09:55:52.978 - [Config] Got log retention period 30 days
+2024-11-09 09:55:52.979 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 09:55:52.980 - [Task] Next task GUID test run scheduled at 2024-11-09 09:56:00.000
+2024-11-09 09:55:52.980 - [Cleanup] Log cleanup started
+2024-11-09 09:55:52.995 - [Timer] Next tick in 7,005 s
+2024-11-09 09:56:00.012 - [Timer] Tick
+2024-11-09 09:56:00.013 - [Task] Task GUID test started
+2024-11-09 09:56:00.013 - [Task] Next task GUID test run scheduled at 2024-11-10 09:56:00.000
+2024-11-09 09:56:00.015 - [Timer] Next tick in 59,988 s
+2024-11-09 09:57:00.026 - [Timer] Tick
+2024-11-09 09:57:00.026 - [Timer] Next tick in 59,974 s
+2024-11-09 09:58:05.198 - [Timer] Tick
+2024-11-09 09:58:05.198 - [Timer] Next tick in 54,802 s
+2024-11-09 09:59:02.686 - [Timer] Tick
+2024-11-09 09:59:02.686 - [Timer] Next tick in 57,314 s
+2024-11-09 10:00:00.025 - [Timer] Tick
+2024-11-09 10:00:00.025 - [Timer] Next tick in 59,975 s
+2024-11-09 10:36:46.028 - [Config] Loading config
+2024-11-09 10:36:46.028 - [Config] Got log retention period 30 days
+2024-11-09 10:36:46.028 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 10:36:46.033 - [Task] Next task GUID test run scheduled at 2024-11-10 09:56:00.000
+2024-11-09 10:36:46.033 - [Cleanup] Log cleanup started
+2024-11-09 10:36:46.055 - [Timer] Next tick in 13,946 s
+2024-11-09 10:37:29.846 - [Config] Loading config
+2024-11-09 10:37:29.851 - [Config] Got log retention period 30 days
+2024-11-09 10:37:29.852 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 10:37:29.854 - [Task] Next task GUID test run scheduled at 2024-11-10 09:56:00.000
+2024-11-09 10:37:29.854 - [Cleanup] Log cleanup started
+2024-11-09 10:37:29.910 - [Timer] Next tick in 30,091 s
+2024-11-09 10:37:36.032 - [Service] Service stopped
+2024-11-09 10:37:47.340 - [Config] Loading config
+2024-11-09 10:37:47.344 - [Config] Got log retention period 30 days
+2024-11-09 10:37:47.345 - [Cleanup] Next log cleanup scheduled at 2024-11-10 00:00:00.000
+2024-11-09 10:37:47.346 - [Task] Next task GUID test run scheduled at 2024-11-10 09:56:00.000
+2024-11-09 10:37:47.346 - [Cleanup] Log cleanup started
+2024-11-09 10:37:47.367 - [Timer] Next tick in 12,633 s

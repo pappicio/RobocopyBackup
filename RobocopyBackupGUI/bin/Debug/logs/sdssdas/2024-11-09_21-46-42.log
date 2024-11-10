@@ -1,0 +1,234 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Copia di file efficace per Windows                              
+-------------------------------------------------------------------------------
+
+  Avviato: sabato 9 novembre 2024 21:46:49
+      Origine : D:\github_repo\printer_data\
+ Destinazione : \\192.168.1.171\hhd\azz\
+
+         File: *.*
+	    
+      Opzioni: *.* /S /E /DCOPY:DAT /COPY:DAT /NP /R:1 /W:1 
+
+-------------------------------------------------------------------------------
+
+	                   7	D:\github_repo\printer_data\
+	   Pi— vecchio		      34	.gitignore
+	   Pi— vecchio		      32	.moonraker.uuid
+	   Pi— vecchio		  234727	hotend fan safe relay scheme.png
+	   Pi— vecchio		      91	moonraker.asvc
+	   Pi— vecchio		   15167	printer.cfg
+	   Pi— vecchio		     871	readme.md
+	   Pi— vecchio		  373938	rfid_ESP32_TASMOTA.png
+	                   7	D:\github_repo\printer_data\.git\
+	   Pi— vecchio		       7	COMMIT_EDITMSG
+	   Pi— vecchio		     362	config
+	   Pi— vecchio		      73	description
+	   Pi— vecchio		     100	FETCH_HEAD
+	   Pi— vecchio		      21	HEAD
+	   Pi— vecchio		    9828	index
+	   Pi— vecchio		     112	packed-refs
+	                  14	D:\github_repo\printer_data\.git\hooks\
+	   Pi— vecchio		     478	applypatch-msg.sample
+	   Pi— vecchio		     896	commit-msg.sample
+	   Pi— vecchio		    4726	fsmonitor-watchman.sample
+	   Pi— vecchio		     189	post-update.sample
+	   Pi— vecchio		     424	pre-applypatch.sample
+	   Pi— vecchio		    1649	pre-commit.sample
+	   Pi— vecchio		     416	pre-merge-commit.sample
+	   Pi— vecchio		    1374	pre-push.sample
+	   Pi— vecchio		    4898	pre-rebase.sample
+	   Pi— vecchio		     544	pre-receive.sample
+	   Pi— vecchio		    1492	prepare-commit-msg.sample
+	   Pi— vecchio		    2783	push-to-checkout.sample
+	   Pi— vecchio		    2308	sendemail-validate.sample
+	   Pi— vecchio		    3650	update.sample
+	                   1	D:\github_repo\printer_data\.git\info\
+	   Pi— vecchio		     240	exclude
+	                   1	D:\github_repo\printer_data\.git\logs\
+	   Pi— vecchio		     330	HEAD
+	                   0	D:\github_repo\printer_data\.git\logs\refs\
+	                   1	D:\github_repo\printer_data\.git\logs\refs\heads\
+	   Pi— vecchio		     330	main
+	                   0	D:\github_repo\printer_data\.git\logs\refs\remotes\
+	                   2	D:\github_repo\printer_data\.git\logs\refs\remotes\origin\
+	   Pi— vecchio		     474	HEAD
+	   Pi— vecchio		     144	main
+	                   0	D:\github_repo\printer_data\.git\objects\
+	                   1	D:\github_repo\printer_data\.git\objects\08\
+	   Pi— vecchio		     130	cf0585f8a0bc02a18207f24a63bbc5ba8993c9
+	                   1	D:\github_repo\printer_data\.git\objects\0d\
+	   Pi— vecchio		  137281	b843592da33440b77947e19503f15446651bc7
+	                   1	D:\github_repo\printer_data\.git\objects\13\
+	   Pi— vecchio		     872	be5943d49c2986ef2381de20e06907522c2785
+	                   1	D:\github_repo\printer_data\.git\objects\22\
+	   Pi— vecchio		    5380	ec1498c3540627629efdca84011fae628b8ea4
+	                   1	D:\github_repo\printer_data\.git\objects\2c\
+	   Pi— vecchio		  140707	5e326fbeb82c0b5eca75214a15aa28d8e96ef2
+	                   1	D:\github_repo\printer_data\.git\objects\3a\
+	   Pi— vecchio		  132870	9e0f5a750a313d4e1cb82c7c1074d96c8de311
+	                   1	D:\github_repo\printer_data\.git\objects\48\
+	   Pi— vecchio		     382	0074d1697c02c92ddd943e5f9bd691966ef53f
+	                   2	D:\github_repo\printer_data\.git\objects\49\
+	   Pi— vecchio		    3294	21f634dc157db61d4747b9780b6795e1ea4fde
+	   Pi— vecchio		    5380	d03edaaadd56189517ac4f7d49da412f05b695
+	                   1	D:\github_repo\printer_data\.git\objects\74\
+	   Pi— vecchio		     123	cad52172d9d622068eb07711ff39c521db2ada
+	                   1	D:\github_repo\printer_data\.git\objects\77\
+	   Pi— vecchio		    1737	9a0e786132f2d40bcffdbad9fa79968234dc55
+	                   1	D:\github_repo\printer_data\.git\objects\7c\
+	   Pi— vecchio		  135668	f09746d4fa4e939b7837e4f93a3eec0ea5269e
+	                   1	D:\github_repo\printer_data\.git\objects\7e\
+	   Pi— vecchio		     442	6da4787ce9362beb6e196897c569764559a894
+	                   1	D:\github_repo\printer_data\.git\objects\8c\
+	   Pi— vecchio		    1458	9843e52a4373545534f1ee523a71a403def3a2
+	                   1	D:\github_repo\printer_data\.git\objects\a2\
+	   Pi— vecchio		  133504	cc90c291f425adaed36724a1c2e395dd5e21e9
+	                   1	D:\github_repo\printer_data\.git\objects\a6\
+	   Pi— vecchio		   10387	2214f43c3cb31156bffedc445817cd819ef469
+	                   1	D:\github_repo\printer_data\.git\objects\b5\
+	   Pi— vecchio		     125	f5409c2fa47364bfa436e41dd8dfde825d6210
+	                   1	D:\github_repo\printer_data\.git\objects\da\
+	   Pi— vecchio		     148	ced8f78350f14ddb5bdf0a4ffe6939c0b3b3cd
+	                   1	D:\github_repo\printer_data\.git\objects\dd\
+	   Pi— vecchio		  135269	4354db9475fd8fec198a1dac9735438151afd0
+	                   1	D:\github_repo\printer_data\.git\objects\e7\
+	   Pi— vecchio		  226126	ddb6e6dc41257bbf1f1b896fddd6701ed2e286
+	                   1	D:\github_repo\printer_data\.git\objects\f4\
+	   Pi— vecchio		    1766	2b8a0a88408d634240d566cc3b68a2e9c823b1
+	                   1	D:\github_repo\printer_data\.git\objects\f9\
+	   Pi— vecchio		  178836	01d366fb62382da71d1de849ff4faf18cadf8f
+	                   1	D:\github_repo\printer_data\.git\objects\fb\
+	   Pi— vecchio		    5380	a573f95c51b8f07b8747f350cac80fe60b7685
+	Nuova directory       0	D:\github_repo\printer_data\.git\objects\info\
+	                   3	D:\github_repo\printer_data\.git\objects\pack\
+	   Pi— vecchio		   29240	pack-d70f5f024bfdfecb20909c7b0e640e372925cb2f.idx
+	   Pi— vecchio		   7.9 m	pack-d70f5f024bfdfecb20909c7b0e640e372925cb2f.pack
+	   Pi— vecchio		    4076	pack-d70f5f024bfdfecb20909c7b0e640e372925cb2f.rev
+	                   0	D:\github_repo\printer_data\.git\refs\
+	                   1	D:\github_repo\printer_data\.git\refs\heads\
+	   Pi— vecchio		      41	main
+	                   0	D:\github_repo\printer_data\.git\refs\remotes\
+	                   2	D:\github_repo\printer_data\.git\refs\remotes\origin\
+	   Pi— vecchio		      30	HEAD
+	   Pi— vecchio		      41	main
+	Nuova directory       0	D:\github_repo\printer_data\.git\refs\tags\
+	                   0	D:\github_repo\printer_data\backup\
+	                   0	D:\github_repo\printer_data\backup\20221205T165035Z\
+	                   1	D:\github_repo\printer_data\backup\20221205T165035Z\config\
+	   Pi— vecchio		    2225	moonraker.conf
+	                  50	D:\github_repo\printer_data\config\
+	   Pi— vecchio		    2068	.moonraker.conf.bkp
+	   Pi— vecchio		  251400	192.168.1.jpg
+	   Pi— vecchio		    4576	bed_mesh.calibrate.cfg
+	   Pi— vecchio		    2492	crowsnest.conf
+	   Pi— vecchio		    2492	crowsnest.conf.2023-06-26-2038
+	   Pi— vecchio		   13969	custom_lcd.cfg
+	   Pi— vecchio		     232	dwc2.cfg
+	   Pi— vecchio		    8897	esphome_file_for_esp32
+	   Pi— vecchio		     445	filament_sensor.cfg
+	   Pi— vecchio		     218	flashme.cfg
+	   Pi— vecchio		     288	flash_su_sdcard.txt
+	   Pi— vecchio		    1202	flash_su_sdcard_robin_nano.txt
+	   Pi— vecchio		    2120	fluidd.cfg
+	   Pi— vecchio		    2938	G28.cfg
+	   Pi— vecchio		     123	global.cfg
+	   Pi— vecchio		    1051	home_assistant.txt
+	   Pi— vecchio		    1899	input_shaper.cfg
+	   Pi— vecchio		     235	KlipperScreen.conf
+	   Pi— vecchio		    3247	KlipperScreen.confxxx
+	   Pi— vecchio		    3924	led_progress.cfg
+	   Pi— vecchio		    2168	linear_vibrations.cfg
+	   Pi— vecchio		     457	mainsail.cfg
+	   Pi— vecchio		    3932	moonraker.conf
+	   Pi— vecchio		     230	my_ip.sh
+	   Pi— vecchio		   11460	pa_cal.cfg
+	   Pi— vecchio		    7734	plr.cfg
+	   Pi— vecchio		    8898	plr.sh
+	   Pi— vecchio		   14361	printer-20240110_174417.cfg
+	   Pi— vecchio		   15067	printer-20240112_235258.cfg
+	   Pi— vecchio		   14530	printer-20240826_215439.cfg
+	   Pi— vecchio		   14530	printer-20240826_215441.cfg
+	   Pi— vecchio		   14530	printer-20240827_000821.cfg
+	   Pi— vecchio		   14530	printer-20241010_131953.cfg
+	   Pi— vecchio		   14530	printer-20241018_100222.cfg
+	   Pi— vecchio		   14530	printer.cfg
+	   Pi— vecchio		   36217	printer_macros.cfg
+	   Pi— vecchio		   21176	printer_menus.cfg
+	   Pi— vecchio		      95	pwd_moonraker.sh
+	   Pi— vecchio		     130	saved_variables.cfg
+	   Pi— vecchio		     106	shell_command.cfg
+	   Pi— vecchio		    3269	smart_filament_sensor.cfg
+	   Pi— vecchio		    5135	spegnistampante.cfg
+	   Pi— vecchio		    2665	tarmota_rules.txt
+	   Pi— vecchio		   12005	test.cfg
+	   Pi— vecchio		    8171	TEST_SPEED.cfg
+	   Pi— vecchio		   22482	timelapse.cfg
+	   Pi— vecchio		      57	tricks.txt
+	   Pi— vecchio		  104052	tricks_tasmota_3d_printer.PNG
+	   Pi— vecchio		    9167	tricks_tasmota_x_stampa3D.txt
+	   Pi— vecchio		    2592	webcam.txt
+	                   5	D:\github_repo\printer_data\config\belt_tension\
+	   Pi— vecchio		   59129	1_old_resonances.png
+	   Pi— vecchio		   47002	2_old_resonances.png
+	   Pi— vecchio		   49093	3_old_resonances.png
+	   Pi— vecchio		   58521	resonances.png
+	   Pi— vecchio		       2	test
+	                   9	D:\github_repo\printer_data\config\flashme\
+	   Pi— vecchio		     892	.config_mcu
+	   Pi— vecchio		    3402	.config_octopus
+	   Pi— vecchio		      11	bootmode_id.txt
+	   Pi— vecchio		      71	firsttime.txt
+	   Pi— vecchio		      71	load1mcu.txt
+	   Pi— vecchio		      71	load2mcu.txt
+	   Pi— vecchio		    1706	mcu.sh
+	   Pi— vecchio		    4428	octopus.sh
+	   Pi— vecchio		      71	serial_by_id.txt
+	                  13	D:\github_repo\printer_data\config\input_shaper\
+	   Pi— vecchio		  142793	1_old_resonances_x.png
+	   Pi— vecchio		  140688	1_old_resonances_y.png
+	   Pi— vecchio		  145515	2_old_resonances_x.png
+	   Pi— vecchio		  143104	2_old_resonances_y.png
+	   Pi— vecchio		  136581	3_old_resonances_x.png
+	   Pi— vecchio		  147999	3_old_resonances_y.png
+	   Pi— vecchio		  138728	4_old_resonances_x.png
+	   Pi— vecchio		  142806	4_old_resonances_y.png
+	   Pi— vecchio		  137493	5_old_resonances_x.png
+	   Pi— vecchio		  140599	5_old_resonances_y.png
+	   Pi— vecchio		  140687	resonances_x.png
+	   Pi— vecchio		  148923	resonances_y.png
+	   Pi— vecchio		       2	test
+	                   3	D:\github_repo\printer_data\config\linear_vibrations\
+	   Pi— vecchio		   51892	linear_movement_responce_150mmps_2023-03-14T20%3A22%3A45.941503.png
+	   Pi— vecchio		   54900	linear_movement_responce_150mmps_2023-03-14T20%3A37%3A03.237715.png
+	   Pi— vecchio		       2	test
+	                   4	D:\github_repo\printer_data\config\scripts\
+	   Pi— vecchio		    1712	generate-belt-tension-graph.sh
+	   Pi— vecchio		    1940	generate-shaper-graph-x.sh
+	   Pi— vecchio		    1937	generate-shaper-graph-y.sh
+	   Pi— vecchio		       2	test
+	                   3	D:\github_repo\printer_data\database\
+	   Pi— vecchio		   1.2 m	data.mdb
+	   Pi— vecchio		    8192	lock.mdb
+	   Pi— vecchio		   1.3 m	moonraker-sql.db
+	                   1	D:\github_repo\printer_data\misc\
+	   Pi— vecchio		  726968	usb.ids
+	                   3	D:\github_repo\printer_data\systemd\
+	   Pi— vecchio		      65	crowsnest.env
+	   Pi— vecchio		     372	klipper.env
+	   Pi— vecchio		      83	moonraker.env
+
+-------------------------------------------------------------------------------
+
+              Totale   Copiato  IgnorateNon corrispondentiNon riuscitaSupplementari
+Directory:        51         2        49         0         0         0
+     File:       154       154         0         0         0         0
+     Byte:   15.74 m   15.74 m         0         0         0         0
+   Durata:   0:00:10   0:00:08                       0:00:00   0:00:01
+
+
+ Velocit…:           1.965.552 Byte/sec.
+ Velocit…:             112,470 MB/min.
+   Terminato: sabato 9 novembre 2024 21:46:59
+

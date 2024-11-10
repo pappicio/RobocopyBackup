@@ -1,0 +1,35 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Copia di file efficace per Windows                              
+-------------------------------------------------------------------------------
+
+  Avviato: sabato 9 novembre 2024 09:36:04
+      Origine : \\10.194.60.23\Uffici Periferici\test\
+ Destinazione : \\10.194.60.21\Uffici Periferici\test\
+
+         File: *.*
+	    
+      Opzioni: *.* /S /E /COPYALL /NP /R:0 /W:0 
+
+-------------------------------------------------------------------------------
+
+	                   1	\\10.194.60.23\Uffici Periferici\test\
+	*directory supplementare      -1	\\10.194.60.21\Uffici Periferici\test\Campi\
+	*directory supplementare      -1	\\10.194.60.21\Uffici Periferici\test\Cancello\
+	  *File supplementare		       0	Nuovo Documento di testo (4).txt
+	    Nuovo file		      76	partition_identifier_bc_new.platform
+
+-------------------------------------------------------------------------------
+
+              Totale   Copiato  IgnorateNon corrispondentiNon riuscitaSupplementari
+Directory:         1         0         1         0         0         2
+     File:         1         1         0         0         0         1
+     Byte:        76        76         0         0         0         0
+   Durata:   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+ Velocit…:               1.225 Byte/sec.
+ Velocit…:               0,070 MB/min.
+   Terminato: sabato 9 novembre 2024 09:36:04
+
+2024-11-09 09:36:04.911 - ***************************************

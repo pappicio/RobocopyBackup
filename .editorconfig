@@ -1,0 +1,4 @@
+﻿[*.vb]
+
+# BC42025: L'accesso del membro condiviso, del membro costante, del membro di enumerazione o del tipo nidificato verrà effettuato tramite un'istanza
+dotnet_diagnostic.BC42025.severity = none
