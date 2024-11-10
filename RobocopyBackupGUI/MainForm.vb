@@ -41,7 +41,7 @@ Partial Public Class MainForm
         Try
             IpcClient.GetService().ReloadConfig()
         Catch
-            MessageBox.Show(Lang.[Get]("UnableToConnectService"), Lang.[Get]("Error"), MessageBoxButtons.OK, MessageBoxIcon.[Error])
+            MessageBox.Show("Impossibile connettersi al servizio", Lang.[Get]("Error"), MessageBoxButtons.OK, MessageBoxIcon.[Error])
         End Try
     End Sub
 
@@ -133,7 +133,7 @@ Partial Public Class MainForm
 #Enable Warning BC42025 ' L'accesso del membro condiviso, del membro costante, del membro di enumerazione o del tipo nidificato verrà effettuato tramite un'istanza
             MessageBox.Show(Lang.[Get]("BackupStarted"), Lang.[Get]("Information"), MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch
-            MessageBox.Show(Lang.[Get]("UnableToConnectService"), Lang.[Get]("Error"), MessageBoxButtons.OK, MessageBoxIcon.[Error])
+            MessageBox.Show("Impossibile connettersi al servizio", Lang.[Get]("Error"), MessageBoxButtons.OK, MessageBoxIcon.[Error])
         End Try
     End Sub
 
@@ -180,13 +180,15 @@ Partial Public Class MainForm
     End Sub
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        AddHandler serviceokbutton.Click, AddressOf serviceokbutton_Click
         checkservizio()
     End Sub
 
     Private Sub settingsToolStripButton_Click_1(sender As Object, e As EventArgs)
 
     End Sub
-    Public Sub RunCMD(command As String, Optional ShowWindow As Boolean = False, Optional WaitForProcessComplete As Boolean = False, Optional permanent As Boolean = False)
+    Shared Sub RunCMD(command As String, Optional ShowWindow As Boolean = False, Optional WaitForProcessComplete As Boolean = False, Optional permanent As Boolean = False)
         Dim p As Process = New Process()
         Dim pi As ProcessStartInfo = New ProcessStartInfo()
         pi.Arguments = " " + If(ShowWindow AndAlso permanent, "/K", "/C") + " " + command
@@ -218,7 +220,7 @@ Partial Public Class MainForm
 
     End Sub
 
-    Function serviziorunna() As Boolean
+    Shared Function serviziorunna() As Boolean
         Dim service As ServiceController = New ServiceController("RobocopyBackupService")
         Try
             If ((service.Status.Equals(ServiceControllerStatus.Stopped)) Or (service.Status.Equals(ServiceControllerStatus.StopPending))) Then
@@ -236,7 +238,7 @@ Partial Public Class MainForm
         Return False
     End Function
 
-    Sub attendion()
+    Shared Sub attendion()
         Dim x As Integer = 0
         While serviziorunna() = False
             x = x + 1
@@ -255,12 +257,12 @@ Partial Public Class MainForm
         End While
 
     End Sub
-    Sub attendioff()
+    Shared Sub attendioff()
         Application.DoEvents()
 
     End Sub
 
-    Private Sub serviceokbutton_Click(sender As Object, e As EventArgs) Handles serviceokbutton.Click
+    Private Sub serviceokbutton_Click(sender As Object, e As EventArgs)
         Dim dir As String = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
         If IO.File.Exists(dir & "\config.xml") = False And serviziorunna() = False Then
             MsgBox("nessun task presente, prima crea un task! esco...")
@@ -271,6 +273,9 @@ Partial Public Class MainForm
             MsgBox("servizio (RobocopyBackupService.exe) non presente nella  cartella, impossibile creare/avviare il servizio...")
             Return
         End If
+        avviaservizio()
+    End Sub
+    Public Shared Sub avviaservizio()
 
         Dim service As ServiceController = New ServiceController("RobocopyBackupService")
 
@@ -322,7 +327,10 @@ rifallo:
 
 
             attendioff()
-            checkservizio()
+            Dim instance As New MainForm()
+            instance.checkservizio()
+            'checkservizio()
+
 
             Try
                 '   IO.File.Delete(apppath & "\eseguiscansioneora")
@@ -343,12 +351,12 @@ rifallo:
             RunCMD(ss,, True)
             Dim s As String = "SC delete RobocopyBackupService"
             RunCMD(s,, True)
-            checkservizio()
+
+            instance.checkservizio()
 
         End If
 
     End Sub
-
     Private Sub timerservice_Tick(sender As Object, e As EventArgs) Handles timerservice.Tick
         checkservizio()
     End Sub

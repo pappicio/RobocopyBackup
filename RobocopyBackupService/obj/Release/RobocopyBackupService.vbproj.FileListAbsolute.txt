@@ -13,3 +13,4 @@ C:\Users\nemo\Downloads\RobocopyBackup-main\RobocopyBackup-main\RobocopyBackupSe
 C:\Users\nemo\Downloads\RobocopyBackup-main\RobocopyBackup-main\RobocopyBackupService\obj\Release\RobocopyBackupService.vbproj.CoreCompileInputs.cache
 C:\Users\nemo\Downloads\RobocopyBackup-main\RobocopyBackup-main\RobocopyBackupService\obj\Release\RobocopyBackupService.exe
 C:\Users\nemo\Downloads\RobocopyBackup-main\RobocopyBackup-main\RobocopyBackupService\obj\Release\RobocopyBackupService.pdb
+D:\RobocopyBackup\RobocopyBackupService\obj\Release\RobocopyBackupService.vbproj.AssemblyReference.cache

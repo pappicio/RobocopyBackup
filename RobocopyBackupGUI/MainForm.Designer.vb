@@ -149,7 +149,7 @@ Partial Class MainForm
         Me.taskListView.Location = New System.Drawing.Point(0, 27)
         Me.taskListView.Margin = New System.Windows.Forms.Padding(8)
         Me.taskListView.Name = "taskListView"
-        Me.taskListView.Size = New System.Drawing.Size(1555, 902)
+        Me.taskListView.Size = New System.Drawing.Size(1555, 912)
         Me.taskListView.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.taskListView.TabIndex = 2
         Me.taskListView.UseCompatibleStateImageBehavior = False
@@ -189,7 +189,7 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(15.0!, 29.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1555, 929)
+        Me.ClientSize = New System.Drawing.Size(1555, 939)
         Me.Controls.Add(Me.taskListView)
         Me.Controls.Add(Me.toolStrip)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -224,7 +224,8 @@ Partial Class MainForm
     Private WithEvents destinationColumnHeader As System.Windows.Forms.ColumnHeader
     Private WithEvents settingsToolStripButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As Windows.Forms.ToolStripSeparator
-    Friend WithEvents serviceokbutton As Windows.Forms.ToolStripButton
+
     Friend WithEvents timerservice As Windows.Forms.Timer
     Friend WithEvents ntfscolumnheader As Windows.Forms.ColumnHeader
+    Private WithEvents serviceokbutton As Windows.Forms.ToolStripButton
 End Class

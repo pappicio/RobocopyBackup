@@ -241,6 +241,24 @@ Partial Public Class TaskForm
 
             Return
         End If
+        If MainForm.serviziorunna() = False Then
+            Dim result As DialogResult = MessageBox.Show("l'attività verra comunque avviata, ma il servizio risulta inattivo, attivare il servizio prima?", "SERVIZIO INATTIVO", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                MainForm.avviaservizio()
+                Dim x As Integer = 0
+                While MainForm.serviziorunna() = False
+                    x = x + 1
+                    Application.DoEvents()
+
+                    If x > 100 Then
+                        MsgBox("Impossibile avviare il servizio...")
+                        Exit While
+                    End If
+                    Threading.Thread.Sleep(10)
+                End While
+
+            End If
+        End If
 
         CreateTask()
         DialogResult = DialogResult.OK
