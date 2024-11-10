@@ -164,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="lang\it.txt" />
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
@@ -178,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="backup.ico" />
+    <None Include="Resources\it.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

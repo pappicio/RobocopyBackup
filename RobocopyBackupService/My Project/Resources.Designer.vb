@@ -59,33 +59,5 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
-        
-        '''<summary>
-        '''  Cerca una stringa localizzata simile a =Italiano
-        '''About=About
-        '''AtTime=alle ore
-        '''Author=Autore
-        '''BackupStarted=La richiesta di esecuzione immediata del backup è stata inviata al servizio.
-        '''Daily=ogni giorno
-        '''DailyAbbr=ogni g.
-        '''DayOfMonth=giorno del mese
-        '''DayOfWeek=giorno della settimana
-        '''DeleteConfirmation=Vuoi eliminare l&apos;attività selezionata?
-        '''DeleteTask=Elimina attività
-        '''Destination=Destinazione
-        '''Differential=Differenziale
-        '''DifferentialAbbr=Diff
-        '''Directories=Directory
-        '''EditTask=Modifica attività
-        '''Friday=Venerdì
-        '''Full=Full
-        '''FullAbbr=Full
-        '''Help=A [stringa troncata]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property it() As String
-            Get
-                Return ResourceManager.GetString("it", resourceCulture)
-            End Get
-        End Property
     End Module
 End Namespace

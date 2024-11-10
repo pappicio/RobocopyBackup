@@ -14,8 +14,14 @@ Option Explicit On
 Imports System
 
 Namespace My.Resources
-
-
+    
+    'Questa classe è stata generata automaticamente dalla classe StronglyTypedResourceBuilder.
+    'tramite uno strumento quale ResGen o Visual Studio.
+    'Per aggiungere o rimuovere un membro, modificare il file con estensione ResX ed eseguire nuovamente ResGen
+    'con l'opzione /str oppure ricompilare il progetto VS.
+    '''<summary>
+    '''  Classe di risorse fortemente tipizzata per la ricerca di stringhe localizzate e così via.
+    '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
@@ -25,8 +31,10 @@ Namespace My.Resources
         Private resourceMan As Global.System.Resources.ResourceManager
         
         Private resourceCulture As Global.System.Globalization.CultureInfo
-
-
+        
+        '''<summary>
+        '''  Restituisce l'istanza di ResourceManager nella cache utilizzata da questa classe.
+        '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
@@ -37,8 +45,11 @@ Namespace My.Resources
                 Return resourceMan
             End Get
         End Property
-
-
+        
+        '''<summary>
+        '''  Esegue l'override della proprietà CurrentUICulture del thread corrente per tutte le
+        '''  ricerche di risorse eseguite utilizzando questa classe di risorse fortemente tipizzata.
+        '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Friend Property Culture() As Global.System.Globalization.CultureInfo
             Get
@@ -48,76 +59,118 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
-
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property DeleteIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("DeleteIcon", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property EditIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("EditIcon", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property HelpIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("HelpIcon", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-
-
+        
+        '''<summary>
+        '''  Cerca una stringa localizzata simile a =Italiano
+        '''About=About
+        '''AtTime=alle ore
+        '''Author=Autore
+        '''BackupStarted=La richiesta di esecuzione immediata del backup è stata inviata al servizio.
+        '''Daily=ogni giorno
+        '''DailyAbbr=ogni g.
+        '''DayOfMonth=giorno del mese
+        '''DayOfWeek=giorno della settimana
+        '''DeleteConfirmation=Vuoi eliminare l&apos;attività selezionata?
+        '''DeleteTask=Elimina attività
+        '''Destination=Destinazione
+        '''Differential=Differenziale
+        '''DifferentialAbbr=Diff
+        '''Directories=Directory
+        '''EditTask=Modifica attività
+        '''Friday=Venerdì
+        '''Full=Full
+        '''FullAbbr=Full
+        '''Help=A [stringa troncata]&quot;;.
+        '''</summary>
         Friend ReadOnly Property it() As String
             Get
                 Return ResourceManager.GetString("it", resourceCulture)
             End Get
         End Property
-
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property LogsIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("LogsIcon", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property NewIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("NewIcon", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property RunIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("RunIcon", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property serviceko() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("serviceko", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property serviceok() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("serviceok", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-
-
+        
+        '''<summary>
+        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property SettingsIcon() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("SettingsIcon", resourceCulture)

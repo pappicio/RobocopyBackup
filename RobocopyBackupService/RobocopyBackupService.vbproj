@@ -93,8 +93,5 @@
   <ItemGroup>
     <None Include="My Project\app.manifest" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\it.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
