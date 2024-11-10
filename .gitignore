@@ -1,0 +1,10 @@
+
+RobocopyBackupGUI/bin/Release/config.xml
+RobocopyBackupGUI/bin/Release/logs/service_2024-11-10.log
+*.log
+*.cache
+*.exe
+*.pdb
+*.exe
+*.pdb
+*.cache
