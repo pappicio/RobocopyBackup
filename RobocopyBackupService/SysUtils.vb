@@ -134,13 +134,14 @@ Public NotInheritable Class SysUtils
             Try
                 timestamp_check(task.Source, task.Destination, task.Retention, logFile)
             Catch ex As Exception
-                Logger.Log("[TASK] errore nella gestione del timestamp sui files")
+                Logger.Log("[TASK] ERROR on TIMESTAMP SET ON ALL FILES!")
             End Try
             Logger.close()
         End If
         only = False
     End Sub
 
+    Shared oldfolder As String = ""
 
     Private Shared Sub timestamp_check(o As String, d As String, conservaper As UShort, logfile As String)
 
@@ -163,14 +164,24 @@ Public NotInheritable Class SysUtils
 
 
             If file.Length > 255 Then
-                file = "\\?\" & file.Substring(2)
+                file = "\\?\UNC\" & file.Substring(2)
             End If
 
-
+            Dim solofolder As String = Mid(file, 1, file.LastIndexOf("\"))
+            If oldfolder <> solofolder Then
+                oldfolder = solofolder
+                Logger.Log("")
+                Logger.Log("[TASK] analyzing folder: " & oldfolder)
+            End If
             If IO.File.Exists(origine) Then
+
+
                 Dim fi As New FileInfo(file)
 
 
+                If fi.Exists Then
+                    Dim j As Integer = 0
+                End If
                 With fi
                     If (.Attributes And FileAttributes.Archive) = FileAttributes.Archive Then
                         'File has the Archive attribute set
@@ -181,10 +192,10 @@ Public NotInheritable Class SysUtils
                     Try
                         If (.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
                             .Attributes = .Attributes And Not FileAttributes.ReadOnly
-                            Logger.Log("[TASK] file readonly attribute deleted on: " & file)
+                            Logger.Log2("[TASK] readonly attribute deleted on: " & fi.Name)
                         End If
                     Catch ex As Exception
-                        Logger.Log("[TASK] error deleting readonly flag on: " & file)
+                        Logger.Log2("[TASK] ERROR deleting readonly flag on: " & fi.Name)
                     End Try
 
                 End With
@@ -194,8 +205,9 @@ Public NotInheritable Class SysUtils
                 Try
 
                     fi.LastWriteTime = timestamp
+                    Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
                 Catch ex As Exception
-                    Logger.Log("[ERROR] error on set new timestamp on file: " & file)
+                    Logger.Log2("[TIMESTAMP] ERROR setting timestamp on: " & fi.Name)
                 End Try
 
                 'Logger.updatefile(file)
@@ -210,44 +222,62 @@ Public NotInheritable Class SysUtils
                         ''' 'fi.Delete()
 
                         fi.Delete()
-                        Logger.LogFileDeleted(file)
+                        Logger.Log2("[TIMESTAMP] deleted: " & fi.Name)
                     Catch ex As Exception
-                        Logger.LogerrorFileDeleted(file)
+                        Logger.Log2("[TIMESTAMP] ERROR Deleting:" & fi.Name)
                     End Try
+                Else
+                    Logger.Log2("[TIMESTAMP] orphan file: " & fi.Name & " is old: " & x & " days of " & conservaper)
                 End If
             End If
+            '''''Logger.Log("")
         Next
-        DeleteEmptyFolder(d)
+        Try
+            DeleteEmptyFolder(d)
+        Catch ex As Exception
+            Dim h As Integer = 0
+        End Try
+
     End Sub
 
     Private Shared Sub DeleteEmptyFolder(ByVal sDirectoryPath As String)
 
         ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
-        If sDirectoryPath.Length > 255 And (Not (sDirectoryPath.StartsWith("\\?\UNC\"))) Then
-            sDirectoryPath = "\\?\UNC\" & sDirectoryPath.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-        End If
 
-        If IO.Directory.Exists(sDirectoryPath) Then
-            Dim directory As New IO.DirectoryInfo(sDirectoryPath)
-            For Each folder As IO.DirectoryInfo In directory.GetDirectories()
-                Try
-                    DeleteEmptyFolder(folder.FullName)
-                Catch ex As Exception
-                    Logger.Log("[TASK] Error deleting folder: " & folder.FullName)
-                End Try
+        ' Ottieni tutte le sottodirectory della directory corrente
+        Dim sottodirectory As String() = Directory.GetDirectories(sDirectoryPath)
 
-            Next
-            If directory.GetDirectories.Count = 0 AndAlso directory.GetFiles.Count = 0 Then
-                Try
-                    directory.Delete(True)
-                    Logger.LogFolderDeleted(directory.FullName)
-                Catch ex As Exception
-                    Logger.LogerrorfolderDeleted(directory.FullName)
-                End Try
 
-                Return
+        For Each subDir As String In sottodirectory
+            If subDir.Length > 255 And (Not (subDir.StartsWith("\\?\UNC\"))) Then
+                subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
             End If
-        End If
+            ' Richiama ricorsivamente la funzione per scansionare eventuali sottodirectory
+            DeleteEmptyFolder(subDir)
+
+
+
+            ' Controlla se la directory è vuota
+            If Directory.GetFiles(subDir).Length = 0 AndAlso Directory.GetDirectories(subDir).Length = 0 Then
+                Try
+                    ' Elimina la directory se è vuota
+                    Directory.Delete(subDir)
+
+                    Logger.Log("[DELETE] Deleted empty folder: " & subDir)
+
+                Catch ex As Exception
+                    ' Gestisce eventuali errori, ad esempio permessi insufficienti
+                    Logger.Log("[DELETE] ERROR deleting empty folder: " & subDir)
+                End Try
+            End If
+        Next
+
+
+
+
+
+
+
 
     End Sub
 

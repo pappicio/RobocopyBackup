@@ -54,7 +54,7 @@ Public NotInheritable Class Logger
     Public Shared Sub LogFileDeleted(file As String)
         If Writer IsNot Nothing Then
 
-            Log(String.Format("[Task] Deleted old file {0}", file))
+            Log(String.Format("[DELETE] Deleted old file {0}", file))
         End If
     End Sub
 
@@ -65,7 +65,7 @@ Public NotInheritable Class Logger
     End Sub
     Public Shared Sub LogFolderDeleted(file As String)
         If Writer IsNot Nothing Then
-            Log(String.Format("[Task] Deleted empty Folder {0}", file))
+            Log(String.Format("[DELETE] Deleted empty Folder {0}", file))
         End If
     End Sub
 
@@ -167,7 +167,23 @@ Public NotInheritable Class Logger
 
     Public Shared Sub Log(message As String)
         If Writer IsNot Nothing Then
-            Writer.WriteLine(String.Format("{0} - {1}", DateTime.Now.ToString(_dateFormat), message))
+            If message <> "" Then
+                Writer.WriteLine(String.Format("{0} - {1}", DateTime.Now.ToString(_dateFormat), message))
+            Else
+                Writer.WriteLine("")
+            End If
+
+        End If
+
+    End Sub
+    Public Shared Sub Log2(message As String)
+        If Writer IsNot Nothing Then
+            If message <> "" Then
+                Writer.WriteLine("    " & message)
+            Else
+                Writer.WriteLine("")
+            End If
+
         End If
 
     End Sub

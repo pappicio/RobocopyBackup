@@ -17,6 +17,7 @@ Partial Class SettingsForm
         Me.logRetentionNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.saveSettingsButton = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.logRetentionNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -33,7 +34,7 @@ Partial Class SettingsForm
         '
         'logRetentionNumericUpDown
         '
-        Me.logRetentionNumericUpDown.Location = New System.Drawing.Point(356, 32)
+        Me.logRetentionNumericUpDown.Location = New System.Drawing.Point(220, 32)
         Me.logRetentionNumericUpDown.Margin = New System.Windows.Forms.Padding(7)
         Me.logRetentionNumericUpDown.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.logRetentionNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
@@ -44,10 +45,10 @@ Partial Class SettingsForm
         '
         'saveSettingsButton
         '
-        Me.saveSettingsButton.Location = New System.Drawing.Point(26, 146)
+        Me.saveSettingsButton.Location = New System.Drawing.Point(26, 217)
         Me.saveSettingsButton.Margin = New System.Windows.Forms.Padding(7)
         Me.saveSettingsButton.Name = "saveSettingsButton"
-        Me.saveSettingsButton.Size = New System.Drawing.Size(435, 51)
+        Me.saveSettingsButton.Size = New System.Drawing.Size(565, 51)
         Me.saveSettingsButton.TabIndex = 4
         Me.saveSettingsButton.Text = "SaveSettings"
         Me.saveSettingsButton.UseVisualStyleBackColor = True
@@ -55,18 +56,29 @@ Partial Class SettingsForm
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(26, 90)
+        Me.CheckBox1.Location = New System.Drawing.Point(387, 30)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(204, 33)
         Me.CheckBox1.TabIndex = 5
         Me.CheckBox1.Text = "Log di DEBUG"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(23, 117)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(7)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(565, 51)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Abilitare percorsi lunghi"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'SettingsForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(15.0!, 29.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(488, 213)
+        Me.ClientSize = New System.Drawing.Size(610, 284)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.saveSettingsButton)
         Me.Controls.Add(Me.logRetentionNumericUpDown)
@@ -92,4 +104,5 @@ Partial Class SettingsForm
     Private WithEvents logRetentionNumericUpDown As System.Windows.Forms.NumericUpDown
     Private WithEvents saveSettingsButton As System.Windows.Forms.Button
     Friend WithEvents CheckBox1 As Windows.Forms.CheckBox
+    Private WithEvents Button1 As Windows.Forms.Button
 End Class

@@ -92,31 +92,7 @@ Partial Public Class TaskForm
     End Sub
 
 
-    Private Sub CheckUncPath()
-        Dim unc__1 As Boolean = Unc.IsUncPath(sourceTextBox.Text)
-        Dim unc__2 As Boolean = Unc.IsUncPath(destinationTextBox.Text)
-        '  originusertext.Enabled = unc__1
-        ' originpasstext.Enabled = unc__1
 
-        If Not taskx Is Nothing Then
-            If unc__1 And taskx.originuser <> "" Then
-                originusertext.Text = Credential.Decrypt(taskx.Guid, taskx.originuser)
-                originusertext.Text = Credential.Decrypt(taskx.Guid, taskx.originpass)
-            End If
-        End If
-
-
-        'destusertext.Enabled = unc__2
-        'destpasstext.Enabled = unc__2
-        ''' Button1.Enabled = unc__2
-        If Not taskx Is Nothing Then
-            If unc__2 And taskx.destuser <> "" Then
-                destusertext.Text = Credential.Decrypt(taskx.Guid, taskx.destuser)
-                destpasstext.Text = Credential.Decrypt(taskx.Guid, taskx.destpass)
-            End If
-        End If
-
-    End Sub
 
     Private Sub CreateTask()
         taskx = Nothing
@@ -196,7 +172,7 @@ Partial Public Class TaskForm
     End Sub
 
     Private Sub DestinationTextBox_TextChanged(sender As Object, e As EventArgs) Handles destinationTextBox.TextChanged
-        CheckUncPath()
+
     End Sub
 
     Private Sub FullRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles fullRadioButton.CheckedChanged
@@ -329,7 +305,7 @@ Partial Public Class TaskForm
 
 
     Private Sub SourceTextBox_TextChanged(sender As Object, e As EventArgs) Handles sourceTextBox.TextChanged
-        CheckUncPath()
+
     End Sub
 
 
