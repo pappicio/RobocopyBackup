@@ -1,8 +1,0 @@
-D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackup.Resources.resources
-D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackupService.vbproj.GenerateResource.cache
-D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackupService.vbproj.CoreCompileInputs.cache
-D:\RobocopyBackup\RobocopyBackupService\bin\Debug\RobocopyBackupService.exe
-D:\RobocopyBackup\RobocopyBackupService\bin\Debug\RobocopyBackupService.pdb
-D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackupService.exe
-D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackupService.pdb
-D:\RobocopyBackup\RobocopyBackupService\obj\Debug\RobocopyBackupService.vbproj.AssemblyReference.cache
