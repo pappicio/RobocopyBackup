@@ -105,28 +105,40 @@ Public NotInheritable Class SysUtils
         }
         args.Add(EscapeArg(task.Destination))
 
-        If task.NTFS <> "" Then
-            'args.Add(String.Format("/e /sec /COPYALL /R:3 /W:3 /NP ""/UNILOG+:{0}""", logFile))
-            args.Add(String.Format("/e /sec /COPYALL /R:1 /W:1 /NP ""/UNILOG+:{0}""", logFile))
+        Dim only As Boolean = False
+
+        If task.onlyfolder <> "" Then
+            only = True
+            args.Add(String.Format("/E /CREATE /DST /DCOPY:DAT /XF * /XJ /R:1 /W:1 ""/UNILOG+:{0}""", logFile))
         Else
-            'args.Add(String.Format("/e /sec /DCOPY:DAT /COPY:DAT /R:3 /W:3 /NP ""/UNILOG+:{0}""", logFile))
-            args.Add(String.Format("/e /sec /DCOPY:DAT /COPY:DAT /R:1 /W:1 /NP ""/UNILOG+:{0}""", logFile))
+            If task.NTFS <> "" Then
+                'args.Add(String.Format("/e /sec /COPYALL /R:3 /W:3 /NP ""/UNILOG+:{0}""", logFile))
+                args.Add(String.Format("/e /sec /COPYALL /R:1 /W:1 /NP ""/UNILOG+:{0}""", logFile))
+            Else
+                'args.Add(String.Format("/e /sec /DCOPY:DAT /COPY:DAT /R:3 /W:3 /NP ""/UNILOG+:{0}""", logFile))
+                args.Add(String.Format("/e /sec /DCOPY:DAT /COPY:DAT /R:1 /W:1 /NP ""/UNILOG+:{0}""", logFile))
+            End If
         End If
+
+
 
         Dim psi As New ProcessStartInfo("robocopy", String.Join(" ", args)) With {
             .WindowStyle = ProcessWindowStyle.Hidden
         }
         Dim robocopy As Process = Process.Start(psi)
         robocopy.WaitForExit()
-        Logger.Open(logFile)
-        Logger.Log("***************************************")
-        Try
-            timestamp_check(task.Source, task.Destination, task.Retention, logFile)
-        Catch ex As Exception
-            Logger.Log("errore nella gestione del timestamp sui files")
-        End Try
 
-        Logger.close()
+        If only = False Then
+            Logger.Open(logFile)
+            Logger.Log("***************************************")
+            Try
+                timestamp_check(task.Source, task.Destination, task.Retention, logFile)
+            Catch ex As Exception
+                Logger.Log("errore nella gestione del timestamp sui files")
+            End Try
+            Logger.close()
+        End If
+        only = False
     End Sub
 
 

@@ -98,6 +98,16 @@ Public Class Task
 	End Property
 	Private m_NTFS As String
 
+	Public Property onlyfolder() As String
+		Get
+			Return m_onlyfolder
+		End Get
+		Set
+			m_onlyfolder = Value
+		End Set
+	End Property
+	Private m_onlyfolder As String
+
 
 
 	Public Property ExcludedDirs() As String()
