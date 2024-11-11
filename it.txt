@@ -57,4 +57,3 @@ Username=Username
 Version=Versione
 Wednesday=Mercoledì
 WeeklyAbbr=Settimanalmente
-xxxxx=yyyyy

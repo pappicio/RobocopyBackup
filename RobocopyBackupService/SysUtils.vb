@@ -152,12 +152,20 @@ Public NotInheritable Class SysUtils
 
             origine = file.Replace(d, o)
 
-            If origine.Length > 255 And (Not origine.StartsWith("\\?\")) Then
-                origine = "\\?\" & origine
+
+
+
+
+            ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
+            If origine.Length > 255 Then
+                origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
             End If
-            If file.Length > 255 And (Not file.StartsWith("\\?\")) Then
-                file = "\\?\" & file
+
+
+            If file.Length > 255 Then
+                file = "\\?\" & file.Substring(2)
             End If
+
 
             If IO.File.Exists(origine) Then
                 Dim fi As New FileInfo(file)
@@ -201,14 +209,7 @@ Public NotInheritable Class SysUtils
                     Try
                         ''' 'fi.Delete()
 
-                        Dim psi As New ProcessStartInfo("cmd", String.Format("/C del /f /q {0}", EscapeArg(file))) With {
-                            .WindowStyle = ProcessWindowStyle.Hidden
-                        }
-                        Dim delfile As Process = Process.Start(psi)
-                        delfile.WaitForExit()
-                        Logger.LogFileDeleted(file)
-
-
+                        fi.Delete()
                         Logger.LogFileDeleted(file)
                     Catch ex As Exception
                         Logger.LogerrorFileDeleted(file)
@@ -220,8 +221,10 @@ Public NotInheritable Class SysUtils
     End Sub
 
     Private Shared Sub DeleteEmptyFolder(ByVal sDirectoryPath As String)
-        If sDirectoryPath.Length > 255 And (Not sDirectoryPath.StartsWith("\\?\")) Then
-            sDirectoryPath = "\\?\" & sDirectoryPath
+
+        ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
+        If sDirectoryPath.Length > 255 And (Not (sDirectoryPath.StartsWith("\\?\UNC\"))) Then
+            sDirectoryPath = "\\?\UNC\" & sDirectoryPath.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
         End If
 
         If IO.Directory.Exists(sDirectoryPath) Then

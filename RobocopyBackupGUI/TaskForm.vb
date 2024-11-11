@@ -39,19 +39,23 @@ Partial Public Class TaskForm
             titleTextBox.ReadOnly = True
         End If
         Dim c As New Credential
-        If task.originuser <> "" And task.originpass <> "" Then
+        If task.originuser <> "" Or task.originpass <> "" Then
             c.Username = Credential.Decrypt(_guid, task.originuser)
             c.Password = Credential.Decrypt(_guid, task.originpass)
         End If
+        originusertext.Text = ""
+        originpasstext.Text = ""
         If Not c Is Nothing Then
             originusertext.Text = c.Username
             originpasstext.Text = c.Password
         End If
         Dim c2 As New Credential
-        If task.destuser <> "" And task.destpass <> "" Then
+        If task.destuser <> "" Or task.destpass <> "" Then
             c2.Username = Credential.Decrypt(_guid, task.destuser)
             c2.Password = Credential.Decrypt(_guid, task.destpass)
         End If
+        destusertext.Text = ""
+        destpasstext.Text = ""
         If Not c2 Is Nothing Then
             destusertext.Text = c2.Username
             destpasstext.Text = c2.Password
@@ -91,9 +95,9 @@ Partial Public Class TaskForm
     Private Sub CheckUncPath()
         Dim unc__1 As Boolean = Unc.IsUncPath(sourceTextBox.Text)
         Dim unc__2 As Boolean = Unc.IsUncPath(destinationTextBox.Text)
-        originusertext.Enabled = unc__1
-        originpasstext.Enabled = unc__1
-        Button2.Enabled = unc__1
+        '  originusertext.Enabled = unc__1
+        ' originpasstext.Enabled = unc__1
+
         If Not taskx Is Nothing Then
             If unc__1 And taskx.originuser <> "" Then
                 originusertext.Text = Credential.Decrypt(taskx.Guid, taskx.originuser)
@@ -102,9 +106,9 @@ Partial Public Class TaskForm
         End If
 
 
-        destusertext.Enabled = unc__2
-        destpasstext.Enabled = unc__2
-        Button1.Enabled = unc__2
+        'destusertext.Enabled = unc__2
+        'destpasstext.Enabled = unc__2
+        ''' Button1.Enabled = unc__2
         If Not taskx Is Nothing Then
             If unc__2 And taskx.destuser <> "" Then
                 destusertext.Text = Credential.Decrypt(taskx.Guid, taskx.destuser)
@@ -175,6 +179,12 @@ Partial Public Class TaskForm
             Dim control As Control = Me.destinationTextBox
             Dim openFolderDialog As OpenFolderDialog = Me.destinationFolderBrowserDialog
             Dim text As String = Unc.TranslatePath(Me.destinationFolderBrowserDialog.SelectedPath)
+            If Unc.IsUncPath(text) = False Then
+                MsgBox("sono mmessi solo percorsi unc (\\IP_MACCHINA\SHARED_FOLDER\)")
+                Me.destinationFolderBrowserDialog.SelectedPath = ""
+                Return
+            End If
+
             Dim text2 As String = text
             openFolderDialog.SelectedPath = text
             control.Text = text2
@@ -242,15 +252,19 @@ Partial Public Class TaskForm
             MessageBox.Show(Lang.[Get]("IncompleteTaskForm"), Lang.[Get]("Error"), MessageBoxButtons.OK, MessageBoxIcon.[Error])
             Return
         End If
-        If (String.IsNullOrEmpty(originusertext.Text) OrElse String.IsNullOrEmpty(originpasstext.Text)) And originusertext.Enabled Then
-            MessageBox.Show("Mancano username e password per accesso percorso remoto 'origine'...", "Inserire credenziali", MessageBoxButtons.OK, MessageBoxIcon.[Error])
-            originusertext.Focus()
-            Return
+        If (String.IsNullOrEmpty(originusertext.Text) OrElse String.IsNullOrEmpty(originpasstext.Text)) Then
+            If MessageBox.Show("Mancano username e/o password per accesso percorso remoto 'origine', continuare?", "Inserire credenziali", MessageBoxButtons.YesNo) = vbNo Then
+                originusertext.Focus()
+                Return
+            End If
+
         End If
-        If (String.IsNullOrEmpty(destusertext.Text) OrElse String.IsNullOrEmpty(destpasstext.Text)) And destusertext.Enabled Then
-            MessageBox.Show("Mancano username e password per accesso percorso remoto 'destinazione'...", "Inserire credenziali", MessageBoxButtons.OK, MessageBoxIcon.[Error])
-            originusertext.Focus()
-            Return
+        If (String.IsNullOrEmpty(destusertext.Text) OrElse String.IsNullOrEmpty(destpasstext.Text)) Then
+            If MessageBox.Show("Mancano username e/o password per accesso percorso remoto 'destinazione', Continuare", "Inserire credenziali", MessageBoxButtons.YesNo) = vbNo Then
+                originusertext.Focus()
+                Return
+            End If
+
         End If
         If Config.Tasks.ContainsKey(titleTextBox.Text.Trim) And titleTextBox.ReadOnly = False Then
 
@@ -276,6 +290,9 @@ Partial Public Class TaskForm
 
             End If
         End If
+        If taskx IsNot Nothing Then
+            taskx = Nothing
+        End If
 
         CreateTask()
         DialogResult = DialogResult.OK
@@ -296,13 +313,18 @@ Partial Public Class TaskForm
             Dim control As Control = Me.sourceTextBox
             Dim openFolderDialog As OpenFolderDialog = Me.sourceFolderBrowserDialog
             Dim text As String = Unc.TranslatePath(Me.sourceFolderBrowserDialog.SelectedPath)
+            If Unc.IsUncPath(text) = False Then
+                MsgBox("sono mmessi solo percorsi unc (\\IP_MACCHINA\SHARED_FOLDER\)")
+                Me.sourceFolderBrowserDialog.SelectedPath = ""
+                Return
+            End If
             Dim text2 As String = text
-            openFolderDialog.SelectedPath = text
-            control.Text = text2
+                openFolderDialog.SelectedPath = text
+                control.Text = text2
 
 
 
-        End If
+            End If
     End Sub
 
 
@@ -385,23 +407,23 @@ Partial Public Class TaskForm
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub Button2_MouseDown(sender As Object, e As MouseEventArgs) Handles Button2.MouseDown
+    Private Sub Button2_MouseDown(sender As Object, e As MouseEventArgs)
         originpasstext.UseSystemPasswordChar = False
     End Sub
 
-    Private Sub Button1_MouseDown(sender As Object, e As MouseEventArgs) Handles Button1.MouseDown
+    Private Sub Button1_MouseDown(sender As Object, e As MouseEventArgs)
         destpasstext.UseSystemPasswordChar = False
     End Sub
 
-    Private Sub Button2_MouseUp(sender As Object, e As MouseEventArgs) Handles Button2.MouseUp
+    Private Sub Button2_MouseUp(sender As Object, e As MouseEventArgs)
         originpasstext.UseSystemPasswordChar = True
     End Sub
 
-    Private Sub Button1_MouseUp(sender As Object, e As MouseEventArgs) Handles Button1.MouseUp
+    Private Sub Button1_MouseUp(sender As Object, e As MouseEventArgs)
         destpasstext.UseSystemPasswordChar = True
     End Sub
 
@@ -433,6 +455,25 @@ Partial Public Class TaskForm
             CheckBox2.Enabled = False
         Else
             CheckBox2.Enabled = True
+        End If
+
+    End Sub
+
+    Private Sub originusertext_TextChanged(sender As Object, e As EventArgs) Handles originusertext.TextChanged
+
+    End Sub
+
+    Private Sub destusertext_TextChanged(sender As Object, e As EventArgs) Handles destusertext.TextChanged
+
+    End Sub
+
+    Private Sub destpasstext_TextChanged(sender As Object, e As EventArgs) Handles destpasstext.TextChanged
+
+    End Sub
+
+    Private Sub TaskForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If taskx IsNot Nothing Then
+            taskx = Nothing
         End If
 
     End Sub
