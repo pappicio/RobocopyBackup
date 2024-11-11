@@ -134,7 +134,7 @@ Public NotInheritable Class SysUtils
             Try
                 timestamp_check(task.Source, task.Destination, task.Retention, logFile)
             Catch ex As Exception
-                Logger.Log("errore nella gestione del timestamp sui files")
+                Logger.Log("[TASK] errore nella gestione del timestamp sui files")
             End Try
             Logger.close()
         End If
@@ -149,7 +149,16 @@ Public NotInheritable Class SysUtils
         Dim timestamp As Date = DateTime.Now
         Dim myfiles As String() = IO.Directory.GetFiles(d, "*.*", IO.SearchOption.AllDirectories)
         For Each file As String In myfiles
+
             origine = file.Replace(d, o)
+
+            If origine.Length > 255 And (Not origine.StartsWith("\\?\")) Then
+                origine = "\\?\" & origine
+            End If
+            If file.Length > 255 And (Not file.StartsWith("\\?\")) Then
+                file = "\\?\" & file
+            End If
+
             If IO.File.Exists(origine) Then
                 Dim fi As New FileInfo(file)
 
@@ -161,10 +170,15 @@ Public NotInheritable Class SysUtils
                     If (.Attributes And FileAttributes.Hidden) = FileAttributes.Hidden Then
                         'File is Hidden
                     End If
-                    If (.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
-                        .Attributes = .Attributes And Not FileAttributes.ReadOnly
-                        Logger.Log("[TASK] file readonly attribute deleted on: " & file)
-                    End If
+                    Try
+                        If (.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
+                            .Attributes = .Attributes And Not FileAttributes.ReadOnly
+                            Logger.Log("[TASK] file readonly attribute deleted on: " & file)
+                        End If
+                    Catch ex As Exception
+                        Logger.Log("[TASK] error deleting readonly flag on: " & file)
+                    End Try
+
                 End With
 
 
@@ -185,7 +199,16 @@ Public NotInheritable Class SysUtils
                 If x > conservaper Then
                     '   Dim f As String = Mid(file, file.LastIndexOf("\") + 2, file.Length)
                     Try
-                        IO.File.Delete(file)
+                        ''' 'fi.Delete()
+
+                        Dim psi As New ProcessStartInfo("cmd", String.Format("/C del /f /q {0}", EscapeArg(file))) With {
+                            .WindowStyle = ProcessWindowStyle.Hidden
+                        }
+                        Dim delfile As Process = Process.Start(psi)
+                        delfile.WaitForExit()
+                        Logger.LogFileDeleted(file)
+
+
                         Logger.LogFileDeleted(file)
                     Catch ex As Exception
                         Logger.LogerrorFileDeleted(file)
@@ -197,6 +220,9 @@ Public NotInheritable Class SysUtils
     End Sub
 
     Private Shared Sub DeleteEmptyFolder(ByVal sDirectoryPath As String)
+        If sDirectoryPath.Length > 255 And (Not sDirectoryPath.StartsWith("\\?\")) Then
+            sDirectoryPath = "\\?\" & sDirectoryPath
+        End If
 
         If IO.Directory.Exists(sDirectoryPath) Then
             Dim directory As New IO.DirectoryInfo(sDirectoryPath)

@@ -30,13 +30,13 @@ Partial Public Class Service
         Dim service As Service = New Service()
 #If DEBUG Then
 
-        service.OnStart(args)
-        Console.WriteLine("Press any key to stop program")
+        ' service.OnStart(args)
+        'Console.WriteLine("Press any key to stop program")
 
-        Console.Write("Press any key to continue . . . ")
-        Console.ReadKey(True)
-        service.OnStop()
-        'ServiceBase.Run(New Service())
+        'Console.Write("Press any key to continue . . . ")
+        'Console.ReadKey(True)
+        'service.OnStop()
+        ServiceBase.Run(New Service())
 #Else
         ServiceBase.Run(New Service())
 #End If
