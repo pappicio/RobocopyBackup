@@ -8,4 +8,4 @@ The goal of *RobocopyBackup* is not to be robust, secure and enterprise-ready, b
 
 
 ## Acknowledgments
-This project is totally traslated into VB .NET, but the original ones is written in C#: https://github.com/Disassembler0/RoboBackup
+This project is totally traslated into VB .NET, the original ones is written in C#
