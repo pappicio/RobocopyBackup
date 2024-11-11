@@ -30,7 +30,7 @@ Partial Public Class MainForm
             schedule = String.Format("{0}, {1}.", Lang.[Get]("MonthlyAbbr"), task.DayOfMonth)
         End If
         schedule = String.Format("{0}, {1} @ {2:D2}:{3:D2}", method__1, schedule, task.Hour, task.Minute)
-        Return New ListViewItem(New String() {task.Title, schedule, task.Source, task.Destination, task.NTFS}) With {
+        Return New ListViewItem(New String() {task.Title, schedule, task.Source, task.Destination, task.NTFS, task.onlyfolder}) With {
               .Tag = task.Guid
         }
     End Function

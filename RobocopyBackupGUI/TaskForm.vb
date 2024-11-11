@@ -78,6 +78,13 @@ Partial Public Class TaskForm
             CheckBox2.Checked = False
         End If
 
+        s = task.onlyfolder
+        If s <> "" Then
+            onlyfoldercheck.Checked = True
+        Else
+            onlyfoldercheck.Checked = False
+        End If
+
     End Sub
 
 
@@ -134,6 +141,13 @@ Partial Public Class TaskForm
         Else
             task.NTFS = ""
         End If
+
+        If onlyfoldercheck.Checked Then
+            task.onlyfolder = "SI"
+        Else
+            task.onlyfolder = ""
+        End If
+
 
         If dailyRadioButton.Checked Then
             task.Period = Period.Daily
@@ -352,6 +366,13 @@ Partial Public Class TaskForm
 
 
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If CheckBox2.Checked Then
+            onlyfoldercheck.Checked = False
+            onlyfoldercheck.Enabled = False
+        Else
+            onlyfoldercheck.Enabled = True
+        End If
+
 
     End Sub
 
@@ -399,5 +420,15 @@ Partial Public Class TaskForm
     Private Sub dailyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles dailyRadioButton.CheckedChanged
         retentionNumericUpDown.Increment = 1
         retentionNumericUpDown.Value = 15
+    End Sub
+
+    Private Sub onlyfoldercheck_CheckedChanged(sender As Object, e As EventArgs) Handles onlyfoldercheck.CheckedChanged
+        If onlyfoldercheck.Checked Then
+            CheckBox2.Checked = False
+            CheckBox2.Enabled = False
+        Else
+            CheckBox2.Enabled = True
+        End If
+
     End Sub
 End Class

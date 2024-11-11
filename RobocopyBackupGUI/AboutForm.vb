@@ -33,7 +33,8 @@ Public Partial Class AboutForm
 	End Sub
 
 	Private Sub AboutForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+		Label1.Focus()
+		TextBox1.Select(0, 0)
 	End Sub
 
 	Private Sub Label2_Click(sender As Object, e As EventArgs)

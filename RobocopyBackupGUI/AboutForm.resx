@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Label4.Text" xml:space="preserve">
+  <data name="TextBox1.Text" xml:space="preserve">
     <value>Semplice da usare. Copiare gli eseguibili in una cartella (preferibilmente del server con le condivise origine)
 
-aggiungere nuove attività specificando:
+  aggiungere nuove attività specificando:
 - nome attività (sarà poi la cartella dei log della attività stessa)
 - NTFS serve per specificare se il filesystem destinazione sia NTFS (base windows) o altro (es.: EXT4, Linux)
 - cartella sorgente (percorso normale o unc)
@@ -136,7 +136,27 @@ aggiungere nuove attività specificando:
   (al 6sto giorno verranno cancellati, se gia eliminati dalla cartella sorgente da 6 giorni appunto)
 
 - c'è un apposito tasto dedicato al servizio da eseguire: 
-  basta cliccarlo per avviare/killare il servizio robocopybackup.</value>
+  basta cliccarlo per avviare/killare il servizio robocopybackup.
+
+in merito a:
+
+- Copia solo struttura Cartelle;
+- utility che permetterà di clonare la struttura delle cartelle origine in qualsiasi 'Destinazione', purche 
+   essa sia filesystem NTFS, di modo da clonare anche i perness NTFS (users/groups ecc) su di esse
+   (potrebbe essere utile avere una struttura cartelle gia pronta e con tutti i permessi necessari 
+    su ogni sottocartella in caso di disaster recovery della NAS). A tal proprosito vorrei spendere 2 parole:
+    Se la cartella destinazione non è su sistema windows, facilmente troverete un volume in formato EXT4, 
+    per dirne uno, e li non potrete copiare assieme a cartelle/files anche i premessi NTFS relativi, a meno che 
+    quel volume linux, non sia stato preventivamente formattato in NTFS!
+
+- Copia permessi NTFS, esegue dei backup completi (incrementali), copiando: 
+   Struttura cartelle, tutti i files e persino i permessi NTFS su di essi, se invece come detto sopra,
+   la cartella destinazione non fosse NTFS, non potrete spuntare quel flag, pena perdita di quasi 
+   tutte le sottocartelle dalla clonazionee da origine a destinazione (in pratica in destinazione troverete
+   solo i files nella root, niente subfolder!)
+
+
+</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

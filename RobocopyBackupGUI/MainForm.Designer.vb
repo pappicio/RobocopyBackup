@@ -32,6 +32,7 @@ Partial Class MainForm
         Me.destinationColumnHeader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ntfscolumnheader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.timerservice = New System.Windows.Forms.Timer(Me.components)
+        Me.onlyfolderheader = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.toolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -52,7 +53,7 @@ Partial Class MainForm
         Me.newTaskToolStripButton.Image = Global.RobocopyBackup.My.Resources.Resources.NewIcon
         Me.newTaskToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.newTaskToolStripButton.Name = "newTaskToolStripButton"
-        Me.newTaskToolStripButton.Size = New System.Drawing.Size(29, 24)
+        Me.newTaskToolStripButton.Size = New System.Drawing.Size(24, 24)
         Me.newTaskToolStripButton.Text = "NewTask"
         '
         'toolStripSeparator1
@@ -67,7 +68,7 @@ Partial Class MainForm
         Me.editTaskToolStripButton.Image = Global.RobocopyBackup.My.Resources.Resources.EditIcon
         Me.editTaskToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.editTaskToolStripButton.Name = "editTaskToolStripButton"
-        Me.editTaskToolStripButton.Size = New System.Drawing.Size(29, 24)
+        Me.editTaskToolStripButton.Size = New System.Drawing.Size(24, 24)
         Me.editTaskToolStripButton.Text = "EditTask"
         '
         'deleteTaskToolStripButton
@@ -77,7 +78,7 @@ Partial Class MainForm
         Me.deleteTaskToolStripButton.Image = Global.RobocopyBackup.My.Resources.Resources.DeleteIcon
         Me.deleteTaskToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.deleteTaskToolStripButton.Name = "deleteTaskToolStripButton"
-        Me.deleteTaskToolStripButton.Size = New System.Drawing.Size(29, 24)
+        Me.deleteTaskToolStripButton.Size = New System.Drawing.Size(24, 24)
         Me.deleteTaskToolStripButton.Text = "DeleteTask"
         '
         'aboutToolStripButton
@@ -87,7 +88,7 @@ Partial Class MainForm
         Me.aboutToolStripButton.Image = Global.RobocopyBackup.My.Resources.Resources.HelpIcon
         Me.aboutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.aboutToolStripButton.Name = "aboutToolStripButton"
-        Me.aboutToolStripButton.Size = New System.Drawing.Size(29, 24)
+        Me.aboutToolStripButton.Size = New System.Drawing.Size(24, 24)
         Me.aboutToolStripButton.Text = "About"
         '
         'toolStripSeparator2
@@ -102,7 +103,7 @@ Partial Class MainForm
         Me.showTaskLogsToolStripButton.Image = Global.RobocopyBackup.My.Resources.Resources.LogsIcon
         Me.showTaskLogsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.showTaskLogsToolStripButton.Name = "showTaskLogsToolStripButton"
-        Me.showTaskLogsToolStripButton.Size = New System.Drawing.Size(29, 24)
+        Me.showTaskLogsToolStripButton.Size = New System.Drawing.Size(24, 24)
         Me.showTaskLogsToolStripButton.Text = "ShowTaskLogs"
         '
         'runTaskToolStripButton
@@ -112,7 +113,7 @@ Partial Class MainForm
         Me.runTaskToolStripButton.Image = Global.RobocopyBackup.My.Resources.Resources.RunIcon
         Me.runTaskToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.runTaskToolStripButton.Name = "runTaskToolStripButton"
-        Me.runTaskToolStripButton.Size = New System.Drawing.Size(29, 24)
+        Me.runTaskToolStripButton.Size = New System.Drawing.Size(24, 24)
         Me.runTaskToolStripButton.Text = "RunTask"
         '
         'settingsToolStripButton
@@ -122,7 +123,7 @@ Partial Class MainForm
         Me.settingsToolStripButton.Image = Global.RobocopyBackup.My.Resources.Resources.SettingsIcon
         Me.settingsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.settingsToolStripButton.Name = "settingsToolStripButton"
-        Me.settingsToolStripButton.Size = New System.Drawing.Size(29, 24)
+        Me.settingsToolStripButton.Size = New System.Drawing.Size(24, 24)
         Me.settingsToolStripButton.Text = "Settings"
         '
         'ToolStripSeparator3
@@ -136,12 +137,12 @@ Partial Class MainForm
         Me.serviceokbutton.Image = Global.RobocopyBackup.My.Resources.Resources.serviceok
         Me.serviceokbutton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.serviceokbutton.Name = "serviceokbutton"
-        Me.serviceokbutton.Size = New System.Drawing.Size(29, 24)
+        Me.serviceokbutton.Size = New System.Drawing.Size(24, 24)
         Me.serviceokbutton.Text = "Avvia servizio"
         '
         'taskListView
         '
-        Me.taskListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.titleColumnHeader, Me.scheduleColumnHeader, Me.sourceColumnHeader, Me.destinationColumnHeader, Me.ntfscolumnheader})
+        Me.taskListView.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.titleColumnHeader, Me.scheduleColumnHeader, Me.sourceColumnHeader, Me.destinationColumnHeader, Me.ntfscolumnheader, Me.onlyfolderheader})
         Me.taskListView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.taskListView.FullRowSelect = True
         Me.taskListView.GridLines = True
@@ -168,26 +169,31 @@ Partial Class MainForm
         'sourceColumnHeader
         '
         Me.sourceColumnHeader.Text = "Source"
-        Me.sourceColumnHeader.Width = 464
+        Me.sourceColumnHeader.Width = 526
         '
         'destinationColumnHeader
         '
         Me.destinationColumnHeader.Text = "Destination"
-        Me.destinationColumnHeader.Width = 461
+        Me.destinationColumnHeader.Width = 462
         '
         'ntfscolumnheader
         '
         Me.ntfscolumnheader.Text = "NTFS"
-        Me.ntfscolumnheader.Width = 180
+        Me.ntfscolumnheader.Width = 86
         '
         'timerservice
         '
         Me.timerservice.Enabled = True
         Me.timerservice.Interval = 1000
         '
+        'onlyfolderheader
+        '
+        Me.onlyfolderheader.Text = "Alb. Directory"
+        Me.onlyfolderheader.Width = 103
+        '
         'MainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(15.0!, 29.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 22.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1555, 939)
         Me.Controls.Add(Me.taskListView)
@@ -228,4 +234,5 @@ Partial Class MainForm
     Friend WithEvents timerservice As Windows.Forms.Timer
     Friend WithEvents ntfscolumnheader As Windows.Forms.ColumnHeader
     Private WithEvents serviceokbutton As Windows.Forms.ToolStripButton
+    Private WithEvents onlyfolderheader As Windows.Forms.ColumnHeader
 End Class
