@@ -137,10 +137,6 @@ Public NotInheritable Class SysUtils
 
     Shared oldfolder As String = ""
 
-    <DllImport("shlwapi.dll", CharSet:=CharSet.Unicode, SetLastError:=True)>
-    Private Shared Function PathFileExists(ByVal pszPath As String) As Boolean
-    End Function
-
 
 
     ' Dichiarazione dell'API FindFirstFile di Windows
@@ -240,9 +236,6 @@ Public NotInheritable Class SysUtils
             Dim origince As Boolean = False
 
             If originlong Then
-                ' If PathFileExists(origine) Then
-                ' origince = True
-                'End If
 
                 ' Verifica l'esistenza del file
                 If FileExists(origine) Then
