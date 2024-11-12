@@ -287,7 +287,7 @@ Public NotInheritable Class SysUtils
                 Try
 
                     fi.LastWriteTime = timestamp
-                    '''Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
+                    Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
                 Catch ex As Exception
                     Logger.Log2("[TIMESTAMP] ERROR setting timestamp on: " & fi.Name)
                 End Try
