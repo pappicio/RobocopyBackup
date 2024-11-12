@@ -29,9 +29,8 @@ Partial Class TaskForm
         Me.retentionLabel = New System.Windows.Forms.Label()
         Me.retentionNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.directoriesGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.onlyfoldercheck = New System.Windows.Forms.CheckBox()
         Me.destpasstext = New System.Windows.Forms.TextBox()
         Me.originusertext = New System.Windows.Forms.TextBox()
@@ -55,7 +54,8 @@ Partial Class TaskForm
         Me.monthlyRadioButton = New System.Windows.Forms.RadioButton()
         Me.sourceFolderBrowserDialog = New RobocopyBackup.OpenFolderDialog()
         Me.destinationFolderBrowserDialog = New RobocopyBackup.OpenFolderDialog()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.retentionNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.directoriesGroupBox.SuspendLayout()
         Me.methodGroupBox.SuspendLayout()
@@ -85,7 +85,7 @@ Partial Class TaskForm
         'sourceLabel
         '
         Me.sourceLabel.AutoSize = True
-        Me.sourceLabel.Location = New System.Drawing.Point(12, 170)
+        Me.sourceLabel.Location = New System.Drawing.Point(12, 167)
         Me.sourceLabel.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.sourceLabel.Name = "sourceLabel"
         Me.sourceLabel.Size = New System.Drawing.Size(81, 25)
@@ -95,7 +95,7 @@ Partial Class TaskForm
         'destinationLabel
         '
         Me.destinationLabel.AutoSize = True
-        Me.destinationLabel.Location = New System.Drawing.Point(12, 360)
+        Me.destinationLabel.Location = New System.Drawing.Point(12, 347)
         Me.destinationLabel.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.destinationLabel.Name = "destinationLabel"
         Me.destinationLabel.Size = New System.Drawing.Size(115, 25)
@@ -149,7 +149,7 @@ Partial Class TaskForm
         'destinationTextBox
         '
         Me.destinationTextBox.BackColor = System.Drawing.SystemColors.Window
-        Me.destinationTextBox.Location = New System.Drawing.Point(211, 354)
+        Me.destinationTextBox.Location = New System.Drawing.Point(211, 344)
         Me.destinationTextBox.Margin = New System.Windows.Forms.Padding(6)
         Me.destinationTextBox.Name = "destinationTextBox"
         Me.destinationTextBox.ReadOnly = True
@@ -158,7 +158,7 @@ Partial Class TaskForm
         '
         'destinationButton
         '
-        Me.destinationButton.Location = New System.Drawing.Point(922, 354)
+        Me.destinationButton.Location = New System.Drawing.Point(922, 344)
         Me.destinationButton.Margin = New System.Windows.Forms.Padding(6)
         Me.destinationButton.Name = "destinationButton"
         Me.destinationButton.Size = New System.Drawing.Size(40, 30)
@@ -200,10 +200,10 @@ Partial Class TaskForm
         '
         'directoriesGroupBox
         '
+        Me.directoriesGroupBox.Controls.Add(Me.Label7)
+        Me.directoriesGroupBox.Controls.Add(Me.Label5)
         Me.directoriesGroupBox.Controls.Add(Me.Label6)
         Me.directoriesGroupBox.Controls.Add(Me.Label9)
-        Me.directoriesGroupBox.Controls.Add(Me.Label8)
-        Me.directoriesGroupBox.Controls.Add(Me.Label5)
         Me.directoriesGroupBox.Controls.Add(Me.onlyfoldercheck)
         Me.directoriesGroupBox.Controls.Add(Me.destpasstext)
         Me.directoriesGroupBox.Controls.Add(Me.originusertext)
@@ -229,39 +229,26 @@ Partial Class TaskForm
         Me.directoriesGroupBox.TabStop = False
         Me.directoriesGroupBox.Text = "Directories"
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(206, 313)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(667, 25)
+        Me.Label6.TabIndex = 25
+        Me.Label6.Text = "selezionare un percorso locale o Inserire percorso di rete tipo: \\192.168.1.3 "
+        '
         'Label9
         '
-        Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(206, 225)
+        Me.Label9.Location = New System.Drawing.Point(207, 201)
         Me.Label9.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(692, 20)
+        Me.Label9.Size = New System.Drawing.Size(692, 45)
         Me.Label9.TabIndex = 24
-        Me.Label9.Text = "(username e passwoed locali per accedere alle condivise, lasciare vuoti se non ne" &
-    "cessarie)"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(206, 399)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(692, 20)
-        Me.Label8.TabIndex = 23
-        Me.Label8.Text = "(username e passwoed locali per accedere alle condivise, lasciare vuoti se non ne" &
-    "cessarie)"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(206, 133)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(679, 25)
-        Me.Label5.TabIndex = 20
-        Me.Label5.Text = "(Inserire percorso di rete. Se locale inserire \\127.0.0.1 oppure \\ip_macchina)"
+        Me.Label9.Text = "(username e passwoed locali della macchina con condivise per accedere alle condiv" &
+    "ise, lasciare vuoti se non necessarie)"
         '
         'onlyfoldercheck
         '
@@ -303,7 +290,7 @@ Partial Class TaskForm
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 432)
+        Me.Label4.Location = New System.Drawing.Point(19, 429)
         Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(108, 25)
@@ -340,7 +327,7 @@ Partial Class TaskForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 257)
+        Me.Label2.Location = New System.Drawing.Point(12, 254)
         Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(108, 25)
@@ -499,15 +486,26 @@ Partial Class TaskForm
         '
         Me.destinationFolderBrowserDialog.SelectedPath = Nothing
         '
-        'Label6
+        'Label5
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(206, 323)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(679, 25)
-        Me.Label6.TabIndex = 25
-        Me.Label6.Text = "(Inserire percorso di rete. Se locale inserire \\127.0.0.1 oppure \\ip_macchina)"
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(206, 133)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(667, 25)
+        Me.Label5.TabIndex = 26
+        Me.Label5.Text = "selezionare un percorso locale o Inserire percorso di rete tipo: \\192.168.1.3 "
+        '
+        'Label7
+        '
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(207, 375)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(692, 45)
+        Me.Label7.TabIndex = 27
+        Me.Label7.Text = "(username e passwoed locali della macchina con condivise per accedere alle condiv" &
+    "ise, lasciare vuoti se non necessarie)"
         '
         'TaskForm
         '
@@ -582,8 +580,8 @@ Partial Class TaskForm
     Private WithEvents Label1 As Windows.Forms.Label
     Private WithEvents Label2 As Windows.Forms.Label
     Friend WithEvents onlyfoldercheck As Windows.Forms.CheckBox
-    Private WithEvents Label5 As Windows.Forms.Label
     Private WithEvents Label9 As Windows.Forms.Label
-    Private WithEvents Label8 As Windows.Forms.Label
     Private WithEvents Label6 As Windows.Forms.Label
+    Private WithEvents Label7 As Windows.Forms.Label
+    Private WithEvents Label5 As Windows.Forms.Label
 End Class

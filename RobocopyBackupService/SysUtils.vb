@@ -152,12 +152,28 @@ Public NotInheritable Class SysUtils
 
             ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
             If origine.Length > 255 Then
-                origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                If (origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) Then
+                    origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                End If
+                If (Not origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
+                    origine = "\\?\" & origine ' Rimuovi \\ e aggiungi \\?\UNC\
+                End If
             End If
 
 
+
+
+
+            'If file.Length > 255 Then
+            'file = "\\?\UNC\" & file.Substring(2)
+            'End If
             If file.Length > 255 Then
-                file = "\\?\UNC\" & file.Substring(2)
+                If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) Then
+                    file = "\\?\UNC\" & file.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                End If
+                If (Not file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
+                    file = "\\?\" & file ' Rimuovi \\ e aggiungi \\?\UNC\
+                End If
             End If
 
             Dim solofolder As String = Mid(file, 1, file.LastIndexOf("\"))
@@ -242,9 +258,20 @@ Public NotInheritable Class SysUtils
 
 
         For Each subDir As String In sottodirectory
-            If subDir.Length > 255 And (Not (subDir.StartsWith("\\?\UNC\"))) Then
-                subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+
+            If subDir.Length > 255 Then
+                If (subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) Then
+                    subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                End If
+                If (Not subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) And (Not subDir.StartsWith("\\?\")) Then
+                    subDir = "\\?\" & subDir ' Rimuovi \\ e aggiungi \\?\UNC\
+                End If
             End If
+
+
+            '''If subDir.Length > 255 And (Not (subDir.StartsWith("\\?\UNC\"))) Then
+            '''subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+            '''End If
             ' Richiama ricorsivamente la funzione per scansionare eventuali sottodirectory
             DeleteEmptyFolder(subDir)
 
