@@ -156,9 +156,9 @@ Partial Public Class TaskForm
             Dim openFolderDialog As OpenFolderDialog = Me.destinationFolderBrowserDialog
             Dim text As String = Unc.TranslatePath(Me.destinationFolderBrowserDialog.SelectedPath)
             If Unc.IsUncPath(text) = False Then
-                '     MsgBox("sono mmessi solo percorsi unc (\\IP_MACCHINA\SHARED_FOLDER\)")
-                '    Me.destinationFolderBrowserDialog.SelectedPath = ""
-                '   Return
+                MsgBox("sono mmessi solo percorsi unc (\\IP_MACCHINA\SHARED_FOLDER\)")
+                Me.destinationFolderBrowserDialog.SelectedPath = ""
+                Return
             End If
 
             Dim text2 As String = text

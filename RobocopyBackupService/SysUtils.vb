@@ -4,6 +4,7 @@ Imports System.IO
 Imports System.Linq
 Imports System.Runtime.InteropServices
 Imports System.Text.RegularExpressions
+Imports Microsoft.Win32.SafeHandles
 Imports RobocopyBackup.RobocopyBackup
 
 Public Enum EntryType
@@ -136,6 +137,13 @@ Public NotInheritable Class SysUtils
 
     Shared oldfolder As String = ""
 
+    <DllImport("shlwapi.dll", CharSet:=CharSet.Unicode, SetLastError:=True)>
+    Private Shared Function PathFileExists(ByVal pszPath As String) As Boolean
+    End Function
+
+
+
+
     Private Shared Sub timestamp_check(o As String, d As String, conservaper As UShort, logfile As String)
 
 
@@ -148,15 +156,17 @@ Public NotInheritable Class SysUtils
 
 
 
-
+            Dim originlong As Boolean = False
 
             ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
             If origine.Length > 255 Then
                 If (origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) Then
                     origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                    originlong = True
                 End If
                 If (Not origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
                     origine = "\\?\" & origine ' Rimuovi \\ e aggiungi \\?\UNC\
+                    originlong = True
                 End If
             End If
 
@@ -182,15 +192,25 @@ Public NotInheritable Class SysUtils
                 Logger.Log2("")
                 Logger.Log("[TASK] analyzing folder: " & oldfolder)
             End If
-            If IO.File.Exists(origine) Then
 
+            Dim origince As Boolean = False
+
+            If originlong Then
+                If PathFileExists(origine) Then
+                    origince = True
+                End If
+            End If
+
+
+
+
+
+
+            ''' If IO.File.Exists(origine) Then
+            If origince Then
 
                 Dim fi As New FileInfo(file)
 
-
-                If fi.Exists Then
-                    Dim j As Integer = 0
-                End If
                 With fi
                     If (.Attributes And FileAttributes.Archive) = FileAttributes.Archive Then
                         'File has the Archive attribute set
