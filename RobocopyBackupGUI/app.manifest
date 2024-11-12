@@ -39,8 +39,11 @@
       <!--<supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}" />-->
       <!-- Windows 10 -->
       <!--<supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />-->
-    </application>
-  </compatibility>
+		<windowsSettings>
+			<longPathAware xmlns="urn:schemas-microsoft-com:windowsSettings" value="true" />
+		</windowsSettings>
+	</application>
+</compatibility>
   <!-- Indica che l'applicazione è sensibile ai valori DPI e non verrà scalata automaticamente da Windows in caso di
        valori DPI maggiori. Le applicazioni Windows Presentation Foundation (WPF) sono automaticamente sensibili ai valori DPI, pertanto non è necessario 
        acconsentire esplicitamente. Con le applicazioni Windows Forms destinate a .NET Framework 4.6 per cui è stato acconsentito esplicitamente a questa impostazione, 
@@ -70,4 +73,7 @@
     </dependentAssembly>
   </dependency>
   -->
+
+ 
+
 </assembly>

@@ -184,12 +184,21 @@ Public NotInheritable Class SysUtils
         End If
     End Function
 
+
+
+
+    ''' '''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    ''
+    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     Private Shared Sub timestamp_check(o As String, d As String, conservaper As UShort, logfile As String)
 
 
         Dim origine As String = ""
         Dim timestamp As Date = DateTime.Now
+        d = "\\?\UNC\" & d.Substring(2)
         Dim myfiles As String() = IO.Directory.GetFiles(d, "*.*", IO.SearchOption.AllDirectories)
+
         For Each file As String In myfiles
 
             origine = file.Replace(d, o)
@@ -217,14 +226,12 @@ Public NotInheritable Class SysUtils
             'If file.Length > 255 Then
             'file = "\\?\UNC\" & file.Substring(2)
             'End If
-            If file.Length > 255 Then
-                If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) Then
+
+            If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) Then
                     file = "\\?\UNC\" & file.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
                 End If
-                If (Not file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
-                    file = "\\?\" & file ' Rimuovi \\ e aggiungi \\?\UNC\
-                End If
-            End If
+
+
 
             Dim solofolder As String = Mid(file, 1, file.LastIndexOf("\"))
             If oldfolder <> solofolder Then
@@ -236,9 +243,13 @@ Public NotInheritable Class SysUtils
             Dim origince As Boolean = False
 
             If originlong Then
-
                 ' Verifica l'esistenza del file
                 If FileExists(origine) Then
+                    origince = True
+                End If
+            Else
+                Dim a As Boolean = IO.File.Exists(origine)
+                If a Then
                     origince = True
                 End If
             End If
