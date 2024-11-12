@@ -1,12 +1,12 @@
 Partial Class AboutForm
-	Private components As System.ComponentModel.IContainer = Nothing
+    Private components As System.ComponentModel.IContainer = Nothing
 
-	Protected Overrides Sub Dispose(disposing As Boolean)
-		If disposing AndAlso (components IsNot Nothing) Then
-			components.Dispose()
-		End If
-		MyBase.Dispose(disposing)
-	End Sub
+    Protected Overrides Sub Dispose(disposing As Boolean)
+        If disposing AndAlso (components IsNot Nothing) Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
 
 #Region "Windows Form Designer generated code"
 
