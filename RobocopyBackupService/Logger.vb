@@ -179,7 +179,7 @@ Public NotInheritable Class Logger
     Public Shared Sub Log2(message As String)
         If Writer IsNot Nothing Then
             If message <> "" Then
-                Writer.WriteLine("    " & message)
+                Writer.WriteLine("        " & message)
             Else
                 Writer.WriteLine("")
             End If

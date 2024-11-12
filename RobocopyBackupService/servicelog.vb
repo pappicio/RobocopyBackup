@@ -16,7 +16,7 @@ Public NotInheritable Class serviceLogger
     Private Shared m_Writer As StreamWriter
 
     Private Const _dateFormat As String = "yyyy-MM-dd HH:mm:ss.fff"
-
+    Private Const _dateFormat2 As String = "HH:mm:ss.fff"
     Public Shared Sub LogCleanupNextRunDate(nextCleanupDate As DateTime)
         If Writer IsNot Nothing Then
             Log(String.Format("[Cleanup] Next log cleanup scheduled at {0}", nextCleanupDate.ToString(_dateFormat)))
@@ -175,7 +175,7 @@ Public NotInheritable Class serviceLogger
 
     Public Shared Sub Log(message As String)
         If Writer IsNot Nothing Then
-            Writer.WriteLine(String.Format("{0} - {1}", DateTime.Now.ToString(_dateFormat), message))
+            Writer.WriteLine(String.Format("{0} - {1}", DateTime.Now.ToString(_dateFormat2), message))
         End If
 
     End Sub

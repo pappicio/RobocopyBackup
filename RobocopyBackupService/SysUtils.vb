@@ -170,7 +170,7 @@ Public NotInheritable Class SysUtils
             Dim solofolder As String = Mid(file, 1, file.LastIndexOf("\"))
             If oldfolder <> solofolder Then
                 oldfolder = solofolder
-                Logger.Log("")
+                Logger.Log2("")
                 Logger.Log("[TASK] analyzing folder: " & oldfolder)
             End If
             If IO.File.Exists(origine) Then
@@ -192,7 +192,7 @@ Public NotInheritable Class SysUtils
                     Try
                         If (.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
                             .Attributes = .Attributes And Not FileAttributes.ReadOnly
-                            Logger.Log2("[TASK] readonly attribute deleted on: " & fi.Name)
+                            '''Logger.Log2("[TASK] readonly attribute deleted on: " & fi.Name)
                         End If
                     Catch ex As Exception
                         Logger.Log2("[TASK] ERROR deleting readonly flag on: " & fi.Name)
@@ -205,7 +205,7 @@ Public NotInheritable Class SysUtils
                 Try
 
                     fi.LastWriteTime = timestamp
-                    Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
+                    '''Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
                 Catch ex As Exception
                     Logger.Log2("[TIMESTAMP] ERROR setting timestamp on: " & fi.Name)
                 End Try
@@ -222,9 +222,9 @@ Public NotInheritable Class SysUtils
                         ''' 'fi.Delete()
 
                         fi.Delete()
-                        Logger.Log2("[TIMESTAMP] deleted: " & fi.Name)
+                        '''Logger.Log2("[DELETE] deleted: " & fi.Name)
                     Catch ex As Exception
-                        Logger.Log2("[TIMESTAMP] ERROR Deleting:" & fi.Name)
+                        Logger.Log2("[DELETE] ERROR Deleting:" & fi.Name)
                     End Try
                 Else
                     Logger.Log2("[TIMESTAMP] orphan file: " & fi.Name & " is old: " & x & " days of " & conservaper)
@@ -235,7 +235,7 @@ Public NotInheritable Class SysUtils
         Try
             DeleteEmptyFolder(d)
         Catch ex As Exception
-            Dim h As Integer = 0
+            Logger.Log("[TASK] ERROR on analyzing files...")
         End Try
 
     End Sub
