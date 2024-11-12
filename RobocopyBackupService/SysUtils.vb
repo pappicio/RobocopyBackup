@@ -246,9 +246,7 @@ Public NotInheritable Class SysUtils
 
                 ' Verifica l'esistenza del file
                 If FileExists(origine) Then
-                    Console.WriteLine("Il file esiste.")
-                Else
-                    Console.WriteLine("Il file non esiste.")
+                    origince = True
                 End If
             End If
 
