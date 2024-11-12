@@ -33,6 +33,8 @@ Public Partial Class AboutForm
 	End Sub
 
 	Private Sub AboutForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+		Dim Version As Version = Assembly.GetExecutingAssembly().GetName().Version
+		Label3.Text = ("Versione: " + Version.Major.ToString + "." + Version.Minor.ToString)
 		Label1.Focus()
 		TextBox1.Select(0, 0)
 	End Sub

@@ -85,7 +85,7 @@ Partial Public Class SettingsForm
 
 
         Dim input As String = Console.ReadLine()
-        Dim enableLongPaths As Boolean
+
 
 
         Try

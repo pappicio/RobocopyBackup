@@ -60,14 +60,7 @@ Public NotInheritable Class SysUtils
 
 
 
-    <DllImport("kernel32.dll", EntryPoint:="CreateHardLinkW", CharSet:=CharSet.Unicode)>
-    Private Shared Function CreateHardlink(lpFileName As String, lpExistingFileName As String, lpSecurityAttributes As IntPtr) As Integer
-    End Function
 
-
-    <DllImport("kernel32.dll", EntryPoint:="CreateSymbolicLinkW", CharSet:=CharSet.Unicode)>
-    Private Shared Function CreateSymlink(lpSymlinkFileName As String, lpTargetFileName As String, dwFlags As Integer) As Integer
-    End Function
     Private Shared Sub deletefiles(f As String)
         Dim psi As New ProcessStartInfo("cmd", String.Format("/C rmdir /s /q {0}", EscapeArg(f))) With {
             .WindowStyle = ProcessWindowStyle.Hidden
