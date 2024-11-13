@@ -57,7 +57,6 @@
   <ItemGroup>
     <Compile Include="Config.vb" />
     <Compile Include="Credential.vb" />
-    <Compile Include="LongFiles.vb" />
     <Compile Include="IpcServer.vb" />
     <Compile Include="IpcService.vb" />
     <Compile Include="LogCleaner.vb" />

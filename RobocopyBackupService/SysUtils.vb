@@ -38,26 +38,25 @@ Public NotInheritable Class SysUtils
 
         Try
 
-            Dim uncPath As String = If(Unc.IsUncPath(task.Source), task.Source, If(Unc.IsUncPath(task.Destination), task.Destination, Nothing))
-            Using unc__1 As New Unc(uncPath)
-                Using unc__2 As New Unc(uncPath)
-                    Dim c As New Credential
+            Dim uncPathsource As String = If(Unc.IsUncPath(task.Source), task.Source, Nothing)
+            Dim uncPathdest As String = If(Unc.IsUncPath(task.Destination), task.Destination, Nothing)
 
-                    c.Username = Credential.Decrypt(task.Guid, task.originuser)
-                    c.Password = Credential.Decrypt(task.Guid, task.originpass)
-                    If c.Username <> "" And c.Password <> "" Then
-                        unc__1.Connect(c)
-                    End If
-                    c = New Credential
-                    c.Username = Credential.Decrypt(task.Guid, task.destuser)
-                    c.Password = Credential.Decrypt(task.Guid, task.destpass)
-                    If c.Username <> "" And c.Password <> "" Then
-                        unc__2.Connect(c)
-                    End If
+            Dim unc__1 As New Unc(uncPathsource)
+            Dim c As New Credential
+            c.Username = Credential.Decrypt(task.Guid, task.originuser)
+            c.Password = Credential.Decrypt(task.Guid, task.originpass)
+            unc__1.Connect(c)
 
-                    RunRobocopy(task, logFile)
-                End Using
-            End Using
+
+
+            Dim unc__2 As New Unc(uncPathdest)
+            Dim c2 As New Credential
+            c2.Username = Credential.Decrypt(task.Guid, task.destuser)
+            c2.Password = Credential.Decrypt(task.Guid, task.destpass)
+            unc__2.Connect(c2)
+            RunRobocopy(task, logFile)
+            unc__1.Dispose()
+            unc__2.Dispose()
         Catch e As Exception
             Using streamWriter As New StreamWriter(logFile, True)
                 streamWriter.Write(e.Message)
