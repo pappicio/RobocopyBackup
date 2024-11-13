@@ -28,18 +28,18 @@ Partial Class SettingsForm
         Me.logRetentionLabel.Location = New System.Drawing.Point(21, 34)
         Me.logRetentionLabel.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.logRetentionLabel.Name = "logRetentionLabel"
-        Me.logRetentionLabel.Size = New System.Drawing.Size(140, 24)
+        Me.logRetentionLabel.Size = New System.Drawing.Size(176, 29)
         Me.logRetentionLabel.TabIndex = 2
         Me.logRetentionLabel.Text = "LogRetention:"
         '
         'logRetentionNumericUpDown
         '
-        Me.logRetentionNumericUpDown.Location = New System.Drawing.Point(280, 30)
+        Me.logRetentionNumericUpDown.Location = New System.Drawing.Point(297, 30)
         Me.logRetentionNumericUpDown.Margin = New System.Windows.Forms.Padding(7)
         Me.logRetentionNumericUpDown.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.logRetentionNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.logRetentionNumericUpDown.Name = "logRetentionNumericUpDown"
-        Me.logRetentionNumericUpDown.Size = New System.Drawing.Size(77, 28)
+        Me.logRetentionNumericUpDown.Size = New System.Drawing.Size(77, 34)
         Me.logRetentionNumericUpDown.TabIndex = 3
         Me.logRetentionNumericUpDown.Value = New Decimal(New Integer() {15, 0, 0, 0})
         '
@@ -56,9 +56,9 @@ Partial Class SettingsForm
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(387, 30)
+        Me.CheckBox1.Location = New System.Drawing.Point(384, 30)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(163, 28)
+        Me.CheckBox1.Size = New System.Drawing.Size(204, 33)
         Me.CheckBox1.TabIndex = 5
         Me.CheckBox1.Text = "Log di DEBUG"
         Me.CheckBox1.UseVisualStyleBackColor = True
@@ -75,7 +75,7 @@ Partial Class SettingsForm
         '
         'SettingsForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 22.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(15.0!, 29.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(610, 284)
         Me.Controls.Add(Me.Button1)
