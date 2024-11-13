@@ -31,7 +31,6 @@ Partial Class TaskForm
         Me.directoriesGroupBox = New System.Windows.Forms.GroupBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.onlyfoldercheck = New System.Windows.Forms.CheckBox()
         Me.destpasstext = New System.Windows.Forms.TextBox()
@@ -56,6 +55,7 @@ Partial Class TaskForm
         Me.monthlyRadioButton = New System.Windows.Forms.RadioButton()
         Me.sourceFolderBrowserDialog = New RobocopyBackup.OpenFolderDialog()
         Me.destinationFolderBrowserDialog = New RobocopyBackup.OpenFolderDialog()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.retentionNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.directoriesGroupBox.SuspendLayout()
         Me.methodGroupBox.SuspendLayout()
@@ -200,9 +200,9 @@ Partial Class TaskForm
         '
         'directoriesGroupBox
         '
+        Me.directoriesGroupBox.Controls.Add(Me.Label6)
         Me.directoriesGroupBox.Controls.Add(Me.Label7)
         Me.directoriesGroupBox.Controls.Add(Me.Label5)
-        Me.directoriesGroupBox.Controls.Add(Me.Label6)
         Me.directoriesGroupBox.Controls.Add(Me.Label9)
         Me.directoriesGroupBox.Controls.Add(Me.onlyfoldercheck)
         Me.directoriesGroupBox.Controls.Add(Me.destpasstext)
@@ -249,16 +249,6 @@ Partial Class TaskForm
         Me.Label5.Size = New System.Drawing.Size(667, 25)
         Me.Label5.TabIndex = 26
         Me.Label5.Text = "selezionare un percorso locale o Inserire percorso di rete tipo: \\192.168.1.3 "
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(206, 313)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(382, 25)
-        Me.Label6.TabIndex = 25
-        Me.Label6.Text = "Inserire percorso di rete tipo: \\192.168.1.3 "
         '
         'Label9
         '
@@ -507,6 +497,16 @@ Partial Class TaskForm
         '
         Me.destinationFolderBrowserDialog.SelectedPath = Nothing
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(206, 313)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(667, 25)
+        Me.Label6.TabIndex = 28
+        Me.Label6.Text = "selezionare un percorso locale o Inserire percorso di rete tipo: \\192.168.1.3 "
+        '
         'TaskForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
@@ -581,7 +581,7 @@ Partial Class TaskForm
     Private WithEvents Label2 As Windows.Forms.Label
     Friend WithEvents onlyfoldercheck As Windows.Forms.CheckBox
     Private WithEvents Label9 As Windows.Forms.Label
-    Private WithEvents Label6 As Windows.Forms.Label
     Private WithEvents Label7 As Windows.Forms.Label
     Private WithEvents Label5 As Windows.Forms.Label
+    Private WithEvents Label6 As Windows.Forms.Label
 End Class
