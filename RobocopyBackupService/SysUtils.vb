@@ -128,7 +128,7 @@ Public NotInheritable Class SysUtils
             Try
                 timestamp_check(task.Source, task.Destination, task.Retention, logFile)
             Catch ex As Exception
-                Logger.Log("[TASK] ERROR on TIMESTAMP SET ON ALL FILES!")
+                Logger.Log("[TASK] ERROR: " & ex.Message)
             End Try
             Logger.close()
         End If
@@ -196,14 +196,16 @@ Public NotInheritable Class SysUtils
 
         Dim origine As String = ""
         Dim timestamp As Date = DateTime.Now
-        d = "\\?\UNC\" & d.Substring(2)
+
+        If (d.StartsWith("\\")) And (Not d.StartsWith("\\?\UNC\")) Then
+            d = "\\?\UNC\" & d.Substring(2)
+        End If
+
         Dim myfiles As String() = IO.Directory.GetFiles(d, "*.*", IO.SearchOption.AllDirectories)
 
         For Each file As String In myfiles
 
             origine = file.Replace(d, o)
-
-
 
             Dim originlong As Boolean = False
 
@@ -220,17 +222,9 @@ Public NotInheritable Class SysUtils
             End If
 
 
-
-
-
-            'If file.Length > 255 Then
-            'file = "\\?\UNC\" & file.Substring(2)
-            'End If
-
             If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) Then
-                    file = "\\?\UNC\" & file.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-                End If
-
+                file = "\\?\UNC\" & file.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+            End If
 
 
             Dim solofolder As String = Mid(file, 1, file.LastIndexOf("\"))
@@ -257,9 +251,6 @@ Public NotInheritable Class SysUtils
 
 
 
-
-
-            ''' If IO.File.Exists(origine) Then
             If origince Then
 
                 Dim fi As New FileInfo(file)
@@ -287,7 +278,7 @@ Public NotInheritable Class SysUtils
                 Try
 
                     fi.LastWriteTime = timestamp
-                    Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
+                    '''Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
                 Catch ex As Exception
                     Logger.Log2("[TIMESTAMP] ERROR setting timestamp on: " & fi.Name)
                 End Try
@@ -295,15 +286,14 @@ Public NotInheritable Class SysUtils
                 'Logger.updatefile(file)
             Else
                 Dim fi As New FileInfo(file)
-                'Dim xd As Date = fi.LastWriteTime
-                'fi.LastWriteTime = Convert.ToDateTime("12/10/2024")
+
                 Dim x As Integer = Convert.ToInt32(DateDiff(DateInterval.Day, fi.LastWriteTime, Now.Date))
                 If x > conservaper Then
                     '   Dim f As String = Mid(file, file.LastIndexOf("\") + 2, file.Length)
                     Try
-                        ''' 'fi.Delete()
 
                         fi.Delete()
+
                         '''Logger.Log2("[DELETE] deleted: " & fi.Name)
                     Catch ex As Exception
                         Logger.Log2("[DELETE] ERROR Deleting:" & fi.Name)
@@ -314,10 +304,11 @@ Public NotInheritable Class SysUtils
             End If
             '''''Logger.Log("")
         Next
+
         Try
             DeleteEmptyFolder(d)
         Catch ex As Exception
-            Logger.Log("[TASK] ERROR on analyzing files...")
+            Logger.Log("[TASK] ERROR on analyzing files..." & ex.Message)
         End Try
 
     End Sub
@@ -326,25 +317,17 @@ Public NotInheritable Class SysUtils
 
         ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
 
+
         ' Ottieni tutte le sottodirectory della directory corrente
         Dim sottodirectory As String() = Directory.GetDirectories(sDirectoryPath)
 
 
         For Each subDir As String In sottodirectory
 
-            If subDir.Length > 255 Then
-                If (subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) Then
-                    subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-                End If
-                If (Not subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) And (Not subDir.StartsWith("\\?\")) Then
-                    subDir = "\\?\" & subDir ' Rimuovi \\ e aggiungi \\?\UNC\
-                End If
+            If (subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) Then
+                subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
             End If
 
-
-            '''If subDir.Length > 255 And (Not (subDir.StartsWith("\\?\UNC\"))) Then
-            '''subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-            '''End If
             ' Richiama ricorsivamente la funzione per scansionare eventuali sottodirectory
             DeleteEmptyFolder(subDir)
 
@@ -352,16 +335,25 @@ Public NotInheritable Class SysUtils
 
             ' Controlla se la directory è vuota
             If Directory.GetFiles(subDir).Length = 0 AndAlso Directory.GetDirectories(subDir).Length = 0 Then
+
+                ' Elimina la directory se è vuota
+
                 Try
-                    ' Elimina la directory se è vuota
-                    Directory.Delete(subDir)
 
                     Logger.Log("[DELETE] Deleted empty folder: " & subDir)
 
                 Catch ex As Exception
-                    ' Gestisce eventuali errori, ad esempio permessi insufficienti
+                    Logger.Log("[DELETE] " & ex.Message)
+
+                End Try
+
+                Try
+                    Directory.Delete(subDir)
+                Catch ex As Exception
                     Logger.Log("[DELETE] ERROR deleting empty folder: " & subDir)
                 End Try
+
+
             End If
         Next
 
