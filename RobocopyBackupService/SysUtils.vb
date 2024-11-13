@@ -45,15 +45,18 @@ Public NotInheritable Class SysUtils
             Dim c As New Credential
             c.Username = Credential.Decrypt(task.Guid, task.originuser)
             c.Password = Credential.Decrypt(task.Guid, task.originpass)
-            unc__1.Connect(c)
-
-
+            If uncPathsource IsNot Nothing Then
+                unc__1.Connect(c)
+            End If
 
             Dim unc__2 As New Unc(uncPathdest)
             Dim c2 As New Credential
             c2.Username = Credential.Decrypt(task.Guid, task.destuser)
             c2.Password = Credential.Decrypt(task.Guid, task.destpass)
-            unc__2.Connect(c2)
+            If uncPathdest IsNot Nothing Then
+                unc__2.Connect(c2)
+            End If
+
             RunRobocopy(task, logFile)
             unc__1.Dispose()
             unc__2.Dispose()
