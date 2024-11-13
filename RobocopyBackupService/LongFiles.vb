@@ -1,4 +1,6 @@
-﻿Public Shared Class longfile
+﻿Imports System.Runtime.InteropServices
+
+Public Class longfile
 
     ' Dichiarazione dell'API FindFirstFile di Windows
     <DllImport("kernel32.dll", SetLastError:=True, CharSet:=CharSet.Unicode)>
@@ -22,7 +24,7 @@
         <MarshalAs(UnmanagedType.ByValTStr, SizeConst:=260)> Public cFileName As String
         <MarshalAs(UnmanagedType.ByValTStr, SizeConst:=14)> Public cAlternateFileName As String
     End Structure
-    Shared Function FileExists(ByVal filePath As String) As Boolean
+    Public Shared Function FileExists(ByVal filePath As String) As Boolean
         ' Rimuove il prefisso \\?\ se presente, poiché FindFirstFile lo gestisce direttamente
         If filePath.StartsWith("\\?\") Then
             filePath = filePath.Substring(4)

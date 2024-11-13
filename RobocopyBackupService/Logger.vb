@@ -17,7 +17,7 @@ Public NotInheritable Class Logger
     Private Shared m_Writer As StreamWriter
 
     Private Const _dateFormat As String = "yyyy-MM-dd HH:mm:ss.fff"
-
+    Private Const _dateFormat2 As String = "HH:mm:ss.fff"
 
     Public Shared Sub LogCleanupNextRunDate(nextCleanupDate As DateTime)
         If Writer IsNot Nothing Then
@@ -168,7 +168,7 @@ Public NotInheritable Class Logger
     Public Shared Sub Log(message As String)
         If Writer IsNot Nothing Then
             If message <> "" Then
-                Writer.WriteLine(String.Format("{0} - {1}", DateTime.Now.ToString(_dateFormat), message))
+                Writer.WriteLine(String.Format("{0} - {1}", DateTime.Now.ToString(_dateFormat2), message))
             Else
                 Writer.WriteLine("")
             End If

@@ -156,9 +156,13 @@ Partial Public Class TaskForm
             Dim openFolderDialog As OpenFolderDialog = Me.destinationFolderBrowserDialog
             Dim text As String = Unc.TranslatePath(Me.destinationFolderBrowserDialog.SelectedPath)
             If Unc.IsUncPath(text) = False Then
-                MsgBox("sono mmessi solo percorsi unc (\\IP_MACCHINA\SHARED_FOLDER\)")
-                Me.destinationFolderBrowserDialog.SelectedPath = ""
-                Return
+                'MsgBox("sono mmessi solo percorsi unc (\\IP_MACCHINA\SHARED_FOLDER\)")
+                MsgBox("Con l'uso di cartelle locali ci potrebbero esere ancora anomalie su percorsi lunghi." & vbCr &
+                       "è preferibile comunque usare un percorso di rete che inceve non crea mai problemi!")
+
+                'Me.destinationFolderBrowserDialog.SelectedPath = ""
+                'Return
+
             End If
 
             Dim text2 As String = text
@@ -290,9 +294,9 @@ Partial Public Class TaskForm
             Dim openFolderDialog As OpenFolderDialog = Me.sourceFolderBrowserDialog
             Dim text As String = Unc.TranslatePath(Me.sourceFolderBrowserDialog.SelectedPath)
             If Unc.IsUncPath(text) = False Then
-                MsgBox("Con l'uso di cartelle locali ci sono ancora anomalie su percorsi lunghi." & vbCr &
-                       "è preferibile comunque usare un percorso di rete che inceve non" & vbCr &
-                       "crea mai problemi!")
+                MsgBox("Con l'uso di cartelle locali ci potrebbero esere ancora anomalie su percorsi lunghi." & vbCr &
+                      "è preferibile comunque usare un percorso di rete che inceve non crea mai problemi!")
+
                 '    Me.sourceFolderBrowserDialog.SelectedPath = ""
                 ''' Return
             End If

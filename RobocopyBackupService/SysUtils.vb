@@ -42,12 +42,19 @@ Public NotInheritable Class SysUtils
             Using unc__1 As New Unc(uncPath)
                 Using unc__2 As New Unc(uncPath)
                     Dim c As New Credential
+
                     c.Username = Credential.Decrypt(task.Guid, task.originuser)
                     c.Password = Credential.Decrypt(task.Guid, task.originpass)
-                    unc__1.Connect(c)
+                    If c.Username <> "" And c.Password <> "" Then
+                        unc__1.Connect(c)
+                    End If
+                    c = New Credential
                     c.Username = Credential.Decrypt(task.Guid, task.destuser)
                     c.Password = Credential.Decrypt(task.Guid, task.destpass)
-                    unc__2.Connect(c)
+                    If c.Username <> "" And c.Password <> "" Then
+                        unc__2.Connect(c)
+                    End If
+
                     RunRobocopy(task, logFile)
                 End Using
             End Using
@@ -137,25 +144,34 @@ Public NotInheritable Class SysUtils
 
     Shared oldfolder As String = ""
 
-
-
-
-
-    ''' '''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    ''
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
     Private Shared Sub timestamp_check(o As String, d As String, conservaper As UShort, logfile As String)
 
 
         Dim origine As String = ""
         Dim timestamp As Date = DateTime.Now
 
+
         If (d.StartsWith("\\")) And (Not d.StartsWith("\\?\UNC\")) Then
             d = "\\?\UNC\" & d.Substring(2)
         End If
 
+
+        If (Not d.StartsWith("\\")) And (Not d.StartsWith("\\?\")) Then
+            d = "\\?\" & d
+        End If
+
+        If (o.StartsWith("\\")) And (Not o.StartsWith("\\?\UNC\")) Then
+            o = "\\?\UNC\" & o.Substring(2)
+        End If
+
+        If (Not o.StartsWith("\\")) And (Not o.StartsWith("\\?\")) Then
+            o = "\\?\" & o
+        End If
+
         Dim myfiles As String() = IO.Directory.GetFiles(d, "*.*", IO.SearchOption.AllDirectories)
+
+        '''Dim yourfiles As String() = IO.Directory.GetFiles(o, "*.*", IO.SearchOption.AllDirectories)
+
 
         For Each file As String In myfiles
 
@@ -164,24 +180,34 @@ Public NotInheritable Class SysUtils
             Dim originlong As Boolean = False
 
             ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
-            If origine.Length > 255 Then
-                If (origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) Then
-                    origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-                    originlong = True
-                End If
-                If (Not origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
-                    origine = "\\?\" & origine ' Rimuovi \\ e aggiungi \\?\UNC\
-                    originlong = True
-                End If
+            ''' If origine.Length > 255 Then
+
+
+
+            'in test, se va bene, poi posso anche eliminare tutto qui sotto...............
+            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+            If (origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
+                origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                originlong = True
             End If
+            If (Not origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
+                origine = "\\?\" & origine ' Rimuovi \\ e aggiungi \\?\UNC\
+                originlong = True
+            End If
+            '''End If
 
-
-            If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) Then
+            If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
                 file = "\\?\UNC\" & file.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                '''''  originlong = True
             End If
+            If (Not file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
+                file = "\\?\" & file ' Rimuovi \\ e aggiungi \\?\UNC\
+                ''''' originlong = True
+            End If
+            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 
-            Dim solofolder As String = Mid(file, 1, file.LastIndexOf("\"))
+            Dim solofolder As String = epura(Mid(file, 1, file.LastIndexOf("\")))
             If oldfolder <> solofolder Then
                 oldfolder = solofolder
                 Logger.Log2("")
@@ -190,23 +216,23 @@ Public NotInheritable Class SysUtils
 
             Dim origince As Boolean = False
 
-            If originlong Then
-                ' Verifica l'esistenza del file
-                If FileExists(origine) Then
-                    origince = True
-                End If
-            Else
-                Dim a As Boolean = IO.File.Exists(origine)
-                If a Then
-                    origince = True
-                End If
-            End If
+            ''' If originlong Then
+            ' Verifica l'esistenza del file
+            '''If longfile.FileExists(origine) Then
+            '''origince = True
+            '''End If
+            '''Else
+            ''' Dim a As Boolean = IO.File.Exists(origine)
+            '''If a Then
+            '''origince = True
+            ''' End If
+            '''End If
 
 
 
 
-            If origince Then
-
+            'If origince Then
+            If IO.File.Exists(origine) Then
                 Dim fi As New FileInfo(file)
 
                 With fi
@@ -256,7 +282,6 @@ Public NotInheritable Class SysUtils
                     Logger.Log2("[TIMESTAMP] orphan file: " & fi.Name & " is old: " & x & " days of " & conservaper)
                 End If
             End If
-            '''''Logger.Log("")
         Next
 
         Try
@@ -278,9 +303,19 @@ Public NotInheritable Class SysUtils
 
         For Each subDir As String In sottodirectory
 
-            If (subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) Then
+
+            ''''' in testing, se va bene, posso anche eliminare qui sotto
+            '''''''''''''''''''''''''''''''''''''''''''
+            If (subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) And (Not subDir.StartsWith("\\?\")) Then
                 subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
             End If
+
+            If (Not subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) And (Not subDir.StartsWith("\\?\")) Then
+                subDir = "\\?\" & subDir
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''
+            '''
+
 
             ' Richiama ricorsivamente la funzione per scansionare eventuali sottodirectory
             DeleteEmptyFolder(subDir)
@@ -294,8 +329,7 @@ Public NotInheritable Class SysUtils
 
                 Try
 
-                    Logger.Log("[DELETE] Deleted empty folder: " & subDir)
-
+                    Logger.Log("[DELETE] Deleted empty folder: " & epura(subDir))
                 Catch ex As Exception
                     Logger.Log("[DELETE] " & ex.Message)
 
@@ -304,7 +338,7 @@ Public NotInheritable Class SysUtils
                 Try
                     Directory.Delete(subDir)
                 Catch ex As Exception
-                    Logger.Log("[DELETE] ERROR deleting empty folder: " & subDir)
+                    Logger.Log("[DELETE] ERROR deleting empty folder: " & epura(subDir))
                 End Try
 
 
@@ -320,5 +354,11 @@ Public NotInheritable Class SysUtils
 
     End Sub
 
+    Shared Function epura(s As String) As String
+        If s.StartsWith("\\?\UNC\") Then
+            Return s.Replace("\\?\UNC\", "\\")
+        End If
+        Return s.Replace("\\?\", "")
+    End Function
 
 End Class

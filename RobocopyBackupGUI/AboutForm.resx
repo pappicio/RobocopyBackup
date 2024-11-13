@@ -118,7 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="TextBox1.Text" xml:space="preserve">
-    <value>Semplice da usare. Copiare gli eseguibili in una cartella (preferibilmente del server con le condivise origine)
+    <value>Semplice da usare. Copiare gli eseguibili in una cartella (preferibilmente del server e con le condivise origine)
+
+Una nota sulla tipologia di backup. una sorta di incrementale con conservazione dei files  per giorni ma, 
+ovviamente ad ogni backup non conserverà la versione precedente del file,  ma ad ogni backup. conserverà 
+l'ultima revisione del file, ma con la possibilità,  se cancellato 5 giorni fa, di recupero dello stesso se 
+la conservazione è stata impostata ad un periodo superiore (da 6 giorni a salire, per fare un esempio.)
 
   aggiungere nuove attività specificando:
 - nome attività (sarà poi la cartella dei log della attività stessa)
@@ -149,7 +154,7 @@ in merito a:
     per dirne uno, e li non potrete copiare assieme a cartelle/files anche i premessi NTFS relativi, a meno che 
     quel volume linux, non sia stato preventivamente formattato in NTFS!
 
-- Copia permessi NTFS, esegue dei backup completi (incrementali), copiando: 
+- Copia permessi NTFS, esegue dei backup completi ('pseudo' incrementali), copiando: 
    Struttura cartelle, tutti i files e persino i permessi NTFS su di essi, se invece come detto sopra,
    la cartella destinazione non fosse NTFS, non potrete spuntare quel flag, pena perdita di quasi 
    tutte le sottocartelle dalla clonazionee da origine a destinazione (in pratica in destinazione troverete
