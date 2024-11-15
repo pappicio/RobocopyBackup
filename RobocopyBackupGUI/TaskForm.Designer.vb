@@ -1,3 +1,4 @@
+
 Imports RobocopyBackup.RobocopyBackup
 
 Partial Class TaskForm
@@ -69,9 +70,9 @@ Partial Class TaskForm
         Me.titleLabel.Location = New System.Drawing.Point(36, 15)
         Me.titleLabel.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.titleLabel.Name = "titleLabel"
-        Me.titleLabel.Size = New System.Drawing.Size(55, 25)
+        Me.titleLabel.Size = New System.Drawing.Size(60, 25)
         Me.titleLabel.TabIndex = 0
-        Me.titleLabel.Text = "Title:"
+        Me.titleLabel.Text = "Title: "
         '
         'titleTextBox
         '

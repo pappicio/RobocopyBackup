@@ -181,7 +181,7 @@ Partial Public Class TaskForm
 
 
     Private Sub Localize()
-        Text = Lang.[Get]("Task")
+        '''Text = Lang.[Get]("Task")
         titleLabel.Text = Lang.[Get]("Title", ":")
         directoriesGroupBox.Text = Lang.[Get]("Directories")
         sourceLabel.Text = Lang.[Get]("Source", ":")
@@ -442,6 +442,14 @@ Partial Public Class TaskForm
         If taskx IsNot Nothing Then
             taskx = Nothing
         End If
+
+    End Sub
+
+    Private Sub directoriesGroupBox_Enter(sender As Object, e As EventArgs) Handles directoriesGroupBox.Enter
+
+    End Sub
+
+    Private Sub titleLabel_Click(sender As Object, e As EventArgs) Handles titleLabel.Click
 
     End Sub
 End Class
