@@ -50,7 +50,68 @@ Public NotInheritable Class SysUtils
         End Try
     End Sub
 
-
+    Shared Sub checkerror(s As String, a As Integer)
+        Select Case a
+            Case 2
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: File o risorsa di rete non trovato.")
+            Case 3
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Percorso specificato non trovato.")
+            Case 5
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Accesso negato.")
+            Case 53
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: La rete di destinazione è irraggiungibile.")
+            Case 64
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Il percorso di rete non è valido.")
+            Case 67
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Il nome di rete non è corretto.")
+            Case 85
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: La connessione di rete è già assegnata.")
+            Case 121
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Timeout durante il tentativo di connessione alla risorsa di rete.")
+            Case 259
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Non ci sono più elementi da enumerare.")
+            Case 487
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Indirizzo non valido.")
+            Case 1219
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Esiste già una connessione con credenziali diverse.")
+            Case 1221
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: L'utente specificato non esiste.")
+            Case 1231
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Il nome di rete è stato eliminato.")
+            Case 1240
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Provider di rete errato.")
+            Case 1203
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Parametro non valido.")
+            Case 1323
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Violazione delle politiche relative alla password.")
+            Case 1326
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Nome utente o password non corretti.")
+            Case 1327
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Restrizioni sull'account impediscono l'accesso.")
+            Case 1331
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: L'account dell'utente è disabilitato.")
+            Case 1355
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Il dominio specificato non esiste o non è raggiungibile.")
+            Case 1385
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: L'utente non dispone dei diritti di accesso richiesti.")
+            Case 1396
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Orari di accesso non validi per l'account dell'utente.")
+            Case 1397
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Il computer non è autorizzato per l'accesso dell'utente.")
+            Case 1722
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Il server RPC non è disponibile.")
+            Case 2221
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: L'utente specificato non esiste.")
+            Case 2242
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: La password dell'utente è scaduta.")
+            Case 2250
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Nessuna connessione alla risorsa specificata.")
+            Case 2404
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: La connessione specificata non esiste.")
+            Case Else
+                Logger.Log("[CONNECTION] to: " & s & " " & "Errore: Errore sconosciuto: " & a)
+        End Select
+    End Sub
     Public Shared Sub RunBackup(task As Task)
         Dim timestamp As String = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")
         Dim logFile As String = GetLogName(task.Guid, timestamp)
@@ -74,29 +135,7 @@ Public NotInheritable Class SysUtils
                 If a = 0 Then
                     Logger.Log("[CONNECTION] connection to share: " & uncPathsource & ". OK")
                 Else
-                    ' Gestisci gli errori in base al codice di errore
-                    Select Case a
-                        Case 85
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: La connessione di rete è già assegnata.")
-                        Case 1219
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Conflitto tra le credenziali di rete.")
-                        Case 1231
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il nome di rete è stato eliminato.")
-                        Case 1240
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Provider di rete errato.")
-                        Case 1203
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Parametro non valido.")
-                        Case 5
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Accesso negato.")
-                        Case 53
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: La rete di destinazione è irraggiungibile.")
-                        Case 64
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il percorso di rete non è valido.")
-                        Case 67
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il nome di rete non è corretto.")
-                        Case Else
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore sconosciuto: " & a)
-                    End Select
+                    checkerror(uncPathsource, a)
                 End If
                 Logger.close()
             End If
@@ -111,30 +150,7 @@ Public NotInheritable Class SysUtils
                 If a = 0 Then
                     Logger.Log("[CONNECTION] Connection to share: " & uncPathdest & ". OK")
                 Else
-
-                    ' Gestisci gli errori in base al codice di errore
-                    Select Case a
-                        Case 85
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: La connessione di rete è già assegnata.")
-                        Case 1219
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Conflitto tra le credenziali di rete.")
-                        Case 1231
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Il nome di rete è stato eliminato.")
-                        Case 1240
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Provider di rete errato.")
-                        Case 1203
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Parametro non valido.")
-                        Case 5
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Accesso negato.")
-                        Case 53
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: La rete di destinazione è irraggiungibile.")
-                        Case 64
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Il percorso di rete non è valido.")
-                        Case 67
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Il nome di rete non è corretto.")
-                        Case Else
-                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore sconosciuto: " & a)
-                    End Select
+                    checkerror(uncPathdest, a)
                 End If
                 Logger.close()
             End If
