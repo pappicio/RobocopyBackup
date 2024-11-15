@@ -1,4 +1,5 @@
 ﻿Imports System
+Imports System.Diagnostics
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Text
@@ -34,10 +35,10 @@ Namespace RobocopyBackup
             Return IO.Path.Combine(stringBuilder.ToString(), path_split(1))
         End Function
 
-        Public Sub Connect(ByVal credential As Credential)
+        Public Function Connect(ByVal credential As Credential) As Integer
             If credential Is Nothing Then
                 _disposed = True
-                Return
+                Return -1
             End If
 
             Dim path_split As String() = _path.Split(New Char() {"\"c})
@@ -51,8 +52,10 @@ Namespace RobocopyBackup
                 .ui2_usecount = 1
             }
             Dim parmErr As UInteger = Nothing
-            NetUseAdd(Nothing, 2, useinfo, parmErr)
-        End Sub
+            Dim a As Integer = Convert.ToInt32(NetUseAdd(Nothing, 2, useinfo, parmErr))
+            Return a
+
+        End Function
 
 
 

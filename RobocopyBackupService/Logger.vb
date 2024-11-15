@@ -146,9 +146,15 @@ Public NotInheritable Class Logger
     End Sub
 
     Public Shared Sub Open(path As String)
-        Writer = New StreamWriter(path, True) With {
-             .AutoFlush = True
-        }
+        Try
+            Writer = New StreamWriter(path, True) With {
+            .AutoFlush = True
+       }
+        Catch ex As Exception
+
+        End Try
+
+        Log("***************************************")
     End Sub
 
     Public Shared Sub close()

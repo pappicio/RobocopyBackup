@@ -31,10 +31,33 @@ Public NotInheritable Class SysUtils
         Next
     End Sub
 
+
+    Public Shared Sub EseguiComandoNetUseDelete()
+        ' Crea un nuovo processo per eseguire il comando nel prompt dei comandi
+        Dim process As New Process()
+        process.StartInfo.FileName = "cmd.exe"
+        process.StartInfo.Arguments = "/c net use * /delete /y" ' /c esegue il comando e poi chiude la finestra use * /delete /y
+        process.StartInfo.RedirectStandardOutput = True ' Rende visibile l'output del comando (facoltativo)
+        process.StartInfo.UseShellExecute = False ' Per non usare la shell di Windows
+        process.StartInfo.CreateNoWindow = True ' Non mostrare la finestra del cmd
+
+        Try
+            process.Start() ' Avvia il processo
+            process.WaitForExit() ' Attende che il processo termini
+            Console.WriteLine("Comando eseguito con successo: net use * /delete")
+        Catch ex As Exception
+            Console.WriteLine("Errore durante l'esecuzione del comando: " & ex.Message)
+        End Try
+    End Sub
+
+
     Public Shared Sub RunBackup(task As Task)
         Dim timestamp As String = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")
         Dim logFile As String = GetLogName(task.Guid, timestamp)
         Dim destDir As String = (task.Destination)
+
+
+        EseguiComandoNetUseDelete()
 
         Try
 
@@ -46,7 +69,36 @@ Public NotInheritable Class SysUtils
             c.Username = Credential.Decrypt(task.Guid, task.originuser)
             c.Password = Credential.Decrypt(task.Guid, task.originpass)
             If uncPathsource IsNot Nothing Then
-                unc__1.Connect(c)
+                Logger.Open(logFile)
+                Dim a As Integer = unc__1.Connect(c)
+                If a = 0 Then
+                    Logger.Log("[CONNECTION] connection to share: " & uncPathsource & ". OK")
+                Else
+                    ' Gestisci gli errori in base al codice di errore
+                    Select Case a
+                        Case 85
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: La connessione di rete è già assegnata.")
+                        Case 1219
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Conflitto tra le credenziali di rete.")
+                        Case 1231
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il nome di rete è stato eliminato.")
+                        Case 1240
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Provider di rete errato.")
+                        Case 1203
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Parametro non valido.")
+                        Case 5
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Accesso negato.")
+                        Case 53
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: La rete di destinazione è irraggiungibile.")
+                        Case 64
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il percorso di rete non è valido.")
+                        Case 67
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il nome di rete non è corretto.")
+                        Case Else
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore sconosciuto: " & a)
+                    End Select
+                End If
+                Logger.close()
             End If
 
             Dim unc__2 As New Unc(uncPathdest)
@@ -54,7 +106,37 @@ Public NotInheritable Class SysUtils
             c2.Username = Credential.Decrypt(task.Guid, task.destuser)
             c2.Password = Credential.Decrypt(task.Guid, task.destpass)
             If uncPathdest IsNot Nothing Then
-                unc__2.Connect(c2)
+                Logger.Open(logFile)
+                Dim a As Integer = unc__2.Connect(c2)
+                If a = 0 Then
+                    Logger.Log("[CONNECTION] Connection to share: " & uncPathdest & ". OK")
+                Else
+
+                    ' Gestisci gli errori in base al codice di errore
+                    Select Case a
+                        Case 85
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: La connessione di rete è già assegnata.")
+                        Case 1219
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Conflitto tra le credenziali di rete.")
+                        Case 1231
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il nome di rete è stato eliminato.")
+                        Case 1240
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Provider di rete errato.")
+                        Case 1203
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Parametro non valido.")
+                        Case 5
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Accesso negato.")
+                        Case 53
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: La rete di destinazione è irraggiungibile.")
+                        Case 64
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il percorso di rete non è valido.")
+                        Case 67
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il nome di rete non è corretto.")
+                        Case Else
+                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore sconosciuto: " & a)
+                    End Select
+                End If
+                Logger.close()
             End If
 
             RunRobocopy(task, logFile)
@@ -148,143 +230,135 @@ Public NotInheritable Class SysUtils
 
     Private Shared Sub timestamp_check(o As String, d As String, conservaper As UShort, logfile As String)
 
-
-        Dim origine As String = ""
-        Dim timestamp As Date = DateTime.Now
-
-
-        If (d.StartsWith("\\")) And (Not d.StartsWith("\\?\UNC\")) Then
-            d = "\\?\UNC\" & d.Substring(2)
-        End If
+        Try
+            Dim origine As String = ""
+            Dim timestamp As Date = DateTime.Now
 
 
-        If (Not d.StartsWith("\\")) And (Not d.StartsWith("\\?\")) Then
-            d = "\\?\" & d
-        End If
-
-        If (o.StartsWith("\\")) And (Not o.StartsWith("\\?\UNC\")) Then
-            o = "\\?\UNC\" & o.Substring(2)
-        End If
-
-        If (Not o.StartsWith("\\")) And (Not o.StartsWith("\\?\")) Then
-            o = "\\?\" & o
-        End If
-
-        Dim myfiles As String() = IO.Directory.GetFiles(d, "*.*", IO.SearchOption.AllDirectories)
-
-        '''Dim yourfiles As String() = IO.Directory.GetFiles(o, "*.*", IO.SearchOption.AllDirectories)
-
-
-        For Each file As String In myfiles
-
-            origine = file.Replace(d, o)
-
-            Dim originlong As Boolean = False
-
-            ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
-            ''' If origine.Length > 255 Then
-
-
-
-            'in test, se va bene, poi posso anche eliminare tutto qui sotto...............
-            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-            If (origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
-                origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-                originlong = True
-            End If
-            If (Not origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
-                origine = "\\?\" & origine ' Rimuovi \\ e aggiungi \\?\UNC\
-                originlong = True
-            End If
-            '''End If
-
-            If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
-                file = "\\?\UNC\" & file.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-                '''''  originlong = True
-            End If
-            If (Not file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
-                file = "\\?\" & file ' Rimuovi \\ e aggiungi \\?\UNC\
-                ''''' originlong = True
-            End If
-            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-            Dim solofolder As String = epura(Mid(file, 1, file.LastIndexOf("\")))
-            If oldfolder <> solofolder Then
-                oldfolder = solofolder
-                Logger.Log2("")
-                Logger.Log("[TASK] analyzing folder: " & oldfolder)
+            If (d.StartsWith("\\")) And (Not d.StartsWith("\\?\UNC\")) Then
+                d = "\\?\UNC\" & d.Substring(2)
             End If
 
-            Dim origince As Boolean = False
 
-            ''' If originlong Then
-            ' Verifica l'esistenza del file
-            '''If longfile.FileExists(origine) Then
-            '''origince = True
-            '''End If
-            '''Else
-            ''' Dim a As Boolean = IO.File.Exists(origine)
-            '''If a Then
-            '''origince = True
-            ''' End If
-            '''End If
+            If (Not d.StartsWith("\\")) And (Not d.StartsWith("\\?\")) Then
+                d = "\\?\" & d
+            End If
 
+            If (o.StartsWith("\\")) And (Not o.StartsWith("\\?\UNC\")) Then
+                o = "\\?\UNC\" & o.Substring(2)
+            End If
 
+            If (Not o.StartsWith("\\")) And (Not o.StartsWith("\\?\")) Then
+                o = "\\?\" & o
+            End If
 
+            Logger.Log("[TASK] Starting to analyze folders")
 
-            'If origince Then
-            If IO.File.Exists(origine) Then
-                Dim fi As New FileInfo(file)
+            Dim myfiles As String() = IO.Directory.GetFiles(d, "*.*", IO.SearchOption.AllDirectories)
 
-                With fi
-                    If (.Attributes And FileAttributes.Archive) = FileAttributes.Archive Then
-                        'File has the Archive attribute set
-                    End If
-                    If (.Attributes And FileAttributes.Hidden) = FileAttributes.Hidden Then
-                        'File is Hidden
-                    End If
-                    Try
-                        If (.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
-                            .Attributes = .Attributes And Not FileAttributes.ReadOnly
-                            '''Logger.Log2("[TASK] readonly attribute deleted on: " & fi.Name)
-                        End If
-                    Catch ex As Exception
-                        Logger.Log2("[TASK] ERROR deleting readonly flag on: " & fi.Name)
-                    End Try
-
-                End With
+            '''Dim yourfiles As String() = IO.Directory.GetFiles(o, "*.*", IO.SearchOption.AllDirectories)
 
 
-                'fi.CreationTime = DateTime.Now
-                Try
+            For Each file As String In myfiles
 
-                    fi.LastWriteTime = timestamp
-                    '''Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
-                Catch ex As Exception
-                    Logger.Log2("[TIMESTAMP] ERROR setting timestamp on: " & fi.Name)
-                End Try
+                origine = file.Replace(d, o)
 
-                'Logger.updatefile(file)
-            Else
-                Dim fi As New FileInfo(file)
+                Dim originlong As Boolean = False
 
-                Dim x As Integer = Convert.ToInt32(DateDiff(DateInterval.Day, fi.LastWriteTime, Now.Date))
-                If x > conservaper Then
-                    '   Dim f As String = Mid(file, file.LastIndexOf("\") + 2, file.Length)
-                    Try
+                ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
+                ''' If origine.Length > 255 Then
 
-                        fi.Delete()
 
-                        '''Logger.Log2("[DELETE] deleted: " & fi.Name)
-                    Catch ex As Exception
-                        Logger.Log2("[DELETE] ERROR Deleting:" & fi.Name)
-                    End Try
-                Else
-                    Logger.Log2("[TIMESTAMP] orphan file: " & fi.Name & " is old: " & x & " days of " & conservaper)
+
+                'in test, se va bene, poi posso anche eliminare tutto qui sotto...............
+                ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+                If (origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
+                    origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                    originlong = True
                 End If
-            End If
-        Next
+                If (Not origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
+                    origine = "\\?\" & origine ' Rimuovi \\ e aggiungi \\?\UNC\
+                    originlong = True
+                End If
+                '''End If
+
+                If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
+                    file = "\\?\UNC\" & file.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
+                    '''''  originlong = True
+                End If
+                If (Not file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
+                    file = "\\?\" & file ' Rimuovi \\ e aggiungi \\?\UNC\
+                    ''''' originlong = True
+                End If
+                ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+
+
+                Dim solofolder As String = epura(Mid(file, 1, file.LastIndexOf("\")))
+                If oldfolder <> solofolder Then
+                    oldfolder = solofolder
+                    Logger.Log2("")
+                    Logger.Log("[TASK] analyzing folder: " & oldfolder)
+                End If
+
+                Dim origince As Boolean = False
+
+                'If origince Then
+                If IO.File.Exists(origine) Then
+                    Dim fi As New FileInfo(file)
+
+                    With fi
+                        If (.Attributes And FileAttributes.Archive) = FileAttributes.Archive Then
+                            'File has the Archive attribute set
+                        End If
+                        If (.Attributes And FileAttributes.Hidden) = FileAttributes.Hidden Then
+                            'File is Hidden
+                        End If
+                        Try
+                            If (.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
+                                .Attributes = .Attributes And Not FileAttributes.ReadOnly
+                                '''Logger.Log2("[TASK] readonly attribute deleted on: " & fi.Name)
+                            End If
+                        Catch ex As Exception
+                            Logger.Log2("[TASK] ERROR deleting readonly flag on: " & fi.Name)
+                        End Try
+
+                    End With
+
+
+                    'fi.CreationTime = DateTime.Now
+                    Try
+
+                        fi.LastWriteTime = timestamp
+                        '''Logger.Log2("[TIMESTAMP] new timestamp ok on: " & fi.Name)
+                    Catch ex As Exception
+                        Logger.Log2("[TIMESTAMP] ERROR setting timestamp on: " & fi.Name)
+                    End Try
+
+                    'Logger.updatefile(file)
+                Else
+                    Dim fi As New FileInfo(file)
+
+                    Dim x As Integer = Convert.ToInt32(DateDiff(DateInterval.Day, fi.LastWriteTime, Now.Date))
+                    If x > conservaper Then
+                        '   Dim f As String = Mid(file, file.LastIndexOf("\") + 2, file.Length)
+                        Try
+
+                            fi.Delete()
+
+                            '''Logger.Log2("[DELETE] deleted: " & fi.Name)
+                        Catch ex As Exception
+                            Logger.Log2("[DELETE] ERROR Deleting:" & fi.Name)
+                        End Try
+                    Else
+                        Logger.Log2("[TIMESTAMP] orphan file: " & fi.Name & " is old: " & x & " days of " & conservaper)
+                    End If
+                End If
+            Next
+
+        Catch ex As Exception
+            Logger.Log("[TASK] ERROR Starting to analyze folders: caused by: " & ex.Message)
+        End Try
 
         Try
             DeleteEmptyFolder(d)
