@@ -29,6 +29,7 @@ Partial Class TaskForm
         Me.retentionLabel = New System.Windows.Forms.Label()
         Me.retentionNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.directoriesGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -55,7 +56,6 @@ Partial Class TaskForm
         Me.monthlyRadioButton = New System.Windows.Forms.RadioButton()
         Me.sourceFolderBrowserDialog = New RobocopyBackup.OpenFolderDialog()
         Me.destinationFolderBrowserDialog = New RobocopyBackup.OpenFolderDialog()
-        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.retentionNumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.directoriesGroupBox.SuspendLayout()
         Me.methodGroupBox.SuspendLayout()
@@ -189,11 +189,13 @@ Partial Class TaskForm
         '
         'retentionNumericUpDown
         '
+        Me.retentionNumericUpDown.BackColor = System.Drawing.SystemColors.Window
         Me.retentionNumericUpDown.Location = New System.Drawing.Point(839, 76)
         Me.retentionNumericUpDown.Margin = New System.Windows.Forms.Padding(6)
         Me.retentionNumericUpDown.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.retentionNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.retentionNumericUpDown.Name = "retentionNumericUpDown"
+        Me.retentionNumericUpDown.ReadOnly = True
         Me.retentionNumericUpDown.Size = New System.Drawing.Size(123, 30)
         Me.retentionNumericUpDown.TabIndex = 4
         Me.retentionNumericUpDown.Value = New Decimal(New Integer() {15, 0, 0, 0})
@@ -228,6 +230,16 @@ Partial Class TaskForm
         Me.directoriesGroupBox.TabIndex = 2
         Me.directoriesGroupBox.TabStop = False
         Me.directoriesGroupBox.Text = "Directories"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(206, 313)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(667, 25)
+        Me.Label6.TabIndex = 28
+        Me.Label6.Text = "selezionare un percorso locale o Inserire percorso di rete tipo: \\192.168.1.3 "
         '
         'Label7
         '
@@ -436,11 +448,13 @@ Partial Class TaskForm
         '
         'monthdayNumericUpDown
         '
+        Me.monthdayNumericUpDown.BackColor = System.Drawing.SystemColors.Window
         Me.monthdayNumericUpDown.Location = New System.Drawing.Point(839, 30)
         Me.monthdayNumericUpDown.Margin = New System.Windows.Forms.Padding(6)
         Me.monthdayNumericUpDown.Maximum = New Decimal(New Integer() {31, 0, 0, 0})
         Me.monthdayNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.monthdayNumericUpDown.Name = "monthdayNumericUpDown"
+        Me.monthdayNumericUpDown.ReadOnly = True
         Me.monthdayNumericUpDown.Size = New System.Drawing.Size(123, 30)
         Me.monthdayNumericUpDown.TabIndex = 4
         Me.monthdayNumericUpDown.Value = New Decimal(New Integer() {1, 0, 0, 0})
@@ -496,16 +510,6 @@ Partial Class TaskForm
         'destinationFolderBrowserDialog
         '
         Me.destinationFolderBrowserDialog.SelectedPath = Nothing
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(206, 313)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(667, 25)
-        Me.Label6.TabIndex = 28
-        Me.Label6.Text = "selezionare un percorso locale o Inserire percorso di rete tipo: \\192.168.1.3 "
         '
         'TaskForm
         '
