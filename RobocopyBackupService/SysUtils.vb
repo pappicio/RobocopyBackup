@@ -115,25 +115,25 @@ Public NotInheritable Class SysUtils
                     ' Gestisci gli errori in base al codice di errore
                     Select Case a
                         Case 85
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: La connessione di rete è già assegnata.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: La connessione di rete è già assegnata.")
                         Case 1219
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Conflitto tra le credenziali di rete.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Conflitto tra le credenziali di rete.")
                         Case 1231
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il nome di rete è stato eliminato.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Il nome di rete è stato eliminato.")
                         Case 1240
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Provider di rete errato.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Provider di rete errato.")
                         Case 1203
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Parametro non valido.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Parametro non valido.")
                         Case 5
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Accesso negato.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Accesso negato.")
                         Case 53
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: La rete di destinazione è irraggiungibile.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: La rete di destinazione è irraggiungibile.")
                         Case 64
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il percorso di rete non è valido.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Il percorso di rete non è valido.")
                         Case 67
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore: Il nome di rete non è corretto.")
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore: Il nome di rete non è corretto.")
                         Case Else
-                            Logger.Log("[CONNECTION] to: " & uncPathsource & " " & "Errore sconosciuto: " & a)
+                            Logger.Log("[CONNECTION] to: " & uncPathdest & " " & "Errore sconosciuto: " & a)
                     End Select
                 End If
                 Logger.close()
