@@ -281,35 +281,6 @@ Public NotInheritable Class SysUtils
 
                 Dim originlong As Boolean = False
 
-                ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
-                ''' If origine.Length > 255 Then
-
-
-
-                'in test, se va bene, poi posso anche eliminare tutto qui sotto...............
-                ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-                If (origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
-                    origine = "\\?\UNC\" & origine.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-                    originlong = True
-                End If
-                If (Not origine.StartsWith("\\")) And (Not origine.StartsWith("\\?\UNC\")) And (Not origine.StartsWith("\\?\")) Then
-                    origine = "\\?\" & origine ' Rimuovi \\ e aggiungi \\?\UNC\
-                    originlong = True
-                End If
-                '''End If
-
-                If (file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
-                    file = "\\?\UNC\" & file.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-                    '''''  originlong = True
-                End If
-                If (Not file.StartsWith("\\")) And (Not file.StartsWith("\\?\UNC\")) And (Not file.StartsWith("\\?\")) Then
-                    file = "\\?\" & file ' Rimuovi \\ e aggiungi \\?\UNC\
-                    ''''' originlong = True
-                End If
-                ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-
                 Dim solofolder As String = epura(Mid(file, 1, file.LastIndexOf("\")))
                 If oldfolder <> solofolder Then
                     oldfolder = solofolder
@@ -386,28 +357,11 @@ Public NotInheritable Class SysUtils
 
     Private Shared Sub DeleteEmptyFolder(ByVal sDirectoryPath As String)
 
-        ' Se il percorso supera i 255 caratteri, aggiungi il prefisso \\?\UNC\
-
-
         ' Ottieni tutte le sottodirectory della directory corrente
         Dim sottodirectory As String() = Directory.GetDirectories(sDirectoryPath)
 
 
         For Each subDir As String In sottodirectory
-
-
-            ''''' in testing, se va bene, posso anche eliminare qui sotto
-            '''''''''''''''''''''''''''''''''''''''''''
-            If (subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) And (Not subDir.StartsWith("\\?\")) Then
-                subDir = "\\?\UNC\" & subDir.Substring(2) ' Rimuovi \\ e aggiungi \\?\UNC\
-            End If
-
-            If (Not subDir.StartsWith("\\")) And (Not subDir.StartsWith("\\?\UNC\")) And (Not subDir.StartsWith("\\?\")) Then
-                subDir = "\\?\" & subDir
-            End If
-            '''''''''''''''''''''''''''''''''''''''''''
-            '''
-
 
             ' Richiama ricorsivamente la funzione per scansionare eventuali sottodirectory
             DeleteEmptyFolder(subDir)
@@ -436,13 +390,6 @@ Public NotInheritable Class SysUtils
 
             End If
         Next
-
-
-
-
-
-
-
 
     End Sub
 
