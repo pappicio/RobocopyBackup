@@ -279,8 +279,6 @@ Public NotInheritable Class SysUtils
 
                 origine = file.Replace(d, o)
 
-                Dim originlong As Boolean = False
-
                 Dim solofolder As String = epura(Mid(file, 1, file.LastIndexOf("\")))
                 If oldfolder <> solofolder Then
                     oldfolder = solofolder

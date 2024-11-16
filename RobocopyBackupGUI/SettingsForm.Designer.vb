@@ -70,7 +70,7 @@ Partial Class SettingsForm
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(565, 51)
         Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Abilitare percorsi lunghi"
+        Me.Button1.Text = "Abilita percorsi lunghi nel registro"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'SettingsForm

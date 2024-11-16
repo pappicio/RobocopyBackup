@@ -181,7 +181,7 @@ Partial Public Class TaskForm
 
 
     Private Sub Localize()
-        '''Text = Lang.[Get]("Task")
+        Text = Lang.[Get]("Task")
         titleLabel.Text = Lang.[Get]("Title", ":")
         directoriesGroupBox.Text = Lang.[Get]("Directories")
         sourceLabel.Text = Lang.[Get]("Source", ":")
