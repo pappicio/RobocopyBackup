@@ -279,9 +279,10 @@ Partial Class TaskForm
         Me.onlyfoldercheck.AutoSize = True
         Me.onlyfoldercheck.Location = New System.Drawing.Point(16, 33)
         Me.onlyfoldercheck.Name = "onlyfoldercheck"
-        Me.onlyfoldercheck.Size = New System.Drawing.Size(652, 29)
+        Me.onlyfoldercheck.Size = New System.Drawing.Size(721, 29)
         Me.onlyfoldercheck.TabIndex = 19
-        Me.onlyfoldercheck.Text = "Copia solo struttura cartelle (obbligatorio filesystem NTFS destinazione)"
+        Me.onlyfoldercheck.Text = "Copia solo struttura cartelle (obbligatorio filesystem NTFS  origine/destinazione" &
+    ")"
         Me.onlyfoldercheck.UseVisualStyleBackColor = True
         '
         'destpasstext

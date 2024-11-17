@@ -210,7 +210,14 @@ Public NotInheritable Class SysUtils
 
         If task.onlyfolder <> "" Then
             only = True
-            args.Add(String.Format("/E /CREATE /DST /DCOPY:DAT /XF * /XJ /R:1 /W:1 ""/UNILOG+:{0}""", logFile))
+            args.Add(String.Format("/E /CREATE /DST /COPYALL /XF * /XJ /R:1 /W:1 ""/UNILOG+:{0}""", logFile))
+            Logger.Open(logFile)
+            Logger.Log("***************************************")
+            Logger.Log("[BACKUP] Solo copia alberatura cartelle (con relativi permessi NTFS)")
+            Logger.Log2("Se alberatura non viene copiata perche una delle 2 fonti (origine o destinazione)")
+            Logger.Log2("non hanno filesystem NTFS!")
+            Logger.Log("***************************************")
+            Logger.close()
         Else
             If task.NTFS <> "" Then
                 'args.Add(String.Format("/e /sec /COPYALL /R:3 /W:3 /NP ""/UNILOG+:{0}""", logFile))
