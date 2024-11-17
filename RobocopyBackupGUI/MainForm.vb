@@ -65,6 +65,7 @@ Partial Public Class MainForm
 
         If editForm.ShowDialog() = DialogResult.OK Then
             Config.Tasks(guid) = editForm.ResultTask
+
             SaveConfig()
             RedrawTasks()
         End If
@@ -363,5 +364,56 @@ rifallo:
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
+    End Sub
+    Friend Sub SortMyListView(ByVal ListViewToSort As ListView, ByVal ColumnNumber As Integer, Optional ByVal Resort As Boolean = False, Optional ByVal ForceSort As Boolean = False)
+        ' Sorts a list view column by string, number, or date.  The three types of sorts must be specified within the listview columns "tag" property unless the ForceSort option is enabled.
+        ' ListViewToSort - The listview to sort
+        ' ColumnNumber - The column number to sort by
+        ' Resort - Resorts a listview in the same direction as the last sort
+        ' ForceSort - Forces a sort even if no listview tag data exists and assumes a string sort.  If this is false (default) and no tag is specified the procedure will exit
+        Dim SortOrder As SortOrder
+        Static LastSortColumn As Integer = -1
+        Static LastSortOrder As SortOrder = SortOrder.Ascending
+        If Resort = True Then
+            SortOrder = LastSortOrder
+        Else
+            If LastSortColumn = ColumnNumber Then
+                If LastSortOrder = SortOrder.Ascending Then
+                    SortOrder = SortOrder.Descending
+                Else
+                    SortOrder = SortOrder.Ascending
+                End If
+            Else
+                SortOrder = SortOrder.Ascending
+            End If
+        End If
+
+        ' In case a tag wasn't specified check if we should force a string sort
+        If String.IsNullOrEmpty(CStr(ListViewToSort.Columns(ColumnNumber).Tag)) Then
+            If ForceSort = True Then
+                ListViewToSort.Columns(ColumnNumber).Tag = "String"
+            Else
+                ' don't sort since no tag was specified.
+                Exit Sub
+            End If
+        End If
+
+        Select Case ListViewToSort.Columns(ColumnNumber).Tag.ToString
+            Case "Numeric"
+                ListViewToSort.ListViewItemSorter = New ListViewNumericSort(ColumnNumber, SortOrder)
+            Case "Date"
+                ListViewToSort.ListViewItemSorter = New ListViewDateSort(ColumnNumber, SortOrder)
+            Case "String"
+                ListViewToSort.ListViewItemSorter = New ListViewStringSort(ColumnNumber, SortOrder)
+        End Select
+        LastSortColumn = ColumnNumber
+        LastSortOrder = SortOrder
+        ListViewToSort.ListViewItemSorter = Nothing
+    End Sub
+
+
+    Private Sub taskListView_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles taskListView.ColumnClick
+
+        SortMyListView(Me.taskListView, e.Column, , True)
     End Sub
 End Class
