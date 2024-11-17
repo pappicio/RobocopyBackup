@@ -48,12 +48,14 @@ Namespace RobocopyBackup
             End Try
         End Function
 
-        ' Private Declare Function SHILCreateFromPath Lib "shell32.dll" (pszPath As String, <Out> ppIdl As IntPtr, ByRef rgflnOut As UInteger) As Long
 
-        'Private Declare Function SHCreateShellItem Lib "shell32.dll" (ByVal pidlParent As IntPtr, ByVal psfParent As IntPtr, ByVal pidl As IntPtr, <Out> ByRef ppsi As IShellItem) As Integer
-
-        Private Declare Function SHILCreateFromPath Lib "shell32.dll" (ByVal pszPath As String, <Out> ByRef ppIdl As IntPtr, ByRef rgflnOut As UInteger) As Integer
-
+        ' SHILCreateFromPath
+        <DllImport("shell32.dll", CharSet:=CharSet.Unicode, PreserveSig:=True)>
+        Public Shared Function SHILCreateFromPath(
+        ByVal pszPath As String,
+        <Out> ByRef ppIdl As IntPtr,
+        ByRef rgflnOut As UInteger) As Integer
+        End Function
         Private Declare Function SHCreateShellItem Lib "shell32.dll" (ByVal pidlParent As IntPtr, ByVal psfParent As IntPtr, ByVal pidl As IntPtr, <Out> ByRef ppsi As IShellItem) As Integer
 
 
