@@ -180,7 +180,7 @@ Partial Public Class TaskForm
                     If taskx.destuser <> "" Then
                         u = checkshare(titleTextBox.Text, destinationTextBox.Text, destusertext.Text, destpasstext.Text)
                         If u.err Then
-                            Return
+                            'Return
                         End If
                     End If
                 End If
@@ -322,7 +322,7 @@ Partial Public Class TaskForm
                     If taskx.destuser <> "" Then
                         u = checkshare(titleTextBox.Text, sourceTextBox.Text, originusertext.Text, originpasstext.Text)
                         If u.err Then
-                            Return
+                            'Return
                         End If
                     End If
                 End If
