@@ -31,6 +31,7 @@ Namespace RobocopyBackup
 
                         Marshal.FreeCoTaskMem(idl)
                     End If
+
                 End If
 
 
@@ -56,6 +57,7 @@ Namespace RobocopyBackup
         <Out> ByRef ppIdl As IntPtr,
         ByRef rgflnOut As UInteger) As Integer
         End Function
+
         Private Declare Function SHCreateShellItem Lib "shell32.dll" (ByVal pidlParent As IntPtr, ByVal psfParent As IntPtr, ByVal pidl As IntPtr, <Out> ByRef ppsi As IShellItem) As Integer
 
 

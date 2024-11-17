@@ -143,10 +143,47 @@ Partial Public Class TaskForm
         ResultTask = task
     End Sub
 
+    Public Shared Function checkshare(guid As String, path As String, username As String, password As String) As Unc
 
+        SysUtils.EseguiComandoNetUseDelete()
+        Threading.Thread.Sleep(500)
+        Try
+
+            Dim uncPathsource As String = If(Unc.IsUncPath(path), path, Nothing)
+
+            Dim unc__1 As New Unc(uncPathsource)
+            Dim c As New Credential
+            c.Username = username
+            c.Password = password
+            If uncPathsource IsNot Nothing Then
+
+                Dim a As Integer = unc__1.Connect(c)
+                If a <> 0 Then
+                    unc__1.err = True
+                    MsgBox(SysUtils.checkerror(uncPathsource, a))
+                End If
+
+            End If
+
+            Return unc__1
+
+        Catch e As Exception
+            Return Nothing
+        End Try
+    End Function
     Private Sub DestinationButton_Click(sender As Object, e As EventArgs) Handles destinationButton.Click
+        SysUtils.EseguiComandoNetUseDelete()
+        Dim u As Unc = Nothing
         If taskx IsNot Nothing Then
             If taskx.Destination <> "" Then
+                If Not IO.Directory.Exists(taskx.Destination) Then
+                    If taskx.destuser <> "" Then
+                        u = checkshare(titleTextBox.Text, destinationTextBox.Text, destusertext.Text, destpasstext.Text)
+                        If u.err Then
+                            Return
+                        End If
+                    End If
+                End If
                 Me.destinationFolderBrowserDialog.SelectedPath = taskx.Destination
             End If
         End If
@@ -159,6 +196,10 @@ Partial Public Class TaskForm
             Dim text2 As String = text
             openFolderDialog.SelectedPath = text
             control.Text = text2
+        End If
+
+        If u IsNot Nothing Then
+            u.Dispose()
         End If
     End Sub
 
@@ -271,14 +312,25 @@ Partial Public Class TaskForm
     End Sub
 
     Private Sub SourceButton_Click(sender As Object, e As EventArgs) Handles sourceButton.Click
-        If taskx IsNot Nothing Then
-            If taskx.Source <> "" Then
-                Me.sourceFolderBrowserDialog.SelectedPath = taskx.Source
-            Else
-                ''' Me.sourceFolderBrowserDialog.SelectedPath = ""
-            End If
 
+        SysUtils.EseguiComandoNetUseDelete()
+
+        Dim u As Unc = Nothing
+        If taskx IsNot Nothing Then
+            If taskx.Destination <> "" Then
+                If Not IO.Directory.Exists(taskx.Destination) Then
+                    If taskx.destuser <> "" Then
+                        u = checkshare(titleTextBox.Text, sourceTextBox.Text, originusertext.Text, originpasstext.Text)
+                        If u.err Then
+                            Return
+                        End If
+                    End If
+                End If
+                Me.destinationFolderBrowserDialog.SelectedPath = taskx.Destination
+            End If
         End If
+
+
 
         If Me.sourceFolderBrowserDialog.ShowDialog() = DialogResult.OK Then
             Dim control As Control = Me.sourceTextBox
@@ -286,12 +338,12 @@ Partial Public Class TaskForm
             Dim text As String = Unc.TranslatePath(Me.sourceFolderBrowserDialog.SelectedPath)
 
             Dim text2 As String = text
-                openFolderDialog.SelectedPath = text
-                control.Text = text2
-
-
-
-            End If
+            openFolderDialog.SelectedPath = text
+            control.Text = text2
+        End If
+        If u IsNot Nothing Then
+            u.Dispose()
+        End If
     End Sub
 
 

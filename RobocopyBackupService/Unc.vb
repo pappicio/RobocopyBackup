@@ -9,10 +9,12 @@ Namespace RobocopyBackup
         Implements IDisposable
 
         Private _disposed As Boolean = False
+        Public err As Boolean = False
         Private disposedValue As Boolean
         Private ReadOnly _path As String
 
         Public Sub New(ByVal path As String)
+            err = False
             _path = path
         End Sub
 
