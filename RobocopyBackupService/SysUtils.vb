@@ -51,66 +51,143 @@ Public NotInheritable Class SysUtils
     End Sub
 
     Shared Function checkerror(s As String, a As Integer) As String
-        Select Case a
+        Dim ss As String = GetNetUseAddErrorDescription(a)
+        Return ("[CONNECTION] to: " & s & " " & ss)
+    End Function
+
+    Shared Function GetNetUseAddErrorDescription(errorNumber As Integer) As String
+        ' ----------------------
+        ' Codici generali Win32
+        ' ----------------------
+        Select Case errorNumber
+            Case 0
+                Return "Operazione completata con successo."
+            Case 1
+                Return "Funzione non valida."
             Case 2
-                Return ("[CONNECTION] to: " & s & " " & "Errore: File o risorsa di rete non trovato.")
+                Return "File o risorsa non trovata."
             Case 3
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Percorso specificato non trovato.")
+                Return "Percorso non trovato."
             Case 5
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Accesso negato.")
+                Return "Accesso negato."
+            Case 6
+                Return "Handle non valido."
+            Case 8
+                Return "Memoria insufficiente per completare l'operazione."
+            Case 14
+                Return "Memoria insufficiente disponibile."
+            Case 31
+                Return "Un dispositivo collegato al sistema non funziona correttamente."
+            Case 50
+                Return "L'operazione richiesta non è supportata."
             Case 53
-                Return ("[CONNECTION] to: " & s & " " & "Errore: La rete di destinazione è irraggiungibile.")
+                Return "Percorso di rete non trovato."
             Case 64
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Il percorso di rete non è valido.")
+                Return "Il nome della rete non è più disponibile."
             Case 67
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Il nome di rete non è corretto.")
-            Case 85
-                Return ("[CONNECTION] to: " & s & " " & "Errore: La connessione di rete è già assegnata.")
+                Return "Nome della risorsa di rete non trovato."
+            Case 87
+                Return "Parametro non valido."
+            Case 120
+                Return "Questo dispositivo non accetta l'operazione specificata."
             Case 121
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Timeout durante il tentativo di connessione alla risorsa di rete.")
-            Case 259
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Non ci sono più elementi da enumerare.")
+                Return "Timeout durante la connessione."
+            Case 123
+                Return "Nome non valido."
+            Case 126
+                Return "Modulo non trovato."
+            Case 132
+                Return "Nome file o percorso non valido."
+            Case 183
+                Return "Il file o la risorsa esiste già."
+            Case 224
+                Return "Il buffer è troppo piccolo."
+            Case 234
+                Return "I dati restituiti sono troppo grandi per il buffer."
             Case 487
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Indirizzo non valido.")
+                Return "Tentativo di accesso a un indirizzo non valido."
+            Case 995
+                Return "Operazione annullata dall'utente."
+            Case 1200
+                Return "Il dispositivo specificato non è valido."
+            Case 1201
+                Return "Il dispositivo è già stato ricordato."
+            Case 1202
+                Return "Il nome della rete è occupato o non valido."
             Case 1219
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Esiste già una connessione con credenziali diverse.")
-            Case 1221
-                Return ("[CONNECTION] to: " & s & " " & "Errore: L'utente specificato non esiste.")
-            Case 1231
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Il nome di rete è stato eliminato.")
-            Case 1240
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Provider di rete errato.")
-            Case 1203
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Parametro non valido.")
-            Case 1323
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Violazione delle politiche relative alla password.")
+                Return "Connessioni multiple allo stesso server con credenziali diverse."
+            Case 1312
+                Return "Nessuna sessione di accesso trovata."
+            Case 1314
+                Return "Privilegio richiesto non disponibile."
             Case 1326
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Nome utente o password non corretti.")
+                Return "Nome utente o password non validi."
             Case 1327
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Restrizioni sull'account impediscono l'accesso.")
+                Return "Restrizioni sull'account utente."
+            Case 1330
+                Return "Password scaduta."
             Case 1331
-                Return ("[CONNECTION] to: " & s & " " & "Errore: L'account dell'utente è disabilitato.")
+                Return "Account disabilitato."
             Case 1355
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Il dominio specificato non esiste o non è raggiungibile.")
+                Return "Il dominio specificato non esiste o non è disponibile."
             Case 1385
-                Return ("[CONNECTION] to: " & s & " " & "Errore: L'utente non dispone dei diritti di accesso richiesti.")
-            Case 1396
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Orari di accesso non validi per l'account dell'utente.")
-            Case 1397
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Il computer non è autorizzato per l'accesso dell'utente.")
-            Case 1722
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Il server RPC non è disponibile.")
-            Case 2221
-                Return ("[CONNECTION] to: " & s & " " & "Errore: L'utente specificato non esiste.")
-            Case 2242
-                Return ("[CONNECTION] to: " & s & " " & "Errore: La password dell'utente è scaduta.")
+                Return "Accesso negato: il tipo di accesso non è consentito."
+            Case 1909
+                Return "L'account è bloccato."
             Case 2250
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Nessuna connessione alla risorsa specificata.")
+                Return "La risorsa non è connessa."
+
+        ' ----------------------
+        ' Codici NetAPI specifici
+        ' ----------------------
+            Case 2107
+                Return "Il nome di rete non è stato trovato."
+            Case 2114
+                Return "Il servizio di rete non è avviato."
+            Case 2115
+                Return "Il servizio richiesto è già attivo."
+            Case 2123
+                Return "Il buffer specificato è troppo piccolo."
+            Case 2136
+                Return "Password non valida."
+            Case 2140
+                Return "Errore generico del server remoto."
+            Case 2142
+                Return "La connessione specificata non è stata trovata."
+            Case 2221
+                Return "La risorsa condivisa non esiste."
+            Case 2242
+                Return "L'account utente è bloccato."
+            Case 2401
+                Return "La connessione al server è stata interrotta."
             Case 2404
-                Return ("[CONNECTION] to: " & s & " " & "Errore: La connessione specificata non esiste.")
+                Return "Il server non è disponibile per questa operazione."
+            Case 6118
+                Return "L'elenco dei server non è disponibile."
+
+        ' ----------------------
+        ' Codici supplementari
+        ' ----------------------
+            Case 1384
+                Return "Il client non dispone delle autorizzazioni necessarie per questa operazione."
+            Case 2224
+                Return "Il nome utente specificato non esiste."
+            Case 2251
+                Return "Il dispositivo richiesto non è pronto per l'uso."
+            Case 317
+                Return "Errore sconosciuto nella rete."
+            Case 1208
+                Return "Un problema di compatibilità del protocollo ha interrotto la connessione."
+            Case 1323
+                Return "La password specificata non è sufficientemente complessa."
+
+                ' ----------------------
+                ' Errore sconosciuto
+                ' ----------------------
             Case Else
-                Return ("[CONNECTION] to: " & s & " " & "Errore: Errore sconosciuto: " & a)
+                Return $"Codice errore sconosciuto: {errorNumber}. Consulta la documentazione ufficiale NETUSEADD di: Netapi32.dll."
         End Select
+
     End Function
     Public Shared Sub RunBackup(task As Task)
         Dim timestamp As String = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")

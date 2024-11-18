@@ -504,4 +504,13 @@ Partial Public Class TaskForm
     Private Sub titleLabel_Click(sender As Object, e As EventArgs) Handles titleLabel.Click
 
     End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        sourceTextBox.ReadOnly = Not CheckBox1.Checked
+        destinationTextBox.ReadOnly = Not CheckBox1.Checked
+    End Sub
 End Class

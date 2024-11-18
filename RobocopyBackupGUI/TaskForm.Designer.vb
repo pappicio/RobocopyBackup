@@ -30,6 +30,7 @@ Partial Class TaskForm
         Me.retentionLabel = New System.Windows.Forms.Label()
         Me.retentionNumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.directoriesGroupBox = New System.Windows.Forms.GroupBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -86,7 +87,7 @@ Partial Class TaskForm
         'sourceLabel
         '
         Me.sourceLabel.AutoSize = True
-        Me.sourceLabel.Location = New System.Drawing.Point(12, 167)
+        Me.sourceLabel.Location = New System.Drawing.Point(12, 175)
         Me.sourceLabel.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.sourceLabel.Name = "sourceLabel"
         Me.sourceLabel.Size = New System.Drawing.Size(81, 25)
@@ -130,7 +131,7 @@ Partial Class TaskForm
         'sourceTextBox
         '
         Me.sourceTextBox.BackColor = System.Drawing.SystemColors.Window
-        Me.sourceTextBox.Location = New System.Drawing.Point(211, 164)
+        Me.sourceTextBox.Location = New System.Drawing.Point(211, 172)
         Me.sourceTextBox.Margin = New System.Windows.Forms.Padding(6)
         Me.sourceTextBox.Name = "sourceTextBox"
         Me.sourceTextBox.ReadOnly = True
@@ -139,7 +140,7 @@ Partial Class TaskForm
         '
         'sourceButton
         '
-        Me.sourceButton.Location = New System.Drawing.Point(922, 164)
+        Me.sourceButton.Location = New System.Drawing.Point(922, 172)
         Me.sourceButton.Margin = New System.Windows.Forms.Padding(6)
         Me.sourceButton.Name = "sourceButton"
         Me.sourceButton.Size = New System.Drawing.Size(40, 30)
@@ -203,6 +204,7 @@ Partial Class TaskForm
         '
         'directoriesGroupBox
         '
+        Me.directoriesGroupBox.Controls.Add(Me.CheckBox1)
         Me.directoriesGroupBox.Controls.Add(Me.Label6)
         Me.directoriesGroupBox.Controls.Add(Me.Label7)
         Me.directoriesGroupBox.Controls.Add(Me.Label5)
@@ -232,6 +234,16 @@ Partial Class TaskForm
         Me.directoriesGroupBox.TabStop = False
         Me.directoriesGroupBox.Text = "Directories"
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(16, 103)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(269, 29)
+        Me.CheckBox1.TabIndex = 29
+        Me.CheckBox1.Text = "Textbox percorsi read/write"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -256,7 +268,7 @@ Partial Class TaskForm
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(206, 133)
+        Me.Label5.Location = New System.Drawing.Point(206, 141)
         Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(667, 25)
@@ -266,7 +278,7 @@ Partial Class TaskForm
         'Label9
         '
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(207, 201)
+        Me.Label9.Location = New System.Drawing.Point(207, 209)
         Me.Label9.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(692, 45)
@@ -296,7 +308,7 @@ Partial Class TaskForm
         '
         'originusertext
         '
-        Me.originusertext.Location = New System.Drawing.Point(211, 251)
+        Me.originusertext.Location = New System.Drawing.Point(211, 259)
         Me.originusertext.Margin = New System.Windows.Forms.Padding(6)
         Me.originusertext.Name = "originusertext"
         Me.originusertext.Size = New System.Drawing.Size(288, 30)
@@ -324,7 +336,7 @@ Partial Class TaskForm
         '
         'originpasstext
         '
-        Me.originpasstext.Location = New System.Drawing.Point(620, 251)
+        Me.originpasstext.Location = New System.Drawing.Point(620, 259)
         Me.originpasstext.Margin = New System.Windows.Forms.Padding(6)
         Me.originpasstext.Name = "originpasstext"
         Me.originpasstext.Size = New System.Drawing.Size(291, 30)
@@ -342,7 +354,7 @@ Partial Class TaskForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(504, 254)
+        Me.Label1.Location = New System.Drawing.Point(504, 262)
         Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(104, 25)
@@ -352,7 +364,7 @@ Partial Class TaskForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 254)
+        Me.Label2.Location = New System.Drawing.Point(12, 262)
         Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(108, 25)
@@ -364,7 +376,7 @@ Partial Class TaskForm
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.Checked = True
         Me.CheckBox2.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox2.Location = New System.Drawing.Point(16, 72)
+        Me.CheckBox2.Location = New System.Drawing.Point(16, 68)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(604, 29)
         Me.CheckBox2.TabIndex = 8
@@ -590,4 +602,5 @@ Partial Class TaskForm
     Private WithEvents Label7 As Windows.Forms.Label
     Private WithEvents Label5 As Windows.Forms.Label
     Private WithEvents Label6 As Windows.Forms.Label
+    Friend WithEvents CheckBox1 As Windows.Forms.CheckBox
 End Class
