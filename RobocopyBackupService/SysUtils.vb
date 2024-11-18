@@ -52,7 +52,12 @@ Public NotInheritable Class SysUtils
 
     Shared Function checkerror(s As String, a As Integer) As String
         Dim ss As String = GetNetUseAddErrorDescription(a)
-        Return ("[CONNECTION] to: " & s & " " & ss)
+        If a <> 0 Then
+            Return ("[CONNECTION] to: " & s & " ERRORE nr: " & a & " - " & ss)
+        Else
+            Return "[CONNECTION] to: " & s & "OK"
+        End If
+
     End Function
 
     Shared Function GetNetUseAddErrorDescription(errorNumber As Integer) As String
