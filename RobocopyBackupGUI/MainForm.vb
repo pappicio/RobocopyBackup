@@ -363,6 +363,25 @@ rifallo:
     End Sub
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If serviziorunna() = False Then
+            Dim result As DialogResult = MessageBox.Show("Il servizio risulta inattivo, attivare il servizio prima di chiudere?", "SERVIZIO INATTIVO", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                serviceokbutton_Click(Nothing, Nothing)
+                Dim x As Integer = 0
+                While serviziorunna() = False
+                    x = x + 1
+                    Application.DoEvents()
+
+                    If x > 100 Then
+                        MsgBox("Impossibile avviare il servizio...")
+                        Exit While
+                    End If
+                    Threading.Thread.Sleep(10)
+                End While
+
+            End If
+        
+        End If
 
     End Sub
     Friend Sub SortMyListView(ByVal ListViewToSort As ListView, ByVal ColumnNumber As Integer, Optional ByVal Resort As Boolean = False, Optional ByVal ForceSort As Boolean = False)
