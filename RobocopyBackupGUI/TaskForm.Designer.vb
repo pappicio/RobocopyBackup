@@ -136,7 +136,7 @@ Partial Class TaskForm
         Me.sourceTextBox.Name = "sourceTextBox"
         Me.sourceTextBox.ReadOnly = True
         Me.sourceTextBox.Size = New System.Drawing.Size(700, 30)
-        Me.sourceTextBox.TabIndex = 1
+        Me.sourceTextBox.TabIndex = 5
         '
         'sourceButton
         '
@@ -144,7 +144,7 @@ Partial Class TaskForm
         Me.sourceButton.Margin = New System.Windows.Forms.Padding(6)
         Me.sourceButton.Name = "sourceButton"
         Me.sourceButton.Size = New System.Drawing.Size(40, 30)
-        Me.sourceButton.TabIndex = 2
+        Me.sourceButton.TabIndex = 6
         Me.sourceButton.Text = "..."
         Me.sourceButton.UseVisualStyleBackColor = True
         '
@@ -156,7 +156,7 @@ Partial Class TaskForm
         Me.destinationTextBox.Name = "destinationTextBox"
         Me.destinationTextBox.ReadOnly = True
         Me.destinationTextBox.Size = New System.Drawing.Size(700, 30)
-        Me.destinationTextBox.TabIndex = 5
+        Me.destinationTextBox.TabIndex = 9
         '
         'destinationButton
         '
@@ -164,7 +164,7 @@ Partial Class TaskForm
         Me.destinationButton.Margin = New System.Windows.Forms.Padding(6)
         Me.destinationButton.Name = "destinationButton"
         Me.destinationButton.Size = New System.Drawing.Size(40, 30)
-        Me.destinationButton.TabIndex = 6
+        Me.destinationButton.TabIndex = 10
         Me.destinationButton.Text = "..."
         Me.destinationButton.UseVisualStyleBackColor = True
         '
@@ -199,7 +199,7 @@ Partial Class TaskForm
         Me.retentionNumericUpDown.Name = "retentionNumericUpDown"
         Me.retentionNumericUpDown.ReadOnly = True
         Me.retentionNumericUpDown.Size = New System.Drawing.Size(123, 30)
-        Me.retentionNumericUpDown.TabIndex = 4
+        Me.retentionNumericUpDown.TabIndex = 19
         Me.retentionNumericUpDown.Value = New Decimal(New Integer() {15, 0, 0, 0})
         '
         'directoriesGroupBox
@@ -240,7 +240,7 @@ Partial Class TaskForm
         Me.CheckBox1.Location = New System.Drawing.Point(16, 103)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(269, 29)
-        Me.CheckBox1.TabIndex = 29
+        Me.CheckBox1.TabIndex = 4
         Me.CheckBox1.Text = "Textbox percorsi read/write"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
@@ -292,7 +292,7 @@ Partial Class TaskForm
         Me.onlyfoldercheck.Location = New System.Drawing.Point(16, 33)
         Me.onlyfoldercheck.Name = "onlyfoldercheck"
         Me.onlyfoldercheck.Size = New System.Drawing.Size(721, 29)
-        Me.onlyfoldercheck.TabIndex = 19
+        Me.onlyfoldercheck.TabIndex = 2
         Me.onlyfoldercheck.Text = "Copia solo struttura cartelle (obbligatorio filesystem NTFS  origine/destinazione" &
     ")"
         Me.onlyfoldercheck.UseVisualStyleBackColor = True
@@ -303,7 +303,7 @@ Partial Class TaskForm
         Me.destpasstext.Margin = New System.Windows.Forms.Padding(6)
         Me.destpasstext.Name = "destpasstext"
         Me.destpasstext.Size = New System.Drawing.Size(291, 30)
-        Me.destpasstext.TabIndex = 8
+        Me.destpasstext.TabIndex = 12
         Me.destpasstext.UseSystemPasswordChar = True
         '
         'originusertext
@@ -312,7 +312,7 @@ Partial Class TaskForm
         Me.originusertext.Margin = New System.Windows.Forms.Padding(6)
         Me.originusertext.Name = "originusertext"
         Me.originusertext.Size = New System.Drawing.Size(288, 30)
-        Me.originusertext.TabIndex = 3
+        Me.originusertext.TabIndex = 7
         '
         'Label3
         '
@@ -340,7 +340,7 @@ Partial Class TaskForm
         Me.originpasstext.Margin = New System.Windows.Forms.Padding(6)
         Me.originpasstext.Name = "originpasstext"
         Me.originpasstext.Size = New System.Drawing.Size(291, 30)
-        Me.originpasstext.TabIndex = 4
+        Me.originpasstext.TabIndex = 8
         Me.originpasstext.UseSystemPasswordChar = True
         '
         'destusertext
@@ -349,7 +349,7 @@ Partial Class TaskForm
         Me.destusertext.Margin = New System.Windows.Forms.Padding(6)
         Me.destusertext.Name = "destusertext"
         Me.destusertext.Size = New System.Drawing.Size(288, 30)
-        Me.destusertext.TabIndex = 7
+        Me.destusertext.TabIndex = 11
         '
         'Label1
         '
@@ -379,7 +379,7 @@ Partial Class TaskForm
         Me.CheckBox2.Location = New System.Drawing.Point(16, 68)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(604, 29)
-        Me.CheckBox2.TabIndex = 8
+        Me.CheckBox2.TabIndex = 3
         Me.CheckBox2.Text = "Copia permessi NTFS (solo per Filesystem NTFS sulle condivise)"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
@@ -415,7 +415,7 @@ Partial Class TaskForm
         Me.saveTaskButton.Margin = New System.Windows.Forms.Padding(6)
         Me.saveTaskButton.Name = "saveTaskButton"
         Me.saveTaskButton.Size = New System.Drawing.Size(987, 44)
-        Me.saveTaskButton.TabIndex = 9
+        Me.saveTaskButton.TabIndex = 20
         Me.saveTaskButton.Text = "SaveTask"
         '
         'scheduleGroupBox
@@ -447,7 +447,7 @@ Partial Class TaskForm
         Me.timeDateTimePicker.Name = "timeDateTimePicker"
         Me.timeDateTimePicker.ShowUpDown = True
         Me.timeDateTimePicker.Size = New System.Drawing.Size(133, 30)
-        Me.timeDateTimePicker.TabIndex = 3
+        Me.timeDateTimePicker.TabIndex = 18
         Me.timeDateTimePicker.Value = New Date(2018, 1, 1, 0, 0, 0, 0)
         '
         'timeLabel
@@ -470,7 +470,7 @@ Partial Class TaskForm
         Me.monthdayNumericUpDown.Name = "monthdayNumericUpDown"
         Me.monthdayNumericUpDown.ReadOnly = True
         Me.monthdayNumericUpDown.Size = New System.Drawing.Size(123, 30)
-        Me.monthdayNumericUpDown.TabIndex = 4
+        Me.monthdayNumericUpDown.TabIndex = 17
         Me.monthdayNumericUpDown.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'dailyRadioButton
@@ -481,7 +481,7 @@ Partial Class TaskForm
         Me.dailyRadioButton.Margin = New System.Windows.Forms.Padding(6)
         Me.dailyRadioButton.Name = "dailyRadioButton"
         Me.dailyRadioButton.Size = New System.Drawing.Size(76, 29)
-        Me.dailyRadioButton.TabIndex = 0
+        Me.dailyRadioButton.TabIndex = 13
         Me.dailyRadioButton.TabStop = True
         Me.dailyRadioButton.Text = "Daily"
         Me.dailyRadioButton.UseVisualStyleBackColor = True
@@ -493,7 +493,7 @@ Partial Class TaskForm
         Me.weeklyRadioButton.Margin = New System.Windows.Forms.Padding(6)
         Me.weeklyRadioButton.Name = "weeklyRadioButton"
         Me.weeklyRadioButton.Size = New System.Drawing.Size(147, 29)
-        Me.weeklyRadioButton.TabIndex = 1
+        Me.weeklyRadioButton.TabIndex = 14
         Me.weeklyRadioButton.Text = "DayOfWeek:"
         Me.weeklyRadioButton.UseVisualStyleBackColor = True
         '
@@ -504,7 +504,7 @@ Partial Class TaskForm
         Me.weekdayComboBox.Margin = New System.Windows.Forms.Padding(6)
         Me.weekdayComboBox.Name = "weekdayComboBox"
         Me.weekdayComboBox.Size = New System.Drawing.Size(206, 33)
-        Me.weekdayComboBox.TabIndex = 2
+        Me.weekdayComboBox.TabIndex = 15
         '
         'monthlyRadioButton
         '
@@ -513,7 +513,7 @@ Partial Class TaskForm
         Me.monthlyRadioButton.Margin = New System.Windows.Forms.Padding(6)
         Me.monthlyRadioButton.Name = "monthlyRadioButton"
         Me.monthlyRadioButton.Size = New System.Drawing.Size(150, 29)
-        Me.monthlyRadioButton.TabIndex = 2
+        Me.monthlyRadioButton.TabIndex = 16
         Me.monthlyRadioButton.Text = "DayOfMonth:"
         Me.monthlyRadioButton.UseVisualStyleBackColor = True
         '

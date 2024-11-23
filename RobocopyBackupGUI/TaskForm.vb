@@ -513,4 +513,8 @@ Partial Public Class TaskForm
         sourceTextBox.ReadOnly = Not CheckBox1.Checked
         destinationTextBox.ReadOnly = Not CheckBox1.Checked
     End Sub
+
+    Private Sub scheduleGroupBox_Enter(sender As Object, e As EventArgs) Handles scheduleGroupBox.Enter
+
+    End Sub
 End Class

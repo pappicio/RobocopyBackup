@@ -40,7 +40,7 @@ Partial Class SettingsForm
         Me.logRetentionNumericUpDown.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.logRetentionNumericUpDown.Name = "logRetentionNumericUpDown"
         Me.logRetentionNumericUpDown.Size = New System.Drawing.Size(93, 34)
-        Me.logRetentionNumericUpDown.TabIndex = 3
+        Me.logRetentionNumericUpDown.TabIndex = 1
         Me.logRetentionNumericUpDown.Value = New Decimal(New Integer() {15, 0, 0, 0})
         '
         'saveSettingsButton
@@ -59,7 +59,7 @@ Partial Class SettingsForm
         Me.CheckBox1.Location = New System.Drawing.Point(26, 79)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(204, 33)
-        Me.CheckBox1.TabIndex = 5
+        Me.CheckBox1.TabIndex = 2
         Me.CheckBox1.Text = "Log di DEBUG"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
@@ -69,7 +69,7 @@ Partial Class SettingsForm
         Me.Button1.Margin = New System.Windows.Forms.Padding(7)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(565, 51)
-        Me.Button1.TabIndex = 6
+        Me.Button1.TabIndex = 3
         Me.Button1.Text = "Abilita percorsi lunghi nel registro"
         Me.Button1.UseVisualStyleBackColor = True
         '
