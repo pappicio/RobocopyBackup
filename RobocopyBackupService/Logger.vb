@@ -150,11 +150,12 @@ Public NotInheritable Class Logger
             Writer = New StreamWriter(path, True) With {
             .AutoFlush = True
        }
+            Log("***********INIZIO***************")
         Catch ex As Exception
 
         End Try
 
-        Log("***************************************")
+
     End Sub
 
     Public Shared Sub close()
@@ -178,6 +179,8 @@ Public NotInheritable Class Logger
             Else
                 Writer.WriteLine("")
             End If
+        Else
+            Open(SysUtils.logFile)
 
         End If
 
@@ -189,7 +192,8 @@ Public NotInheritable Class Logger
             Else
                 Writer.WriteLine("")
             End If
-
+        Else
+            Open(SysUtils.logFile)
         End If
 
     End Sub

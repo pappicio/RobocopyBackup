@@ -194,9 +194,13 @@ Public NotInheritable Class SysUtils
         End Select
 
     End Function
+
+
+    Public Shared logFile As String = Nothing
+
     Public Shared Sub RunBackup(task As Task)
         Dim timestamp As String = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")
-        Dim logFile As String = GetLogName(task.Guid, timestamp)
+        logFile = GetLogName(task.Guid, timestamp)
         Dim destDir As String = (task.Destination)
 
 
